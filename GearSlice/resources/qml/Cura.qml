@@ -28,7 +28,7 @@ UM.MainWindow
         {
             result += PrintInformation.jobName + " - ";
         }
-        result += CuraApplication.applicationDisplayName;
+        result += "G3D Slicer";
         return result;
     }
 
@@ -584,8 +584,8 @@ UM.MainWindow
     MessageDialog
     {
         id: exitConfirmationDialog
-        title: catalog.i18nc("@title:window %1 is the application name", "Closing %1").arg(CuraApplication.applicationDisplayName)
-        text: catalog.i18nc("@label %1 is the application name", "Are you sure you want to exit %1?").arg(CuraApplication.applicationDisplayName)
+        title: catalog.i18nc("Gearbo Slice is the application name", "Closing Gearbo Slice")
+        text: catalog.i18nc("Gearbo Slice is the application name", "Are you sure you want to exit Gearbo Slice?")
         icon: StandardIcon.Question
         modality: Qt.ApplicationModal
         standardButtons: StandardButton.Yes | StandardButton.No
@@ -597,7 +597,7 @@ UM.MainWindow
             if (!visible)
             {
                 // reset the text to default because other modules may change the message text.
-                text = catalog.i18nc("@label %1 is the application name", "Are you sure you want to exit %1?").arg(CuraApplication.applicationDisplayName);
+                text = catalog.i18nc("Gearbo Slice is the application name", "Are you sure you want to exit Gearbo Slice?");
             }
         }
     }

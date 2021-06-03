@@ -78,7 +78,7 @@ Item
     Action
     {
         id: showTroubleShootingAction
-        onTriggered: Qt.openUrlExternally("https://ultimaker.com/en/troubleshooting")
+        onTriggered: Qt.openUrlExternally("https://www.gearbox3d.com")
         text: catalog.i18nc("@action:inmenu", "Show Online Troubleshooting Guide");
     }
 
@@ -236,14 +236,14 @@ Item
         text: catalog.i18nc("@action:inmenu menubar:help", "Show Online &Documentation");
         iconName: "help-contents";
         shortcut: StandardKey.Help;
-        onTriggered: CuraActions.openDocumentation();
+        onTriggered: Qt.openUrlExternally("https://www.gearbox3d.com")
     }
 
     Action {
         id: reportBugAction;
         text: catalog.i18nc("@action:inmenu menubar:help", "Report a &Bug");
         iconName: "tools-report-bug";
-        onTriggered: CuraActions.openBugReportPage();
+        onTriggered: Qt.openUrlExternally("https://www.gearbox3d.com")
     }
 
     Action
