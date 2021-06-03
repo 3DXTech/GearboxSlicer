@@ -49,7 +49,7 @@ Item
             {
                 id: profileLabel
                 source: UM.Theme.getIcon("category_layer_height")
-                text: catalog.i18nc("@label", "Profiles")
+                text: "Layer Height"
                 font: UM.Theme.getFont("medium")
                 width: labelColumnWidth
             }
@@ -92,9 +92,9 @@ Item
                     left: profileLabel.right
                     right: parent.right
                 }
-
-                model: Cura.QualityProfilesDropDownMenuModel
-                modelKey: "layer_height"
+                
+                 model: Cura.QualityProfilesDropDownMenuModel
+                 modelKey: "layer_height"
             }
         }
 
