@@ -1,0 +1,8 @@
+{
+    "name": "Blade Data Collector",
+    "author": "BigRep",
+    "version": "1.3.0",
+    "api": 5,
+    "description": "Collects slicing information and send them to BigRep if wanted.",
+    "supported_sdk_versions": ["7.3.0"]
+}
