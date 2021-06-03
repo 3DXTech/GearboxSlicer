@@ -71,7 +71,8 @@ UM.ManagementPage
     {
         visible: base.currentItem != null
         anchors.fill: parent
-
+        
+//   CONTROLS THE RIGHT SIDE OF THE PRINTER SETTINGS PAGE
         Label
         {
             id: machineName

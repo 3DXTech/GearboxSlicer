@@ -210,19 +210,19 @@ UM.PreferencesPage
                     }
                 }
 
-                Label
-                {
-                    id: currencyLabel
-                    text: catalog.i18nc("@label","Currency:")
-                }
-
-                TextField
-                {
-                    id: currencyField
-                    text: UM.Preferences.getValue("cura/currency")
-                    onTextChanged: UM.Preferences.setValue("cura/currency", text)
-                }
-
+//                Label
+//                {
+//                    id: currencyLabel
+//                    text: catalog.i18nc("@label","Currency:")
+//                }
+//
+//                TextField
+//                {
+//                    id: currencyField
+//                    text: UM.Preferences.getValue("cura/currency")
+//                    onTextChanged: UM.Preferences.setValue("cura/currency", text)
+//                }
+//
                 Label
                 {
                     id: themeLabel
@@ -273,7 +273,6 @@ UM.PreferencesPage
                         currentIndex += 1;
                         currentIndex -= 1;
                     }
-
                 }
             }
 
@@ -776,96 +775,96 @@ UM.PreferencesPage
                 width: UM.Theme.getSize("default_margin").height
             }
 
-            Label
-            {
-                font.bold: true
-                visible: checkUpdatesCheckbox.visible || sendDataCheckbox.visible
-                text: catalog.i18nc("@label","Privacy")
-            }
-
-            UM.TooltipArea
-            {
-                width: childrenRect.width
-                height: visible ? childrenRect.height : 0
-                text: catalog.i18nc("@info:tooltip","Should Cura check for updates when the program is started?")
-
-                CheckBox
-                {
-                    id: checkUpdatesCheckbox
-                    text: catalog.i18nc("@option:check","Check for updates on start")
-                    checked: boolCheck(UM.Preferences.getValue("info/automatic_update_check"))
-                    onCheckedChanged: UM.Preferences.setValue("info/automatic_update_check", checked)
-                }
-            }
-
-            UM.TooltipArea
-            {
-                width: childrenRect.width
-                height: visible ? childrenRect.height : 0
-                text: catalog.i18nc("@info:tooltip","Should anonymous data about your print be sent to Ultimaker? Note, no models, IP addresses or other personally identifiable information is sent or stored.")
-
-                CheckBox
-                {
-                    id: sendDataCheckbox
-                    text: catalog.i18nc("@option:check","Send (anonymous) print information")
-                    checked: boolCheck(UM.Preferences.getValue("info/send_slice_info"))
-                    onCheckedChanged: UM.Preferences.setValue("info/send_slice_info", checked)
-                }
-
-                Button
-                {
-                    id: showMoreInfo
-                    anchors.top: sendDataCheckbox.bottom
-                    text: catalog.i18nc("@action:button", "More information")
-                    onClicked:
-                    {
-                        CuraApplication.showMoreInformationDialogForAnonymousDataCollection();
-                    }
-                }
-            }
-
-            /* Multi-buildplate functionality is disabled because it's broken. See CURA-4975 for the ticket to remove it.
-            Item
-            {
-                //: Spacer
-                height: UM.Theme.getSize("default_margin").height
-                width: UM.Theme.getSize("default_margin").height
-            }
-
-            Label
-            {
-                font.bold: true
-                text: catalog.i18nc("@label","Experimental")
-            }
-
-            UM.TooltipArea
-            {
-                width: childrenRect.width
-                height: childrenRect.height
-                text: catalog.i18nc("@info:tooltip","Use multi build plate functionality")
-
-                CheckBox
-                {
-                    id: useMultiBuildPlateCheckbox
-                    text: catalog.i18nc("@option:check","Use multi build plate functionality (restart required)")
-                    checked: boolCheck(UM.Preferences.getValue("cura/use_multi_build_plate"))
-                    onCheckedChanged: UM.Preferences.setValue("cura/use_multi_build_plate", checked)
-                }
-            }*/
-
-            Connections
-            {
-                target: UM.Preferences
-                onPreferenceChanged:
-                {
-                    if (preference !== "info/send_slice_info")
-                    {
-                        return;
-                    }
-
-                    sendDataCheckbox.checked = boolCheck(UM.Preferences.getValue("info/send_slice_info"))
-                }
-            }
+//            Label
+//            {
+//                font.bold: true
+//                visible: checkUpdatesCheckbox.visible || sendDataCheckbox.visible
+//                text: catalog.i18nc("@label","Privacy")
+//            }
+//
+//            UM.TooltipArea
+//            {
+//                width: childrenRect.width
+//                height: visible ? childrenRect.height : 0
+//                text: catalog.i18nc("@info:tooltip","Should Cura check for updates when the program is started?")
+//
+//                CheckBox
+//                {
+//                    id: checkUpdatesCheckbox
+//                    text: catalog.i18nc("@option:check","Check for updates on start")
+//                    checked: boolCheck(UM.Preferences.getValue("info/automatic_update_check"))
+//                    onCheckedChanged: UM.Preferences.setValue("info/automatic_update_check", checked)
+//                }
+//            }
+//
+//            UM.TooltipArea
+//            {
+//                width: childrenRect.width
+//                height: visible ? childrenRect.height : 0
+//                text: catalog.i18nc("@info:tooltip","Should anonymous data about your print be sent to Ultimaker? Note, no models, IP addresses or other personally identifiable information is sent or stored.")
+//
+//                CheckBox
+//                {
+//                    id: sendDataCheckbox
+//                    text: catalog.i18nc("@option:check","Send (anonymous) print information")
+//                    checked: boolCheck(UM.Preferences.getValue("info/send_slice_info"))
+//                    onCheckedChanged: UM.Preferences.setValue("info/send_slice_info", checked)
+//                }
+//
+//                Button
+//                {
+//                    id: showMoreInfo
+//                    anchors.top: sendDataCheckbox.bottom
+//                    text: catalog.i18nc("@action:button", "More information")
+//                    onClicked:
+//                    {
+//                        CuraApplication.showMoreInformationDialogForAnonymousDataCollection();
+//                    }
+//                }
+//            }
+//
+//            /* Multi-buildplate functionality is disabled because it's broken. See CURA-4975 for the ticket to remove it.
+//            Item
+//            {
+//                //: Spacer
+//                height: UM.Theme.getSize("default_margin").height
+//                width: UM.Theme.getSize("default_margin").height
+//            }
+//
+//            Label
+//            {
+//                font.bold: true
+//                text: catalog.i18nc("@label","Experimental")
+//            }
+//
+//            UM.TooltipArea
+//            {
+//                width: childrenRect.width
+//                height: childrenRect.height
+//                text: catalog.i18nc("@info:tooltip","Use multi build plate functionality")
+//
+//                CheckBox
+//                {
+//                    id: useMultiBuildPlateCheckbox
+//                    text: catalog.i18nc("@option:check","Use multi build plate functionality (restart required)")
+//                    checked: boolCheck(UM.Preferences.getValue("cura/use_multi_build_plate"))
+//                    onCheckedChanged: UM.Preferences.setValue("cura/use_multi_build_plate", checked)
+//                }
+//            }*/
+//
+//            Connections
+//            {
+//                target: UM.Preferences
+//                onPreferenceChanged:
+//                {
+//                    if (preference !== "info/send_slice_info")
+//                    {
+//                        return;
+//                    }
+//
+//                    sendDataCheckbox.checked = boolCheck(UM.Preferences.getValue("info/send_slice_info"))
+//                }
+//            }
         }
     }
 }

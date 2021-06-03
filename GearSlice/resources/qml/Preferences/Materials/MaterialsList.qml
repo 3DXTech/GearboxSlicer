@@ -29,12 +29,6 @@ Item
         extruderPosition: Cura.ExtruderManager.activeExtruderIndex
     }
 
-    Cura.GenericMaterialsModel
-    {
-        id: genericMaterialsModel
-        extruderPosition: Cura.ExtruderManager.activeExtruderIndex
-    }
-
     property var currentType: null
     property var currentBrand: null
     property var expandedBrands: UM.Preferences.getValue("cura/expanded_brands").split(";")
@@ -56,21 +50,6 @@ Item
             // was updated and the list has to highlight the current item.
             var currentItemId = base.currentItem == null ? "" : base.currentItem.root_material_id
             search_root_id = currentItemId
-        }
-        for (var material_idx = 0; material_idx < genericMaterialsModel.count; material_idx++)
-        {
-            var material = genericMaterialsModel.getItem(material_idx)
-            if (material.root_material_id == search_root_id)
-            {
-                if (materialList.expandedBrands.indexOf("Generic") == -1)
-                {
-                    materialList.expandedBrands.push("Generic")
-                }
-                materialList.currentBrand = "Generic"
-                base.currentItem = material
-                persistExpandedCategories()
-                return true
-            }
         }
         for (var brand_idx = 0; brand_idx < materialsModel.count; brand_idx++)
         {
@@ -127,32 +106,10 @@ Item
         onItemsChanged: updateAfterModelChanges()
     }
 
-    Connections
-    {
-        target: genericMaterialsModel
-        onItemsChanged: updateAfterModelChanges()
-    }
-    
     Column
     {
         width: materialList.width
         height: childrenRect.height
-
-        MaterialsBrandSection
-        {
-            id: favoriteSection
-            sectionName: "Favorites"
-            elementsModel: favoriteMaterialsModel
-            hasMaterialTypes: false
-        }
-
-        MaterialsBrandSection
-        {
-            id: genericSection
-            sectionName: "Generic"
-            elementsModel: genericMaterialsModel
-            hasMaterialTypes: false
-        }
 
         Repeater
         {

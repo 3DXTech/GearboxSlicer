@@ -119,35 +119,35 @@ Item
             }
         }
 
-        // Create button
-        Button
-        {
-            id: createMenuButton
-            text: catalog.i18nc("@action:button", "Create")
-            iconName: "list-add"
-            enabled: Cura.MachineManager.activeMachine.hasMaterials
-            onClicked:
-            {
-                forceActiveFocus();
-                base.newRootMaterialIdToSwitchTo = base.materialManagementModel.createMaterial();
-                base.toActivateNewMaterial = true;
-            }
-        }
-
-        // Duplicate button
-        Button
-        {
-            id: duplicateMenuButton
-            text: catalog.i18nc("@action:button", "Duplicate");
-            iconName: "list-add"
-            enabled: base.hasCurrentItem
-            onClicked:
-            {
-                forceActiveFocus();
-                base.newRootMaterialIdToSwitchTo = base.materialManagementModel.duplicateMaterial(base.currentItem.container_node);
-                base.toActivateNewMaterial = true;
-            }
-        }
+//        // Create button
+//        Button
+//        {
+//            id: createMenuButton
+//            text: catalog.i18nc("@action:button", "Create")
+//            iconName: "list-add"
+//            enabled: Cura.MachineManager.activeMachine.hasMaterials
+//            onClicked:
+//            {
+//                forceActiveFocus();
+//                base.newRootMaterialIdToSwitchTo = base.materialManagementModel.createMaterial();
+//                base.toActivateNewMaterial = true;
+//            }
+//        }
+//
+//        // Duplicate button
+//        Button
+//        {
+//            id: duplicateMenuButton
+//            text: catalog.i18nc("@action:button", "Duplicate");
+//            iconName: "list-add"
+//            enabled: base.hasCurrentItem
+//            onClicked:
+//            {
+//                forceActiveFocus();
+//                base.newRootMaterialIdToSwitchTo = base.materialManagementModel.duplicateMaterial(base.currentItem.container_node);
+//                base.toActivateNewMaterial = true;
+//            }
+//        }
 
         // Remove button
         Button
