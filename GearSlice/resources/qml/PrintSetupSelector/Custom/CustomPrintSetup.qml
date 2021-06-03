@@ -131,7 +131,7 @@ Item
                             }
                         }
 
-                        return result
+                        return resultMap
                     }
                 }
             }
