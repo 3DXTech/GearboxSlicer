@@ -28,14 +28,14 @@ class DisplayProgressOnLCD(Script):
                     "label": "Time Remaining",
                     "description": "When enabled, write Time Left: HHMMSS on the display using M117. This is updated every layer.",
                     "type": "bool",
-                    "default_value": false
+                    "default_value": true
                 },
                 "percentage":
                 {
                     "label": "Percentage",
                     "description": "When enabled, set the completion bar percentage on the LCD using Marlin's M73 command.",
                     "type": "bool",
-                    "default_value": false
+                    "default_value": true
                 }
             }
         }"""
