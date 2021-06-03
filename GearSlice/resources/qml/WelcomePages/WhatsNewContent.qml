@@ -21,8 +21,8 @@ Item
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
         horizontalAlignment: Text.AlignHCenter
-        text: catalog.i18nc("@label", "What's new in Ultimaker Cura")
-        color: UM.Theme.getColor("primary_button")
+        text: catalog.i18nc("@label", "What's new in GearSlice")
+        color: UM.Theme.getColor("primary")
         font: UM.Theme.getFont("huge")
         renderType: Text.NativeRendering
     }

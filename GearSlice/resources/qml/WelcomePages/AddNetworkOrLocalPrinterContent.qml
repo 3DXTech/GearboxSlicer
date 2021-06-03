@@ -21,62 +21,63 @@ Item
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
         horizontalAlignment: Text.AlignHCenter
-        text: catalog.i18nc("@label", "Add a printer")
-        color: UM.Theme.getColor("primary_button")
+        text: "Add a Gearbox3D Printer"
+        color: UM.Theme.getColor("primary")
         font: UM.Theme.getFont("huge")
         renderType: Text.NativeRendering
     }
-
-    DropDownWidget
-    {
-        id: addNetworkPrinterDropDown
-
-        anchors.top: titleLabel.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.topMargin: UM.Theme.getSize("wide_margin").height
-
-        title: catalog.i18nc("@label", "Add a networked printer")
-        contentShown: true  // by default expand the network printer list
-
-        onClicked:
-        {
-            addLocalPrinterDropDown.contentShown = !contentShown
-        }
-
-        contentComponent: networkPrinterListComponent
-
-        Component
-        {
-            id: networkPrinterListComponent
-
-            AddNetworkPrinterScrollView
-            {
-                id: networkPrinterScrollView
-
-                maxItemCountAtOnce: 10  // show at max 10 items at once, otherwise you need to scroll.
-
-                onRefreshButtonClicked:
-                {
-                    UM.OutputDeviceManager.startDiscovery()
-                }
-
-                onAddByIpButtonClicked:
-                {
-                    base.goToPage("add_printer_by_ip")
-                }
-
-                onAddCloudPrinterButtonClicked:
-                {
-                    base.goToPage("add_cloud_printers")
-                    if (!Cura.API.account.isLoggedIn)
-                    {
-                        Cura.API.account.login()
-                    }
-                }
-            }
-        }
-    }
+//    This drop down is for networked printers.  We will not need this
+//
+//    DropDownWidget
+//    {
+//        id: addNetworkPrinterDropDown
+//
+//        anchors.top: titleLabel.bottom
+//        anchors.left: parent.left
+//        anchors.right: parent.right
+//        anchors.topMargin: UM.Theme.getSize("wide_margin").height
+//
+//        title: catalog.i18nc("@label", "Add a networked printer")
+//        contentShown: true  // by default expand the network printer list
+//
+//        onClicked:
+//        {
+//            addLocalPrinterDropDown.contentShown = !contentShown
+//        }
+//
+//        contentComponent: networkPrinterListComponent
+//
+//        Component
+//        {
+//            id: networkPrinterListComponent
+//
+//            AddNetworkPrinterScrollView
+//            {
+//                id: networkPrinterScrollView
+//
+//                maxItemCountAtOnce: 10  // show at max 10 items at once, otherwise you need to scroll.
+//
+//                onRefreshButtonClicked:
+//                {
+//                    UM.OutputDeviceManager.startDiscovery()
+//                }
+//
+//                onAddByIpButtonClicked:
+//                {
+//                    base.goToPage("add_printer_by_ip")
+//                }
+//
+//                onAddCloudPrinterButtonClicked:
+//                {
+//                    base.goToPage("add_cloud_printers")
+//                    if (!Cura.API.account.isLoggedIn)
+//                    {
+//                        Cura.API.account.login()
+//                    }
+//                }
+//            }
+//        }
+//    }
 
     DropDownWidget
     {
@@ -89,10 +90,10 @@ Item
 
         title: catalog.i18nc("@label", "Add a non-networked printer")
 
-        onClicked:
-        {
-            addNetworkPrinterDropDown.contentShown = !contentShown
-        }
+//        onClicked:
+//        {
+//            addNetworkPrinterDropDown.contentShown = !contentShown
+//        }
 
         contentComponent: localPrinterListComponent
 
@@ -134,44 +135,75 @@ Item
         anchors.bottom: parent.bottom
         enabled:
         {
-            // If the network printer dropdown is expanded, make sure that there is a selected item
-            if (addNetworkPrinterDropDown.contentShown)
-            {
-                return addNetworkPrinterDropDown.contentItem.currentItem != null
-            }
-            else
-            {
-                // Printer name cannot be empty
-                const localPrinterItem = addLocalPrinterDropDown.contentItem.currentItem
-                const isPrinterNameValid = addLocalPrinterDropDown.contentItem.isPrinterNameValid
-                return localPrinterItem != null && isPrinterNameValid
-            }
+            // Printer name cannot be empty
+            const localPrinterItem = addLocalPrinterDropDown.contentItem.currentItem
+            const isPrinterNameValid = addLocalPrinterDropDown.contentItem.isPrinterNameValid
+            return localPrinterItem != null && isPrinterNameValid
+            
         }
 
         text: base.currentItem.next_page_button_text
         onClicked:
         {
-            // Create a network printer or a local printer according to the selection
-            if (addNetworkPrinterDropDown.contentShown)
-            {
-                // Create a network printer
-                const networkPrinterItem = addNetworkPrinterDropDown.contentItem.currentItem
-                CuraApplication.getDiscoveredPrintersModel().createMachineFromDiscoveredPrinter(networkPrinterItem)
-
-                // If we have created a machine, end the wizard (since this is the last page)
-                base.endWizard()
-
-            }
-            else
-            {
-                // Create a local printer
-                const localPrinterItem = addLocalPrinterDropDown.contentItem.currentItem
-                const printerName = addLocalPrinterDropDown.contentItem.printerName
-                if(Cura.MachineManager.addMachine(localPrinterItem.id, printerName))
-                {
-                    base.showNextPage()
-                }
-            }
+        
+           // Create a local printer
+           const localPrinterItem = addLocalPrinterDropDown.contentItem.currentItem
+           const printerName = addLocalPrinterDropDown.contentItem.printerName
+           if(Cura.MachineManager.addMachine(localPrinterItem.id, printerName))
+           {
+               base.showNextPage()
+           }
+        
         }
     }
 }
+
+//    Cura.PrimaryButton
+//    {
+//        id: nextButton
+//        anchors.right: parent.right
+//        anchors.bottom: parent.bottom
+//        enabled:
+//        {
+//            // If the network printer dropdown is expanded, make sure that there is a selected item
+//            if (addNetworkPrinterDropDown.contentShown)
+//            {
+//                return addNetworkPrinterDropDown.contentItem.currentItem != null
+//            }
+//            else
+//            {
+//                // Printer name cannot be empty
+//                const localPrinterItem = addLocalPrinterDropDown.contentItem.currentItem
+//                const isPrinterNameValid = addLocalPrinterDropDown.contentItem.isPrinterNameValid
+//                return localPrinterItem != null && isPrinterNameValid
+//            }
+//        }
+//
+//        text: base.currentItem.next_page_button_text
+//        onClicked:
+//        {
+//            // Create a network printer or a local printer according to the selection
+//            if (addNetworkPrinterDropDown.contentShown)
+//            {
+//                // Create a network printer
+//                const networkPrinterItem = addNetworkPrinterDropDown.contentItem.currentItem
+//                CuraApplication.getDiscoveredPrintersModel().createMachineFromDiscoveredPrinter(networkPrinterItem)
+//
+//                // If we have created a machine, end the wizard (since this is the last page)
+//                base.endWizard()
+//
+//            }
+//            else
+//            {
+//                // Create a local printer
+//                const localPrinterItem = addLocalPrinterDropDown.contentItem.currentItem
+//                const printerName = addLocalPrinterDropDown.contentItem.printerName
+//                if(Cura.MachineManager.addMachine(localPrinterItem.id, printerName))
+//                {
+//                    base.showNextPage()
+//                }
+//            }
+//        }
+//    }
+//}
+//

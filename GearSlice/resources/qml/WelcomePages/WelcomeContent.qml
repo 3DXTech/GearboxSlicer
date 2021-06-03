@@ -26,8 +26,8 @@ Item
             id: titleLabel
             anchors.horizontalCenter: parent.horizontalCenter
             horizontalAlignment: Text.AlignHCenter
-            text: catalog.i18nc("@label", "Welcome to Ultimaker Cura")
-            color: UM.Theme.getColor("primary_button")
+            text: "Welcome to GearSlice"
+            color: UM.Theme.getColor("primary")
             font: UM.Theme.getFont("huge")
             renderType: Text.NativeRendering
         }
@@ -36,7 +36,7 @@ Item
         {
             id: curaImage
             anchors.horizontalCenter: parent.horizontalCenter
-            source: UM.Theme.getImage("first_run_welcome_cura")
+            source: UM.Theme.getImage("cura_icon")
         }
 
         Label
@@ -44,7 +44,7 @@ Item
             id: textLabel
             anchors.horizontalCenter: parent.horizontalCenter
             horizontalAlignment: Text.AlignHCenter
-            text: catalog.i18nc("@text", "Please follow these steps to set up\nUltimaker Cura. This will only take a few moments.")
+            text: "Please follow these steps to set up\nGearSlice. This will only take a few moments."
             font: UM.Theme.getFont("medium")
             color: UM.Theme.getColor("text")
             renderType: Text.NativeRendering

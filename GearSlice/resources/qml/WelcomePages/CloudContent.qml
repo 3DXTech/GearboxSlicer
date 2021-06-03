@@ -40,7 +40,7 @@ Item
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
         horizontalAlignment: Text.AlignHCenter
-        text: catalog.i18nc("@label", "Ultimaker Account")
+        text: "Check out our products!"
         color: UM.Theme.getColor("primary_button")
         font: UM.Theme.getFont("huge")
         renderType: Text.NativeRendering
@@ -81,7 +81,7 @@ Item
                 id: highlightTextLabel
                 anchors.horizontalCenter: parent.horizontalCenter
                 horizontalAlignment: Text.AlignHCenter
-                text: catalog.i18nc("@text", "Your key to connected 3D printing")
+                text: "Your place for all you need to 3D print with confidence!"
                 textFormat: Text.RichText
                 color: UM.Theme.getColor("primary")
                 font: UM.Theme.getFont("medium")
@@ -98,14 +98,14 @@ Item
                     var full_text = ""
                     var t = ""
 
-                    t = catalog.i18nc("@text", "- Customize your experience with more print profiles and plugins")
+                    t = "- Browse and order new materials and tools for your Gearbox3D HT2."
                     full_text += "<p>" + t + "</p>"
 
-                    t = catalog.i18nc("@text", "- Stay flexible by syncing your setup and loading it anywhere")
+                    t = "- Stay up to date on new product offerings and happenings."
                     full_text += "<p>" + t + "</p>"
 
-                    t = catalog.i18nc("@text", "- Increase efficiency with a remote workflow on Ultimaker printers")
-                    full_text += "<p>" + t + "</p>"
+//                    t = "- FILLER TEXT"
+//                    full_text += "<p>" + t + "</p>"
 
                     return full_text
                 }
@@ -122,8 +122,8 @@ Item
                 height: createAccountButton.height
                 width: createAccountButton.width
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: catalog.i18nc("@button", "Sign in")
-                onClicked: Cura.API.account.login()
+                text: "3DXTech Website"
+                onClicked: Qt.openUrlExternally("http://www.3dxtech.com")
                 // Content Item is used in order to align the text inside the button. Without it, when resizing the
                 // button, the text will be aligned on the left
                 contentItem: Text {
@@ -139,14 +139,14 @@ Item
             {
                 id: createAccountButton
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: catalog.i18nc("@button","Create account")
-                onClicked: Qt.openUrlExternally(CuraApplication.ultimakerCloudAccountRootUrl + "/app/create")
+                text: "Engineering Grade Filaments"
+                onClicked: Qt.openUrlExternally("http://www.3dxtech.com/products/")
             }
         }
 
 
     }
-
+    
     // The "Skip" button exists on the bottom right
     Label
     {
@@ -154,7 +154,7 @@ Item
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.leftMargin: UM.Theme.getSize("default_margin").width
-        text: catalog.i18nc("@button", "Skip")
+        text: "Next"
         color: UM.Theme.getColor("secondary_button_text")
         font: UM.Theme.getFont("medium")
         renderType: Text.NativeRendering

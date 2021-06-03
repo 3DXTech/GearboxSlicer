@@ -21,7 +21,7 @@ Item
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
         horizontalAlignment: Text.AlignHCenter
-        text: catalog.i18nc("@label", "Help us to improve Ultimaker Cura")
+        text: catalog.i18nc("@label", "Help us to improve Gearbox3D GearSlice")
         color: UM.Theme.getColor("primary_button")
         font: UM.Theme.getFont("huge")
         renderType: Text.NativeRendering
@@ -54,7 +54,7 @@ Item
                 width: parent.width
                 anchors.horizontalCenter: parent.horizontalCenter
                 horizontalAlignment: Text.AlignHCenter
-                text: catalog.i18nc("@text", "Ultimaker Cura collects anonymous data to improve print quality and user experience, including:")
+                text: catalog.i18nc("@text", "Gearbox3D GearSlice collects anonymous data to improve print quality and user experience, including:")
                 wrapMode: Text.WordWrap
                 font: UM.Theme.getFont("medium")
                 color: UM.Theme.getColor("text")
@@ -99,9 +99,9 @@ Item
                 horizontalAlignment: Text.AlignHCenter
                 text:
                 {
-                    var t = catalog.i18nc("@text", "Data collected by Ultimaker Cura will not contain any personal information.")
+                    var t = catalog.i18nc("@text", "Data collected by Gearbox3D GearSlice will not contain any personal information.")
                     var t2 = catalog.i18nc("@text", "More information")
-                    t += " <a href='https://notusedref'>" + t2 + "</a>"
+                    t += "<br><style>a:link { color: '#FFFFFF'; }</style><a href='https://notusedref'>" + t2 + "</a>"
                     return t
                 }
                 textFormat: Text.RichText
