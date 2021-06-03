@@ -66,7 +66,6 @@ Column
         width: UM.Theme.getSize("account_button").width
         height: UM.Theme.getSize("account_button").height
         text: catalog.i18nc("@button", "Sign in")
-        onClicked: Cura.API.account.login()
         fixedWidthMode: true
     }
 
@@ -76,7 +75,6 @@ Column
         width: UM.Theme.getSize("account_button").width
         height: UM.Theme.getSize("account_button").height
         text: catalog.i18nc("@button", "Create account")
-        onClicked: Qt.openUrlExternally(CuraApplication.ultimakerCloudAccountRootUrl + "/app/create")
         fixedWidthMode: true
     }
 }

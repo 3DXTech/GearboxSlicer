@@ -121,7 +121,6 @@ Column
     Cura.TertiaryButton
     {
         id: signOutButton
-        onClicked: Cura.API.account.logout()
         text: catalog.i18nc("@button", "Sign Out")
     }
 }
