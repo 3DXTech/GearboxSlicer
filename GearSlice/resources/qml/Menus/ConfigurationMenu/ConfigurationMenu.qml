@@ -64,8 +64,8 @@ Cura.ExpandablePopup
                     Label
                     {
                         id: typeAndBrandNameLabel
-
-                        text: model.material_brand + " " + model.material
+//            OLD CODE: text: model.material_brand + " " + model.material
+                        text: model.material
                         elide: Text.ElideRight
                         font: UM.Theme.getFont("default")
                         color: UM.Theme.getColor("text")

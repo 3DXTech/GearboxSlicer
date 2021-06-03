@@ -35,13 +35,6 @@ Menu
         enabled: updateModels
     }
 
-    Cura.GenericMaterialsModel
-    {
-        id: genericMaterialsModel
-        extruderPosition: menu.extruderIndex
-        enabled: updateModels
-    }
-
     Cura.MaterialBrandsModel
     {
         id: brandModel
@@ -69,30 +62,6 @@ Menu
         }
         onObjectAdded: menu.insertItem(index, object)
         onObjectRemoved: menu.removeItem(index)
-    }
-
-    MenuSeparator {}
-
-    Menu
-    {
-        id: genericMenu
-        title: catalog.i18nc("@label:category menu label", "Generic")
-
-        Instantiator
-        {
-            model: genericMaterialsModel
-            delegate: MenuItem
-            {
-                text: model.name
-                checkable: true
-                enabled: isActiveExtruderEnabled
-                checked: model.root_material_id === menu.currentRootMaterialId
-                exclusiveGroup: group
-                onTriggered: Cura.MachineManager.setMaterial(extruderIndex, model.container_node)
-            }
-            onObjectAdded: genericMenu.insertItem(index, object)
-            onObjectRemoved: genericMenu.removeItem(index)
-        }
     }
 
     MenuSeparator {}
@@ -156,12 +125,5 @@ Menu
     MenuItem
     {
         action: Cura.Actions.manageMaterials
-    }
-
-    MenuSeparator {}
-
-    MenuItem
-    {
-        action: Cura.Actions.marketplaceMaterials
     }
 }
