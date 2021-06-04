@@ -180,6 +180,7 @@
         "machine_gcode_flavor": { "default_value": "RepRap (Marlin/Sprinter)" },
         "machine_heated_bed": { "default_value": false },
         "machine_heated_build_volume": { "default_value": true },
+        "cool_fan_enabled": { "default_value": false},
         "machine_width": { "default_value": 457 },
         "machine_depth": { "default_value": 457 },
         "machine_height": { "default_value": 813 },
@@ -263,10 +264,10 @@
             "value": "0.6 * machine_nozzle_size"
         },
         "machine_start_gcode": {
-            "default_value": "G0 Z5.0 ;Move the platform to 5mm"
+            "default_value": "G55\nG92 E0\nG28 X250.0 Y5.0\nG0 Z5.0"
         },
         "machine_end_gcode": {
-            "default_value": "G92 E0\\nG0 X560.0 Y5.0\\nG0 Z800.0\\nM141 S0"
+            "default_value": "M141 S{build_volume_temperature}\nG92 E0\nG0 Z810.0\nG28 X250.0 Y5.0 Z810.0\nG54"
         },
         "material_extrusion_cool_down_speed": {
             "default_value": 0
