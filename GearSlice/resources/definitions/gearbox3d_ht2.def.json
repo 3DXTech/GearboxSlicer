@@ -185,15 +185,13 @@
         "machine_depth": { "default_value": 457 },
         "machine_height": { "default_value": 813 },
         "gantry_height": { "value": 40 },
-        "machine_max_feedrate_x": { "default_value": 250 },
-        "machine_max_feedrate_y": { "default_value": 250 },
+        "machine_max_feedrate_x": { "default_value": 300 },
+        "machine_max_feedrate_y": { "default_value": 300 },
         "machine_max_feedrate_z": { "default_value": 40 },
-        "machine_max_acceleration_x": { "default_value": 4095 },
-		"machine_max_acceleration_y": { "default_value": 4095 },
-		"machine_max_acceleration_z": { "default_value": 4095 },
-        "machine_acceleration": { "default_value": 4095 },
-		"machine_max_jerk_xy": { "default_value": 10 },
-        "machine_max_jerk_z": { "default_value": 2 },
+        "machine_max_acceleration_x": { "default_value": 9800 },
+		"machine_max_acceleration_y": { "default_value": 9800 },
+		"machine_max_acceleration_z": { "default_value": 9800 },
+        "machine_acceleration": { "default_value": 9800 },
         "machine_extruder_count": { "default_value": 2 },
         "machine_head_with_fans_polygon": {
             "default_value": [
@@ -267,11 +265,25 @@
             "default_value": "G55\nG92 E0\nG28 X250.0 Y5.0\nG0 Z5.0"
         },
         "machine_end_gcode": {
-            "default_value": "M141 S{build_volume_temperature}\nG92 E0\nG0 Z810.0\nG28 X250.0 Y5.0 Z810.0\nG54"
+            "default_value": "M141 S{build_volume_temperature}\nG92 E0\nG0 Z810.0\nG28 X250.0 Y5.0 Z810.0\nG54\nM30"
         },
-        "material_extrusion_cool_down_speed": {
-            "default_value": 0
+        "prime_tower_wipe_enabled": {"default_value": false },
+        "retraction_amount": {"default_value": 2.9 },
+        "retraction_hop_enabled": {"default_value": true },
+        "retraction_hop": {"default_value": 3.5 },
+        "retraction_hop_after_extruder_switch_height": {"default_value": 3.5 },
+        "adhesion_type": {"default_value": "raft" },
+        "adhesion_extrusion_nr": {"default_value": 1 },
+        "layer_start_x": {
+            "default_value": 457.0,
+            "settable_per_extruder": false,
+            "settable_per_meshgroup": false
         },
+        "layer_start_y": {
+            "settable_per_extruder": false,
+            "settable_per_meshgroup": false
+        },
+        "material_extrusion_cool_down_speed": {"default_value": 0},
         "speed_print": {
             "maximum_value_warning": "min(machine_max_feedrate_x, machine_max_feedrate_y)"
         },
