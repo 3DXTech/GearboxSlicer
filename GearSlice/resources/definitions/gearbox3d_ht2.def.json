@@ -352,11 +352,12 @@
             "maximum_value_warning": "min(machine_max_feedrate_x, machine_max_feedrate_y)"
         },
         "speed_travel": {
-            "value": "500",
-            "maximum_value_warning": "550"
+            "maximum_value": 500,
+            "maximum_value_warning": "525"
         },
         "speed_travel_layer_0": {
-            "value": "speed_travel"
+            "maximum_value": 500,
+            "maximum_value_warning": "525"
         },
         "speed_z_hop": {
             "value": "machine_max_feedrate_z"
