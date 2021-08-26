@@ -17,13 +17,13 @@ If you would like the HT2 and Gearbox3d theme selected in Cura automatically, co
   - This contains a script for the `PostProcessingPlugin.py` that helps calculate a more accurate time estimate for prints on the HT2.
 - resources
   - definitions
-    - This contains the definition file for the HT2
+    - Definition file for the HT2
   - extruders
-    - This contains the definition files for the 2 HT2 extruders.
+    - Definition files for the 2 HT2 extruders.
   - images
     - Splash screen and logo images for Cura skin
   - materials
-    - This contains the definitions for all the 3DXTech materials
+    - Definitions for all the 3DXTech materials
   - quality
     - Settings for how the materials print on the HT2, broken down by nozzle
   - setting_visibility
