@@ -15,7 +15,7 @@ If you would like the HT2 and Gearbox3d theme selected in Cura automatically, co
 
 ## Breakdown
 <details>
-<summary>Click to expand</summary>
+<summary>Click to show details of changes</summary>
 
 - plugins
   - This contains a script for the `PostProcessingPlugin.py` that helps calculate a more accurate time estimate for prints on the HT2.
