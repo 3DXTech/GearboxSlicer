@@ -2,6 +2,7 @@
 ### Current Version: 4.10.0
 
 # Install Instructions
+If Cura 4.10.0 is not installed, download the installer [here](https://github.com/Ultimaker/Cura/releases/download/4.10.0/Ultimaker_Cura-4.10.0-amd64.exe) (release notes [here](https://github.com/Ultimaker/Cura/releases/tag/4.10.0))
 
 ## Adding Printer, Materials, and Settings
 > Make sure Cura is closed before copying any of these files!
@@ -13,6 +14,9 @@ If you would like the HT2 and Gearbox3d theme selected in Cura automatically, co
 > If you have an existing Cura 4.10.0 install be aware this will change your current settings. Refer to the [Cura Documentation](https://support.ultimaker.com/hc/en-us/articles/360012033899-How-to-add-a-printer-to-Ultimaker-Cura) for instructions on adding the printer manually.
 
 ## Breakdown
+<details>
+<summary>Click to expand</summary>
+
 - plugins
   - This contains a script for the `PostProcessingPlugin.py` that helps calculate a more accurate time estimate for prints on the HT2.
 - resources
@@ -32,6 +36,7 @@ If you would like the HT2 and Gearbox3d theme selected in Cura automatically, co
     - An optional dark theme for Cura
   - variants
     - Cura supports multiple variants for each extruder, which is differentiated by nozzle size with these definitions. These are required for the different material profiles to work with each different sized nozzle.
+</details>
 
 ## Post Processing Configuration
 
