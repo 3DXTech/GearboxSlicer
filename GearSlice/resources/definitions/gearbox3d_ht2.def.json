@@ -353,11 +353,11 @@
         },
         "speed_travel": {
             "maximum_value": 500,
-            "maximum_value_warning": "525"
+            "maximum_value_warning": 525
         },
         "speed_travel_layer_0": {
             "maximum_value": 500,
-            "maximum_value_warning": "525"
+            "maximum_value_warning": 525
         },
         "speed_z_hop": {
             "value": "machine_max_feedrate_z"
