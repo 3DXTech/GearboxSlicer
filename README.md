@@ -1,4 +1,49 @@
 # GearSlice
+### Current Version: 4.10.0
+
+# Install Instructions
+
+## Adding Printer, Materials, and Settings
+> Make sure Cura is closed before copying any of these files!
+
+Copy the contents of the `GearSlice` Folder (plugins/resources) into `Program Files/Ultimaker Cura 4.10.0/` if it asks you to merge folders or overwrite files, say yes.
+
+## Preconfiguring Settings
+If you would like the HT2 and Gearbox3d theme selected in Cura automatically, copy the contents of the Appdata folder (`cura`) to `C:\Users\your-user-name\AppData\Roaming\`
+> If you have an existing Cura 4.10.0 install be aware this will change your current settings. Refer to the [Cura Documentation](https://support.ultimaker.com/hc/en-us/articles/360012033899-How-to-add-a-printer-to-Ultimaker-Cura) for instructions on adding the printer manually.
+
+## Breakdown
+- plugins
+  - This contains a script for the `PostProcessingPlugin.py` that helps calculate a more accurate time estimate for prints on the HT2.
+- resources
+  - definitions
+    - This contains the definition file for the HT2
+  - extruders
+    - This contains the definition files for the 2 HT2 extruders.
+  - images
+    - Splash screen and logo images for Cura skin
+  - materials
+    - This contains the definitions for all the 3DXTech materials
+  - quality
+    - Settings for how the materials print on the HT2, broken down by nozzle
+  - setting_visibility
+    - These allow different levels of viewable settings in Cura. To see the settings that we recommend changing, use the Gearbox3d level. You may change settings using advanced, however be sure to follow the recommended limits and warnings inside Cura to ensure proper operation of the HT2.
+  - themes
+    - An optional dark theme for Cura
+  - variants
+    - Cura supports multiple variants for each extruder, which is differentiated by nozzle size with these definitions. These are required for the different material profiles to work with each different sized nozzle.
+
+## Post Processing Configuration
+
+To add post processing scripts, click `Extensions -> Post Processing -> Modify G-Code` and add:
+ 1. `Tool Change Count`
+ 2. `Display Progress On LCD`
+ 3. `Create Thumbnail` 
+
+The tool change must come before display progress, otherwise the order does not matter, any other enabled scripts are fine to be added anywhere as well.
+
+---
+
 
 **General Responsibilities:**
 
