@@ -47,6 +47,12 @@ To add post processing scripts, click `Extensions -> Post Processing -> Modify G
 
 The tool change must come before display progress, otherwise the order does not matter, any other enabled scripts are fine to be added anywhere as well.
 
+## Creating
+### Random Notes
+1. The `quality` folder is where the nozzle combinations are defined. 1 file must exist for each dual nozzle combination supported. If you want to support GBX20 model/GBX16 support and GBX16 model /GBX16 support, you need 2 files.
+2. The file `definitions/fdmprinter.def.json` contains all the base settings. Anything that is not specifically defined in `gearbox3d_ht2.def.json` will use the values from that file.
+3. Material definition files (`/materials/`) contain a GUID field, if you copy and paste one of them [create a new GUID](https://www.guidgenerator.com/) and change that field.
+
 ---
 
 
