@@ -10,7 +10,7 @@ Generic ABS profile. The data in this file may not be correct for your specific 
             <label>Carbon-X CF PEEK</label>
             <color>Generic</color>
         </name>
-        <GUID>70de97cb-f2d8-422a-855c-4bb095f9a1bc</GUID>
+        <GUID>ed05160e-952c-459f-86cd-d2f1fc01ebd8</GUID>
         <version>26</version>
         <color_code>#FF0000</color_code>
         <description>Made using 10% high-modulus chopped carbon fiber for exceptional stiffness, strength, and dimensional stability.</description>
