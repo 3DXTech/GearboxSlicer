@@ -265,7 +265,7 @@
         "raft_interface_thickness": {"maximum_value_warning": "1.0 * machine_nozzle_size" },
         "support_infill_sparse_thickness": {"maximum_value_warning": "1.0 * machine_nozzle_size" },
         "machine_start_gcode": {
-            "default_value": "G55\nG92 E0\nG28 X250.0 Y5.0\nG0 Z5.0\nM208"
+            "default_value": ";Begin start code\n;material_guid = {material_guid}\nG55\nG92 E0\nG28 X250.0 Y5.0\nG0 Z5.0\nM208\n;End start code"
         },
         "machine_end_gcode": {
             "default_value": "M141 S{build_volume_temperature}\nG92 E0\nG0 Z810.0\nG28 X250.0 Y5.0 Z810.0\nM104 T0 S#12\nM104 T1 S#13\nG54\nM30"
