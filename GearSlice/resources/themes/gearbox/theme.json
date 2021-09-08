@@ -185,7 +185,6 @@
         "checkbox_border_hover": [199, 59, 64, 255],
         "checkbox_mark": [239, 239, 239, 255],
         "checkbox_disabled": [39, 39, 39, 255],
-        "checkbox_text": [35, 35, 35, 255],
 
         "tooltip": [25, 25, 25, 255],
         "tooltip_text": [255, 255, 255, 255],
