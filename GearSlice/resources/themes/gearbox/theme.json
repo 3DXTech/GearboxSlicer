@@ -1,7 +1,7 @@
 {
     "metadata": {
         "name": "Gearbox Dark",
-        "inherits": "cura-light"
+        "inherits": "cura-dark"
     },
 
     "colors": {
