@@ -42,8 +42,9 @@ If you would like the HT2 and Gearbox3d theme selected in Cura automatically, co
 
 To add post processing scripts, click `Extensions -> Post Processing -> Modify G-Code` and add:
  1. `Tool Change Count`
- 2. `Display Progress On LCD`
- 3. `Create Thumbnail` 
+ 2. `Display Progress On LCD` - Check both boxes to show percentage and time remaining. Choose M73 for Time reporting method.
+ 3. `Create Thumbnail` - Change to 300x300
+
 
 The tool change must come before display progress, otherwise the order does not matter, any other enabled scripts are fine to be added anywhere as well.
 
