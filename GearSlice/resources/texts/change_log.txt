@@ -1,5 +1,0 @@
-[1.0.0]
-* Launch Update
-- Firmware Update - Cura 4.8.0
-- HT2 compatibility
-- Launch materials and accompanying profiles/variants included

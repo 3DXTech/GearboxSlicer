@@ -4,7 +4,7 @@
     "inherits": "fdmprinter",
     "metadata": {
         "visible": true,
-        "author": "Brando",
+        "author": "Gearbox3D",
         "manufacturer": "Gearbox3D",
         "file_formats": "text/x-gcode",
         "platform": "gearbox3d_ht2_printbed.stl",
@@ -261,19 +261,33 @@
             "default_value": 0.340,
             "value": "0.6 * machine_nozzle_size"
         },
+        "raft_surface_thickness": {"maximum_value_warning": "1.0 * machine_nozzle_size" },
+        "raft_interface_thickness": {"maximum_value_warning": "1.0 * machine_nozzle_size" },
+        "support_infill_sparse_thickness": {"maximum_value_warning": "1.0 * machine_nozzle_size" },
         "machine_start_gcode": {
-            "default_value": "G55\nG92 E0\nG28 X250.0 Y5.0\nG0 Z5.0"
+            "default_value": ";Begin start code\n;material_guid = {material_guid}\nG55\nG92 E0\nG28 X250.0 Y5.0\nG0 Z5.0\nM208\n;End start code"
         },
         "machine_end_gcode": {
-            "default_value": "M141 S{build_volume_temperature}\nG92 E0\nG0 Z810.0\nG28 X250.0 Y5.0 Z810.0\nG54\nM30"
+            "default_value": "M141 S{build_volume_temperature}\nG92 E0\nG0 Z810.0\nG28 X250.0 Y5.0 Z810.0\nM104 T0 S#12\nM104 T1 S#13\nG54\nM30"
         },
         "prime_tower_wipe_enabled": {"default_value": false },
+        "retract_at_layer_change": {"default_value": true },
         "retraction_amount": {"default_value": 2.9 },
-        "retraction_hop_enabled": {"default_value": true },
+        "retraction_hop_enabled": {"default_value": false },
         "retraction_hop": {"default_value": 3.5 },
         "retraction_hop_after_extruder_switch_height": {"default_value": 3.5 },
+        "switch_extruder_retraction_amount": {
+            "default_value": 0,
+            "value": 0,
+            "settable_per_extruder": false
+        },
+        "switch_extruder_retraction_speeds": {
+            "default_value": 30,
+            "settable_per_extruder": false
+        },
         "adhesion_type": {"default_value": "raft" },
-        "adhesion_extrusion_nr": {"default_value": 1 },
+        "raft_margin": {"default_value": 7 },
+        "adhesion_extruder_nr": {"value": 1 },
         "layer_start_x": {
             "default_value": 457.0,
             "settable_per_extruder": false,
@@ -283,7 +297,23 @@
             "settable_per_extruder": false,
             "settable_per_meshgroup": false
         },
-        "material_extrusion_cool_down_speed": {"default_value": 0},
+        "material_extrusion_cool_down_speed": {"default_value": 0 },
+        "optimize_wall_printing_order": {"default_value": true },
+        "wall_line_count": {"default_value": 3 },
+        "bottom_layers": {"value": 3 },
+        "top_layers": {"value": 3},
+        "roofing_layer_count": {"default_value": 1 },
+        "z_seam_corner": {"default_value": "z_seam_corner_weighted" },
+        "infill_before_walls": {"default_value": false },
+        "infill_sparse_density": {"default_value": 30 },
+        "infill_pattern": {"value": "grid"},
+        "infill_overlap": {"default_value": -5 },
+        "retraction_combing": {"default_value": "off" },
+        "support_type": {"default_value": "everywhere" },
+        "support_angle": {"default_value": 45 },
+        "support_enable": {"default_value": true },
+        "support_extruder_nr": {"value": 1 },
+        "zig_zaggify_support": {"default_value": true },
         "speed_print": {
             "maximum_value_warning": "min(machine_max_feedrate_x, machine_max_feedrate_y)"
         },
@@ -324,25 +354,18 @@
             "maximum_value_warning": "min(machine_max_feedrate_x, machine_max_feedrate_y)"
         },
         "speed_travel": {
-            "value": "500"
+            "maximum_value": 500,
+            "maximum_value_warning": 525
         },
         "speed_travel_layer_0": {
-            "value": "speed_travel"
+            "maximum_value": 500,
+            "maximum_value_warning": 525
         },
         "speed_z_hop": {
             "value": "machine_max_feedrate_z"
         },
         "speed_slowdown_layers": {
             "default_value": 1
-        },
-        "speed_equalize_flow_max": {
-            "maximum_value_warning": "min(machine_max_feedrate_x, machine_max_feedrate_y)"
-        },
-        "acceleration_enabled": {
-            "enabled": false
-        },
-        "jerk_enabled": {
-            "enabled": false
         },
         "print_sequence": {
             "enabled": false
