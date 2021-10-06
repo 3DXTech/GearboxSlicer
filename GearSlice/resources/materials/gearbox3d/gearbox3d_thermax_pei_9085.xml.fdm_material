@@ -7,7 +7,7 @@ Generic ABS profile. The data in this file may not be correct for your specific 
         <name>
             <brand>Model</brand>
             <material>PEI (9085)</material>
-            <label>Thermax PEI*</label>
+            <label>GBX PEI-9085</label>
             <color>Generic</color>
         </name>
         <GUID>b5787a9f-3bc2-4110-b863-912bb74bea06</GUID>

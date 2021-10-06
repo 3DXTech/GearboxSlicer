@@ -7,7 +7,7 @@ Generic ABS profile. The data in this file may not be correct for your specific 
         <name>
             <brand>Model</brand>
             <material>PEEK</material>
-            <label>Carbon-X CF PEEK</label>
+            <label>GBX PEEK-CF</label>
             <color>Generic</color>
         </name>
         <GUID>ed05160e-952c-459f-86cd-d2f1fc01ebd8</GUID>
