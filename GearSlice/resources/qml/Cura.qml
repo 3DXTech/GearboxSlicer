@@ -28,7 +28,7 @@ UM.MainWindow
         {
             result += PrintInformation.jobName + " - ";
         }
-        result += "Open Kimono";
+        result += "Gearbox Slicer";
         return result;
     }
 
