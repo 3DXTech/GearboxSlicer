@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -20,39 +21,60 @@ namespace GearboxInstaller
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         private Timer _timer;
         private int _fileCount;
         private int _folderCount;
         private const int FileTarget = 299;
         private const int FolderTarget = 7;
+        private string _statusText;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public string StatusText
+        {
+            get { return _statusText; }
+            set
+            {
+                _statusText = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
             _timer = new Timer(Callback, null, Timeout.Infinite, Timeout.Infinite);
         }
 
+        private void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
         private void Callback(object? state)
         {
             if (!CheckForInstall())
             {
+                Debug.WriteLine("No install found");
                 return;
             }
-
+            Debug.WriteLine("Counting stuff");
             _folderCount = Directory.GetDirectories(@"C:\Program Files\Ultimaker Cura 4.10.0").Length;
             _fileCount = 0;
             if (_folderCount == FolderTarget)
             {
+                Debug.WriteLine("Folder count matches");
                 foreach (var dir in Directory.GetDirectories(@"C:\Program Files\Ultimaker Cura 4.10.0"))
                 {
                     _fileCount += Directory.GetFiles(dir).Length;
                 }
                 _fileCount += Directory.GetFiles(@"C:\Program Files\Ultimaker Cura 4.10.0").Length;
-                _timer.Change(Timeout.Infinite, Timeout.Infinite);
                 if (_fileCount == FileTarget)
                 {
+                    StatusText += $"Done.{Environment.NewLine}";
                     _timer.Change(Timeout.Infinite, Timeout.Infinite);
                     try
                     {
@@ -89,17 +111,20 @@ namespace GearboxInstaller
 
         private void DeleteExistingFiles()
         {
+            StatusText += $"Deleting extra Cura definitions...{Environment.NewLine}";
             //TODO - Delete the definitions, extruders, materials, variants folders  
-            var programFiles = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles),@"Ultimaker Cura 4.10.0");
+            var programFiles = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), @"Ultimaker Cura 4.10.0");
             DeleteDirectory(Path.Combine(programFiles, "resources", "definitions"));
             DeleteDirectory(Path.Combine(programFiles, "resources", "extruders"));
             DeleteDirectory(Path.Combine(programFiles, "resources", "materials"));
-            DeleteDirectory(Path.Combine(programFiles, "resources", "variants"));  
+            DeleteDirectory(Path.Combine(programFiles, "resources", "variants"));
         }
 
         private void CopyNewFiles()
         {
+            StatusText += $"Adding Gearbox3d Cura definitions...{Environment.NewLine}";
             var filesDir = Path.Combine(System.AppContext.BaseDirectory, "CuraFiles");
+            var appdataDir = Path.Combine(System.AppContext.BaseDirectory, "Appdata");
             Console.WriteLine(filesDir);
             if (Directory.Exists(filesDir))
             {
@@ -110,6 +135,18 @@ namespace GearboxInstaller
                     DirectoryCopy(dir, Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), @"Ultimaker Cura 4.10.0", folderName), true);
                 }
             }
+            StatusText += $"Adding configuration...{Environment.NewLine}";
+            if (Directory.Exists(appdataDir))
+            {
+                foreach (var dir in Directory.GetDirectories(appdataDir))
+                {
+                    if (Path.GetRelativePath(appdataDir, dir) == "cura")
+                    {
+                        DirectoryCopy(dir, Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "cura"), true);
+                    }
+                }
+            }
+            StatusText += "Done!";
         }
 
         private void DeleteDirectory(string path)
@@ -132,9 +169,9 @@ namespace GearboxInstaller
             }
 
             DirectoryInfo[] dirs = dir.GetDirectories();
-        
+
             // If the destination directory doesn't exist, create it.       
-            Directory.CreateDirectory(destDirName);        
+            Directory.CreateDirectory(destDirName);
 
             // Get the files in the directory and copy them to the new location.
             FileInfo[] files = dir.GetFiles();
@@ -156,15 +193,20 @@ namespace GearboxInstaller
         }
         private void RunInstaller()
         {
+            _timer.Change(0, 250);
             if (!CheckForInstall())
             {
+                StatusText += $"Installing Cura...{Environment.NewLine}";
                 var filePath = Path.Combine(System.AppContext.BaseDirectory, "curainstaller.exe");
                 if (File.Exists(filePath))
                 {
                     Process.Start(filePath, "/S");
                 }
+                else
+                {
+                    StatusText = "Installer not found!!";
+                }
             }
-            _timer.Change(0, 250);
         }
     }
 }
