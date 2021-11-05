@@ -6,7 +6,7 @@ Generic ABS profile. The data in this file may not be correct for your specific 
     <metadata>
         <name>
             <brand>Model</brand>
-            <material>PEI (9085)</material>
+            <material>PEI 9085</material>
             <label>GBX PEI-9085</label>
             <color>Generic</color>
         </name>
