@@ -154,7 +154,7 @@ Item
                         anchors.horizontalCenter: parent.horizontalCenter
                         width: parent.width
                         //text: catalog.i18nc("@text", "Backup and sync your material settings and plugins")
-                        text: "- Browse and order new materials and tools for your Gearbox3D HT2."
+                        text: "Browse and order new materials and tools for your Gearbox3D HT2."
                         wrapMode: Text.Wrap
                         horizontalAlignment: Text.AlignHCenter
                         color: UM.Theme.getColor("text")
@@ -185,7 +185,7 @@ Item
                         anchors.horizontalCenter: communityColumn.horizontalCenter
                         width: parent.width
                         //text: catalog.i18nc("@text", "Share ideas and get help from 48,000+ users in the Ultimaker Community")
-                        text: "- Stay up to date on new product offerings and happenings."
+                        text: "Stay up to date on new product offerings and happenings."
                         wrapMode: Text.Wrap
                         horizontalAlignment: Text.AlignHCenter
                         color: UM.Theme.getColor("text")
