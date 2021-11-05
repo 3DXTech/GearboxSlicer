@@ -22,7 +22,6 @@ namespace GearboxInstaller
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Stopwatch _stopwatch = new();
         private Timer _timer;
         private int _fileCount;
         private int _folderCount;
@@ -44,7 +43,7 @@ namespace GearboxInstaller
 
             _folderCount = Directory.GetDirectories(@"C:\Program Files\Ultimaker Cura 4.10.0").Length;
             _fileCount = 0;
-            if (_folderCount == 7)
+            if (_folderCount == FolderTarget)
             {
                 foreach (var dir in Directory.GetDirectories(@"C:\Program Files\Ultimaker Cura 4.10.0"))
                 {
@@ -52,7 +51,27 @@ namespace GearboxInstaller
                 }
                 _fileCount += Directory.GetFiles(@"C:\Program Files\Ultimaker Cura 4.10.0").Length;
                 _timer.Change(Timeout.Infinite, Timeout.Infinite);
-                DeleteExistingFiles();
+                if (_fileCount == FileTarget)
+                {
+                    _timer.Change(Timeout.Infinite, Timeout.Infinite);
+                    try
+                    {
+                        DeleteExistingFiles();
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.WriteLine(e);
+                    }
+
+                    try
+                    {
+                        CopyNewFiles();
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.WriteLine(e);
+                    }
+                }
             }
         }
 
@@ -72,15 +91,25 @@ namespace GearboxInstaller
         {
             //TODO - Delete the definitions, extruders, materials, variants folders  
             var programFiles = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles),@"Ultimaker Cura 4.10.0");
-            DeleteDirectory(Path.Combine(programFiles, "definitions"));
-            DeleteDirectory(Path.Combine(programFiles, "extruders"));
-            DeleteDirectory(Path.Combine(programFiles, "materials"));
-            DeleteDirectory(Path.Combine(programFiles, "variants"));  
+            DeleteDirectory(Path.Combine(programFiles, "resources", "definitions"));
+            DeleteDirectory(Path.Combine(programFiles, "resources", "extruders"));
+            DeleteDirectory(Path.Combine(programFiles, "resources", "materials"));
+            DeleteDirectory(Path.Combine(programFiles, "resources", "variants"));  
         }
 
         private void CopyNewFiles()
         {
-            
+            var filesDir = Path.Combine(System.AppContext.BaseDirectory, "CuraFiles");
+            Console.WriteLine(filesDir);
+            if (Directory.Exists(filesDir))
+            {
+                Console.WriteLine("Found dir");
+                foreach (var dir in Directory.GetDirectories(filesDir))
+                {
+                    var folderName = Path.GetRelativePath(filesDir, dir);
+                    DirectoryCopy(dir, Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), @"Ultimaker Cura 4.10.0", folderName), true);
+                }
+            }
         }
 
         private void DeleteDirectory(string path)
@@ -90,16 +119,51 @@ namespace GearboxInstaller
                 Directory.Delete(path, true);
             }
         }
-
-        private void RunInstaller()
+        private void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)
         {
-            var filePath = Path.Combine(System.AppContext.BaseDirectory, "curainstaller.exe");
-            if (File.Exists(filePath))
+            // Get the subdirectories for the specified directory.
+            DirectoryInfo dir = new DirectoryInfo(sourceDirName);
+
+            if (!dir.Exists)
             {
-                Process.Start(filePath, "/S");
+                throw new DirectoryNotFoundException(
+                    "Source directory does not exist or could not be found: "
+                    + sourceDirName);
             }
 
-            _stopwatch.Start();
+            DirectoryInfo[] dirs = dir.GetDirectories();
+        
+            // If the destination directory doesn't exist, create it.       
+            Directory.CreateDirectory(destDirName);        
+
+            // Get the files in the directory and copy them to the new location.
+            FileInfo[] files = dir.GetFiles();
+            foreach (FileInfo file in files)
+            {
+                string tempPath = Path.Combine(destDirName, file.Name);
+                file.CopyTo(tempPath, true);
+            }
+
+            // If copying subdirectories, copy them and their contents to new location.
+            if (copySubDirs)
+            {
+                foreach (DirectoryInfo subdir in dirs)
+                {
+                    string tempPath = Path.Combine(destDirName, subdir.Name);
+                    DirectoryCopy(subdir.FullName, tempPath, copySubDirs);
+                }
+            }
+        }
+        private void RunInstaller()
+        {
+            if (!CheckForInstall())
+            {
+                var filePath = Path.Combine(System.AppContext.BaseDirectory, "curainstaller.exe");
+                if (File.Exists(filePath))
+                {
+                    Process.Start(filePath, "/S");
+                }
+            }
             _timer.Change(0, 250);
         }
     }
