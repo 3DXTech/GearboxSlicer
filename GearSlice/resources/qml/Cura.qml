@@ -573,8 +573,8 @@ UM.MainWindow
     MessageDialog
     {
         id: exitConfirmationDialog
-        title: catalog.i18nc("E.G.G.S. is the application name", "Closing E.G.G.S.")
-        text: catalog.i18nc("E.G.G.S. is the application name", "Are you sure you want to exit E.G.G.S.")
+        title: catalog.i18nc("Gearbox Slicer is the application name", "Closing Gearbox Slicer")
+        text: catalog.i18nc("Gearbox Slicer is the application name", "Are you sure you want to exit Gearbox Slicer")
         icon: StandardIcon.Question
         modality: Qt.ApplicationModal
         standardButtons: StandardButton.Yes | StandardButton.No
@@ -586,7 +586,7 @@ UM.MainWindow
             if (!visible)
             {
                 // reset the text to default because other modules may change the message text.
-                text = catalog.i18nc("E.G.G.S. is the application name", "Are you sure you want to exit E.G.G.S.");
+                text = catalog.i18nc("Gearbox Slicer is the application name", "Are you sure you want to exit Gearbox Slicer");
             }
         }
     }
