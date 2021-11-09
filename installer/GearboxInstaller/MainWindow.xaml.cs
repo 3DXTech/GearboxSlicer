@@ -29,6 +29,8 @@ namespace GearboxInstaller
         private const int FileTarget = 299;
         private const int FolderTarget = 7;
         private string _statusText;
+        private bool _agreementAccepted = false;
+        private bool _installComplete;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -41,6 +43,28 @@ namespace GearboxInstaller
                 OnPropertyChanged();
             }
         }
+        private string _installButtonText;
+
+        public string InstallButtonText
+        {
+            get { return _installButtonText; }
+            set
+            {
+                _installButtonText = value;
+                OnPropertyChanged();
+            }
+        }
+        private int _statusFontSize;
+
+        public int StatusFontSize
+        {
+            get { return _statusFontSize; }
+            set
+            {
+                _statusFontSize = value;
+                OnPropertyChanged();
+            }
+        }
 
 
         public MainWindow()
@@ -48,6 +72,13 @@ namespace GearboxInstaller
             InitializeComponent();
             DataContext = this;
             _timer = new Timer(Callback, null, Timeout.Infinite, Timeout.Infinite);
+            InstallButtonText = "Agree";
+            StatusFontSize = 16;
+            StatusText =
+                $"Disclaimer by Gearbox3D LLC{Environment.NewLine}"
+            + $"Please read this disclaimer carefully.{Environment.NewLine}{Environment.NewLine}"
+            + $"Except when otherwise stated in writing, Gearbox3D LLC provides any Gearbox3D LLC software or third party software \"As is\" without warranty of any kind. The entire risk as to the quality and performance of Gearbox3D LLC software is with you.{Environment.NewLine}"
+            + $"Unless required by applicable law or agreed to in writing, in no event will Gearbox3D LLC be liable to you for damages, including any general, special, incidental, or consequential damages arising out of the use or inability to use any Gearbox3D LLC software or third party software.";
         }
 
         private void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string name = null)
@@ -61,12 +92,12 @@ namespace GearboxInstaller
                 Debug.WriteLine("No install found");
                 return;
             }
-            Debug.WriteLine("Counting stuff");
+            //Debug.WriteLine("Counting stuff");
             _folderCount = Directory.GetDirectories(@"C:\Program Files\Ultimaker Cura 4.10.0").Length;
             _fileCount = 0;
             if (_folderCount == FolderTarget)
             {
-                Debug.WriteLine("Folder count matches");
+                //Debug.WriteLine("Folder count matches");
                 foreach (var dir in Directory.GetDirectories(@"C:\Program Files\Ultimaker Cura 4.10.0"))
                 {
                     _fileCount += Directory.GetFiles(dir).Length;
@@ -96,17 +127,30 @@ namespace GearboxInstaller
                 }
             }
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            RunInstaller();
+            if (_installComplete)
+            {
+                Application.Current.Shutdown();
+            }
+            if (!_agreementAccepted)
+            {
+                _agreementAccepted = true;
+                StatusText = "";
+                StatusFontSize = 20;
+                InstallButtonText = "Install";
+            }
+            else
+            {
+                RunInstaller();
+            }
         }
 
         private bool CheckForInstall()
         {
             //TODO - look at program files for "C:\Program Files\Ultimaker Cura 4.10.0"
             var programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-            return Directory.Exists(System.IO.Path.Combine(programFiles, @"Ultimaker Cura 4.10.0"));
+            return Directory.Exists(Path.Combine(programFiles, @"Ultimaker Cura 4.10.0"));
         }
 
         private void DeleteExistingFiles()
@@ -147,8 +191,9 @@ namespace GearboxInstaller
                 }
             }
             StatusText += "Done!";
+            _installComplete = true;
+            InstallButtonText = "Finish";
         }
-
         private void DeleteDirectory(string path)
         {
             if (Directory.Exists(path))
@@ -196,6 +241,7 @@ namespace GearboxInstaller
             _timer.Change(0, 250);
             if (!CheckForInstall())
             {
+                StatusText = "";
                 StatusText += $"Installing Cura...{Environment.NewLine}";
                 var filePath = Path.Combine(System.AppContext.BaseDirectory, "curainstaller.exe");
                 if (File.Exists(filePath))
