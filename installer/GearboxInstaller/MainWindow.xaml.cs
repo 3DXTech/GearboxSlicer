@@ -31,6 +31,8 @@ namespace GearboxInstaller
         private string _statusText;
         private bool _agreementAccepted = false;
         private bool _installComplete;
+        private System.Net.WebClient _webClient;
+        private Uri _curaDownloadUrl = new(@"https://github.com/Ultimaker/Cura/releases/download/4.10.0/Ultimaker_Cura-4.10.0-amd64.exe");
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -65,6 +67,40 @@ namespace GearboxInstaller
                 OnPropertyChanged();
             }
         }
+        private double _downloadProgress;
+
+        public double DownloadProgress
+        {
+            get { return _downloadProgress; }
+            set
+            {
+                _downloadProgress = value * 0.75;
+                UpdateProgress();
+            }
+        }
+        private double _installProgress;
+
+        public double InstallProgress
+        {
+            get { return _installProgress * 100; }
+            set
+            {
+                _installProgress = value * 0.25;
+                UpdateProgress();
+            }
+        }
+        private double _progress;
+
+        public double Progress
+        {
+            get { return _progress; }
+            set
+            {
+                if (_progress > value) { return; }
+                _progress = value;
+            }
+        }
+
 
 
         public MainWindow()
@@ -72,15 +108,27 @@ namespace GearboxInstaller
             InitializeComponent();
             DataContext = this;
             _timer = new Timer(Callback, null, Timeout.Infinite, Timeout.Infinite);
+            _webClient = new();
             InstallButtonText = "Agree";
             StatusFontSize = 16;
+            _webClient.DownloadProgressChanged += (s, a) =>
+            {
+                DownloadProgress = a.ProgressPercentage;
+                if (a.ProgressPercentage == 100)
+                {
+                    RunInstaller();
+                }
+            };
             StatusText =
                 $"Disclaimer by Gearbox3D LLC{Environment.NewLine}"
             + $"Please read this disclaimer carefully.{Environment.NewLine}{Environment.NewLine}"
             + $"Except when otherwise stated in writing, Gearbox3D LLC provides any Gearbox3D LLC software or third party software \"As is\" without warranty of any kind. The entire risk as to the quality and performance of Gearbox3D LLC software is with you.{Environment.NewLine}"
             + $"Unless required by applicable law or agreed to in writing, in no event will Gearbox3D LLC be liable to you for damages, including any general, special, incidental, or consequential damages arising out of the use or inability to use any Gearbox3D LLC software or third party software.";
         }
-
+        private void UpdateProgress()
+        {
+            Progress = ((double)(DownloadProgress) + InstallProgress);
+        }
         private void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
@@ -92,17 +140,17 @@ namespace GearboxInstaller
                 Debug.WriteLine("No install found");
                 return;
             }
-            //Debug.WriteLine("Counting stuff");
             _folderCount = Directory.GetDirectories(@"C:\Program Files\Ultimaker Cura 4.10.0").Length;
             _fileCount = 0;
+            InstallProgress = ((double)(_folderCount + _fileCount) / (FolderTarget + FileTarget));
             if (_folderCount == FolderTarget)
             {
-                //Debug.WriteLine("Folder count matches");
                 foreach (var dir in Directory.GetDirectories(@"C:\Program Files\Ultimaker Cura 4.10.0"))
                 {
                     _fileCount += Directory.GetFiles(dir).Length;
                 }
                 _fileCount += Directory.GetFiles(@"C:\Program Files\Ultimaker Cura 4.10.0").Length;
+                InstallProgress = ((double)(_folderCount + _fileCount) / (FolderTarget + FileTarget));
                 if (_fileCount == FileTarget)
                 {
                     StatusText += $"Done.{Environment.NewLine}";
@@ -136,7 +184,7 @@ namespace GearboxInstaller
             if (!_agreementAccepted)
             {
                 _agreementAccepted = true;
-                StatusText = "";
+                StatusText = "Click install to begin...";
                 StatusFontSize = 20;
                 InstallButtonText = "Install";
             }
@@ -167,8 +215,9 @@ namespace GearboxInstaller
         private void CopyNewFiles()
         {
             StatusText += $"Adding Gearbox3d Cura definitions...{Environment.NewLine}";
-            var filesDir = Path.Combine(System.AppContext.BaseDirectory, "CuraFiles");
-            var appdataDir = Path.Combine(System.AppContext.BaseDirectory, "Appdata");
+            var baseDir = Path.Combine(AppContext.BaseDirectory, "cura-files");
+            var filesDir = Path.Combine(baseDir, "programfiles");
+            var appdataDir = Path.Combine(baseDir, "appdata");
             Console.WriteLine(filesDir);
             if (Directory.Exists(filesDir))
             {
@@ -238,20 +287,27 @@ namespace GearboxInstaller
         }
         private void RunInstaller()
         {
-            _timer.Change(0, 250);
             if (!CheckForInstall())
             {
                 StatusText = "";
+                _timer.Change(0, 250);
                 StatusText += $"Installing Cura...{Environment.NewLine}";
-                var filePath = Path.Combine(System.AppContext.BaseDirectory, "curainstaller.exe");
+                var filePath = Path.Combine(AppContext.BaseDirectory, "curainstaller.exe");
                 if (File.Exists(filePath))
                 {
                     Process.Start(filePath, "/S");
                 }
                 else
                 {
-                    StatusText = "Installer not found!!";
+                    _webClient.DownloadFileAsync(_curaDownloadUrl, Path.Combine(AppContext.BaseDirectory, "curainstaller.exe"));
+                    StatusText = "Downloading installer";
                 }
+            }
+            else
+            {
+                StatusText = "Cura 4.10 install found, please uninstall before continuing";
+                InstallButtonText = "Close";
+                _installComplete = true;
             }
         }
     }
