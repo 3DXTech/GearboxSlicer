@@ -153,7 +153,6 @@ namespace GearboxInstaller
                 InstallProgress = ((double)(_folderCount + _fileCount) / (FolderTarget + FileTarget));
                 if (_fileCount == FileTarget)
                 {
-                    StatusText += $"Done.{Environment.NewLine}";
                     _timer.Change(Timeout.Infinite, Timeout.Infinite);
                     try
                     {
@@ -214,7 +213,7 @@ namespace GearboxInstaller
 
         private void CopyNewFiles()
         {
-            StatusText += $"Adding Gearbox3d Cura definitions...{Environment.NewLine}";
+            StatusText += $"Adding Gearbox3D Cura definitions...{Environment.NewLine}";
             var baseDir = Path.Combine(AppContext.BaseDirectory, "cura-files");
             var filesDir = Path.Combine(baseDir, "programfiles");
             var appdataDir = Path.Combine(baseDir, "appdata");
