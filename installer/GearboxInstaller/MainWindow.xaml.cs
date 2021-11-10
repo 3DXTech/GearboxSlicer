@@ -217,6 +217,7 @@ namespace GearboxInstaller
             DeleteDirectory(Path.Combine(_installPath, "resources", "extruders"));
             DeleteDirectory(Path.Combine(_installPath, "resources", "materials"));
             DeleteDirectory(Path.Combine(_installPath, "resources", "variants"));
+            DeleteDirectory(Path.Combine(_installPath, "plugins", "MonitorStage"));
             File.Delete(Path.Combine(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Ultimaker Cura", "Ultimaker Cura 4.10.0.lnk"));
         }
 
