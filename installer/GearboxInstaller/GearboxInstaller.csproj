@@ -69,6 +69,9 @@
 		<None Update="cura-files\programfiles\resources\images\cura.png">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
+		<None Update="cura-files\programfiles\resources\images\gbxslicer.ico">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
 		<None Update="cura-files\programfiles\resources\images\whats_new\0.png">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
@@ -449,4 +452,15 @@
 		</None>
 	</ItemGroup>
 
+	<ItemGroup>
+		<COMReference Include="IWshRuntimeLibrary">
+			<WrapperTool>tlbimp</WrapperTool>
+			<VersionMinor>0</VersionMinor>
+			<VersionMajor>1</VersionMajor>
+			<Guid>f935dc20-1cf0-11d0-adb9-00c04fd58a0b</Guid>
+			<Lcid>0</Lcid>
+			<Isolated>false</Isolated>
+			<EmbedInteropTypes>true</EmbedInteropTypes>
+		</COMReference>
+	</ItemGroup>
 </Project>

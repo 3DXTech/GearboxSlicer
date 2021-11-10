@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using Iwsh = IWshRuntimeLibrary;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -33,6 +34,7 @@ namespace GearboxInstaller
         private bool _installComplete;
         private System.Net.WebClient _webClient;
         private Uri _curaDownloadUrl = new(@"https://github.com/Ultimaker/Cura/releases/download/4.10.0/Ultimaker_Cura-4.10.0-amd64.exe");
+        private string _installPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "GearboxSlicer");
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -140,16 +142,16 @@ namespace GearboxInstaller
                 Debug.WriteLine("No install found");
                 return;
             }
-            _folderCount = Directory.GetDirectories(@"C:\Program Files\Ultimaker Cura 4.10.0").Length;
+            _folderCount = Directory.GetDirectories(_installPath).Length;
             _fileCount = 0;
             InstallProgress = ((double)(_folderCount + _fileCount) / (FolderTarget + FileTarget));
             if (_folderCount == FolderTarget)
             {
-                foreach (var dir in Directory.GetDirectories(@"C:\Program Files\Ultimaker Cura 4.10.0"))
+                foreach (var dir in Directory.GetDirectories(_installPath))
                 {
                     _fileCount += Directory.GetFiles(dir).Length;
                 }
-                _fileCount += Directory.GetFiles(@"C:\Program Files\Ultimaker Cura 4.10.0").Length;
+                _fileCount += Directory.GetFiles(_installPath).Length;
                 InstallProgress = ((double)(_folderCount + _fileCount) / (FolderTarget + FileTarget));
                 if (_fileCount == FileTarget)
                 {
@@ -195,20 +197,18 @@ namespace GearboxInstaller
 
         private bool CheckForInstall()
         {
-            //TODO - look at program files for "C:\Program Files\Ultimaker Cura 4.10.0"
-            var programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-            return Directory.Exists(Path.Combine(programFiles, @"Ultimaker Cura 4.10.0"));
+            //TODO - look at program files for "C:\Program Files\GearboxSlicer"
+            return Directory.Exists(_installPath);
         }
 
         private void DeleteExistingFiles()
         {
             StatusText += $"Deleting extra Cura definitions...{Environment.NewLine}";
-            //TODO - Delete the definitions, extruders, materials, variants folders  
-            var programFiles = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), @"Ultimaker Cura 4.10.0");
-            DeleteDirectory(Path.Combine(programFiles, "resources", "definitions"));
-            DeleteDirectory(Path.Combine(programFiles, "resources", "extruders"));
-            DeleteDirectory(Path.Combine(programFiles, "resources", "materials"));
-            DeleteDirectory(Path.Combine(programFiles, "resources", "variants"));
+            //TODO - Delete the definitions, extruders, materials, variants folders
+            DeleteDirectory(Path.Combine(_installPath, "resources", "definitions"));
+            DeleteDirectory(Path.Combine(_installPath, "resources", "extruders"));
+            DeleteDirectory(Path.Combine(_installPath, "resources", "materials"));
+            DeleteDirectory(Path.Combine(_installPath, "resources", "variants"));
         }
 
         private void CopyNewFiles()
@@ -224,7 +224,7 @@ namespace GearboxInstaller
                 foreach (var dir in Directory.GetDirectories(filesDir))
                 {
                     var folderName = Path.GetRelativePath(filesDir, dir);
-                    DirectoryCopy(dir, Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), @"Ultimaker Cura 4.10.0", folderName), true);
+                    DirectoryCopy(dir, Path.Combine(_installPath, folderName), true);
                 }
             }
             StatusText += $"Adding configuration...{Environment.NewLine}";
@@ -240,6 +240,7 @@ namespace GearboxInstaller
             }
             StatusText += "Done!";
             _installComplete = true;
+            CreateShortcut();
             InstallButtonText = "Finish";
         }
         private void DeleteDirectory(string path)
@@ -294,7 +295,7 @@ namespace GearboxInstaller
                 var filePath = Path.Combine(AppContext.BaseDirectory, "curainstaller.exe");
                 if (File.Exists(filePath))
                 {
-                    Process.Start(filePath, "/S");
+                    Process.Start(filePath, @$"/S /D={_installPath}");
                 }
                 else
                 {
@@ -308,6 +309,18 @@ namespace GearboxInstaller
                 InstallButtonText = "Close";
                 _installComplete = true;
             }
+        }
+        private void CreateShortcut()
+        {
+            string link = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
+                          + Path.DirectorySeparatorChar + "GearboxSlicer" + ".lnk";
+            var shell = new Iwsh.WshShell();
+            var shortcut = shell.CreateShortcut(link) as Iwsh.IWshShortcut;
+            shortcut.TargetPath = Path.Combine(_installPath, "cura.exe");
+            shortcut.WorkingDirectory = _installPath;
+            shortcut.IconLocation = Path.Combine(_installPath, "resources", "images", "gbxslicer.ico");
+            //shortcut...
+            shortcut.Save();
         }
     }
 }
