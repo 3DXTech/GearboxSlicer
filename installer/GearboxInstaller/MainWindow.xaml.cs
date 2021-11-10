@@ -107,7 +107,9 @@ namespace GearboxInstaller
         public bool InstallButtonEnabled
         {
             get { return _installButtonEnabled; }
-            set { _installButtonEnabled = value;
+            set
+            {
+                _installButtonEnabled = value;
                 OnPropertyChanged();
             }
         }
