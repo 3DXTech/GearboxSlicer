@@ -102,6 +102,13 @@ namespace GearboxInstaller
                 _progress = value;
             }
         }
+        private bool _installButtonEnabled;
+
+        public bool InstallButtonEnabled
+        {
+            get { return _installButtonEnabled; }
+            set { _installButtonEnabled = value; }
+        }
 
 
 
@@ -113,6 +120,7 @@ namespace GearboxInstaller
             _webClient = new();
             InstallButtonText = "Agree";
             StatusFontSize = 16;
+            InstallButtonEnabled = true;
             _webClient.DownloadProgressChanged += (s, a) =>
             {
                 DownloadProgress = a.ProgressPercentage;
@@ -209,6 +217,7 @@ namespace GearboxInstaller
             DeleteDirectory(Path.Combine(_installPath, "resources", "extruders"));
             DeleteDirectory(Path.Combine(_installPath, "resources", "materials"));
             DeleteDirectory(Path.Combine(_installPath, "resources", "variants"));
+            File.Delete(Path.Combine(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Ultimaker Cura", "Ultimaker Cura 4.10.0.lnk"));
         }
 
         private void CopyNewFiles()
@@ -240,7 +249,10 @@ namespace GearboxInstaller
             }
             StatusText += "Done!";
             _installComplete = true;
-            CreateShortcut();
+            InstallButtonEnabled = true;
+            CreateShortcut(Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
+            Directory.CreateDirectory(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\GearboxSlicer");
+            CreateShortcut(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\GearboxSlicer");
             InstallButtonText = "Finish";
         }
         private void DeleteDirectory(string path)
@@ -287,6 +299,7 @@ namespace GearboxInstaller
         }
         private void RunInstaller()
         {
+            InstallButtonEnabled = false;
             if (!CheckForInstall())
             {
                 StatusText = "";
@@ -307,13 +320,13 @@ namespace GearboxInstaller
             {
                 StatusText = "Cura 4.10 install found, please uninstall before continuing";
                 InstallButtonText = "Close";
+                InstallButtonEnabled = true;
                 _installComplete = true;
             }
         }
-        private void CreateShortcut()
+        private void CreateShortcut(string location)
         {
-            string link = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
-                          + Path.DirectorySeparatorChar + "GearboxSlicer" + ".lnk";
+            string link = Path.Combine(location, "GearboxSlicer" + ".lnk");
             var shell = new Iwsh.WshShell();
             var shortcut = shell.CreateShortcut(link) as Iwsh.IWshShortcut;
             shortcut.TargetPath = Path.Combine(_installPath, "cura.exe");

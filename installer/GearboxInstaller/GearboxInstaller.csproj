@@ -441,6 +441,9 @@
 		<None Update="cura-files\programfiles\resources\themes\gearbox\icons\sign_in_to_cloud.svg">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
+		<None Update="cura-files\programfiles\resources\themes\gearbox\images\logo.svg">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
 		<None Update="cura-files\programfiles\resources\themes\gearbox\theme.json">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
