@@ -223,6 +223,10 @@ namespace GearboxInstaller
             DeleteDirectory(Path.Combine(_installPath, "resources", "variants"));
             DeleteDirectory(Path.Combine(_installPath, "plugins", "MonitorStage"));
             File.Delete(Path.Combine(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Ultimaker Cura", "Ultimaker Cura 4.10.0.lnk"));
+            if (Directory.GetFiles(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Ultimaker Cura").All(x => !x.Contains("Ultimaker Cura")))
+            {
+                DeleteDirectory(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Ultimaker Cura");
+            }
         }
 
         private void CopyNewFiles()
