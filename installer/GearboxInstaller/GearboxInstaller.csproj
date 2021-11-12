@@ -75,19 +75,10 @@
 		<None Update="cura-files\programfiles\resources\images\whats_new\0.png">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
-		<None Update="cura-files\programfiles\resources\materials\gearbox3d\gearbox3d_3dxstat_esd_pei_1010.xml.fdm_material">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
 		<None Update="cura-files\programfiles\resources\materials\gearbox3d\gearbox3d_3dxtech_abs.xml.fdm_material">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
-		<None Update="cura-files\programfiles\resources\materials\gearbox3d\gearbox3d_aquatek_x1.xml.fdm_material">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
 		<None Update="cura-files\programfiles\resources\materials\gearbox3d\gearbox3d_carbon-x_cf_peek.xml.fdm_material">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="cura-files\programfiles\resources\materials\gearbox3d\gearbox3d_fiber-x_gf_pei_1010.xml.fdm_material">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 		<None Update="cura-files\programfiles\resources\materials\gearbox3d\gearbox3d_thermax_pei_1010.xml.fdm_material">
@@ -103,12 +94,6 @@
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 		<None Update="cura-files\programfiles\resources\materials\gearbox3d\gearbox3d_triton_sup7.xml.fdm_material">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="cura-files\programfiles\resources\materials\gearbox3d\gearbox3d_vxl111.xml.fdm_material">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="cura-files\programfiles\resources\materials\gearbox3d\gearbox3d_vxl130.xml.fdm_material">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 		<None Update="cura-files\programfiles\resources\meshes\gearbox3d_ht2_printbed.stl">
@@ -342,40 +327,10 @@
 		<None Update="cura-files\programfiles\resources\qml\WelcomePages\WizardPanel.qml">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
-		<None Update="cura-files\programfiles\resources\quality\gearbox3d_ht2\GBX16\gearbox3d_ht2_gbx16_3dxtech_abs_normal.inst.cfg">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="cura-files\programfiles\resources\quality\gearbox3d_ht2\GBX16\gearbox3d_ht2_gbx16_aquatek_x1_normal.inst.cfg">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="cura-files\programfiles\resources\quality\gearbox3d_ht2\GBX16\gearbox3d_ht2_gbx16_carbon-x_cf_peek_normal.inst.cfg">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="cura-files\programfiles\resources\quality\gearbox3d_ht2\GBX16\gearbox3d_ht2_gbx16_esd_pei_1010_normal.inst.cfg">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="cura-files\programfiles\resources\quality\gearbox3d_ht2\GBX16\gearbox3d_ht2_gbx16_fiber-x_gf_pei_1010_normal.inst.cfg">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="cura-files\programfiles\resources\quality\gearbox3d_ht2\GBX16\gearbox3d_ht2_gbx16_thermax_pei_1010_normal.inst.cfg">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="cura-files\programfiles\resources\quality\gearbox3d_ht2\GBX16\gearbox3d_ht2_gbx16_thermax_pei_9085_normal.inst.cfg">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="cura-files\programfiles\resources\quality\gearbox3d_ht2\GBX16\gearbox3d_ht2_gbx16_triton_sup5_normal_0.24.inst.cfg">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
 		<None Update="cura-files\programfiles\resources\quality\gearbox3d_ht2\GBX16\gearbox3d_ht2_gbx16_triton_sup5_normal_0.3.inst.cfg">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
-		<None Update="cura-files\programfiles\resources\quality\gearbox3d_ht2\GBX16\gearbox3d_ht2_gbx16_triton_sup6_normal_0.24.inst.cfg">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
 		<None Update="cura-files\programfiles\resources\quality\gearbox3d_ht2\GBX16\gearbox3d_ht2_gbx16_triton_sup6_normal_0.3.inst.cfg">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="cura-files\programfiles\resources\quality\gearbox3d_ht2\GBX16\gearbox3d_ht2_gbx16_triton_sup7_normal_0.24.inst.cfg">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 		<None Update="cura-files\programfiles\resources\quality\gearbox3d_ht2\GBX16\gearbox3d_ht2_gbx16_triton_sup7_normal_0.3.inst.cfg">
@@ -385,18 +340,6 @@
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 		<None Update="cura-files\programfiles\resources\quality\gearbox3d_ht2\GBX20\gearbox3d_ht2_gbx20_3dxtech_abs_normal.inst.cfg">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="cura-files\programfiles\resources\quality\gearbox3d_ht2\GBX20\gearbox3d_ht2_gbx20_aquatek_x1_normal.inst.cfg">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="cura-files\programfiles\resources\quality\gearbox3d_ht2\GBX20\gearbox3d_ht2_gbx20_carbon-x_cf_peek_normal.inst.cfg">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="cura-files\programfiles\resources\quality\gearbox3d_ht2\GBX20\gearbox3d_ht2_gbx20_esd_pei_1010_normal.inst.cfg">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="cura-files\programfiles\resources\quality\gearbox3d_ht2\GBX20\gearbox3d_ht2_gbx20_fiber-x_gf_pei_1010_normal.inst.cfg">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 		<None Update="cura-files\programfiles\resources\quality\gearbox3d_ht2\GBX20\gearbox3d_ht2_gbx20_thermax_pei_1010_normal.inst.cfg">
