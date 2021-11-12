@@ -3,22 +3,22 @@
     <metadata>
         <name>
             <brand>Support</brand>
-            <material>Breakaway</material>
+            <material>Water Soluble</material>
             <color>Natural</color>
-            <label>GBX ABS BAS</label>
+            <label>Aquatek X1</label>
         </name>
-        <GUID>9cadbb32-55fd-4abc-8349-5b4b8cb04892</GUID>
+        <GUID>4264e255-c4f1-4534-9f23-dc3e6cf33072</GUID>
         <version>24</version>
-        <color_code>#d3d3d3</color_code>
-        <description></description>
+        <color_code>#E9D8B7</color_code>
+        <description>AquaTek™ X1 is readily water soluble in warm water with excellent adhesion to the broadest range of materials.</description>
     </metadata>
     <properties>
-        <density>1.00</density>
+        <density>1.10</density>
         <diameter>1.75</diameter>
     </properties>
     <settings>
-        <setting key="print temperature">255.0</setting>
-        <setting key="standby temperature">255.0</setting>
+        <setting key="print temperature">200.0</setting>
+        <setting key="standby temperature">130</setting>
 
         <machine>
             <machine_identifier manufacturer="Gearbox3D" product="Gearbox3D HT2"/>

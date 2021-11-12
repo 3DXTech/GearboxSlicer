@@ -3,13 +3,13 @@
     <metadata>
         <name>
             <brand>Support</brand>
-            <material>Breakaway</material>
+            <material>Alkali Soluble</material>
             <color>Natural</color>
-            <label>GBX ABS BAS</label>
+            <label>VXL 130</label>
         </name>
-        <GUID>9cadbb32-55fd-4abc-8349-5b4b8cb04892</GUID>
+        <GUID>d758d537-8a18-4017-9723-c3ba8b6b5204</GUID>
         <version>24</version>
-        <color_code>#d3d3d3</color_code>
+        <color_code>#E9D8B7</color_code>
         <description></description>
     </metadata>
     <properties>
@@ -17,8 +17,8 @@
         <diameter>1.75</diameter>
     </properties>
     <settings>
-        <setting key="print temperature">255.0</setting>
-        <setting key="standby temperature">255.0</setting>
+        <setting key="print temperature">300.0</setting>
+        <setting key="standby temperature">225.0</setting>
 
         <machine>
             <machine_identifier manufacturer="Gearbox3D" product="Gearbox3D HT2"/>
