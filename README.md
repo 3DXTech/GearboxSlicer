@@ -28,7 +28,7 @@ If you would like the HT2 and Gearbox3d theme selected in Cura automatically, co
   - images
     - Splash screen and logo images for Cura skin
   - materials
-    - Definitions for all the 3DXTech materials
+    - Definitions for all the Gearbox materials
   - quality
     - Settings for how the materials print on the HT2, broken down by nozzle
   - setting_visibility

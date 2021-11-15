@@ -17,7 +17,7 @@
         "variants_name": "Nozzle Size",
         "preferred_variant_name": "GBX20",
         "preferred_quality_type": "Normal",
-        "preferred_material": "gearbox3d_3dxtech_abs",
+        "preferred_material": "gearbox3d_abs",
         "machine_extruder_trains":
         {
             "0": "gearbox3d_ht2_extruder_0",

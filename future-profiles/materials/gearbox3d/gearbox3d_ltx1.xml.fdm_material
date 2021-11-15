@@ -5,12 +5,12 @@
             <brand>Support</brand>
             <material>Water Soluble</material>
             <color>Natural</color>
-            <label>Aquatek X1</label>
+            <label>LTX1</label>
         </name>
         <GUID>4264e255-c4f1-4534-9f23-dc3e6cf33072</GUID>
         <version>24</version>
         <color_code>#E9D8B7</color_code>
-        <description>AquaTek™ X1 is readily water soluble in warm water with excellent adhesion to the broadest range of materials.</description>
+        <description>Water Soluble Support Material</description>
     </metadata>
     <properties>
         <density>1.10</density>
