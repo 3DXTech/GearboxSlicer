@@ -9,6 +9,7 @@
 		<PublishSingleFile>true</PublishSingleFile>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+		<ApplicationIcon>imgGearboxLogo.ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -408,5 +409,9 @@
 			<Isolated>false</Isolated>
 			<EmbedInteropTypes>true</EmbedInteropTypes>
 		</COMReference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="imgGearboxLogo.ico" />
 	</ItemGroup>
 </Project>
