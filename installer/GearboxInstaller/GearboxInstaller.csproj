@@ -5,6 +5,7 @@
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<Nullable>enable</Nullable>
 		<UseWPF>true</UseWPF>
+		<AssemblyVersion>1.0.0.0</AssemblyVersion>
 		<DebugType>full</DebugType>
 		<PublishSingleFile>true</PublishSingleFile>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
