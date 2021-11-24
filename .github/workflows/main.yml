@@ -54,7 +54,7 @@ jobs:
            path: installer\GearboxInstaller\publish\
            
       - name: unzip
-        run: 7z x ${{ github.workspace }}\GearboxInstaller.zip
+        run: 7z x GearboxInstaller.zip
       
       - name: release
         uses: softprops/action-gh-release@v0.1.5
