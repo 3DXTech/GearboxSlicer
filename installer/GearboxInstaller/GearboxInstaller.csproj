@@ -9,6 +9,8 @@
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<DebugType>full</DebugType>
 		<PublishSingleFile>true</PublishSingleFile>
+		<PublisherName>Gearbox3D LLC</PublisherName>
+		<Authors>Gearbox3D LLC</Authors>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
 		<ApplicationIcon>imgGearboxLogo.ico</ApplicationIcon>
