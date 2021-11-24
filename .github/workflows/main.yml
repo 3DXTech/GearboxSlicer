@@ -40,7 +40,7 @@ jobs:
         
       - name: install-nuget
         uses: NuGet/setup-nuget@v1.0.5
-      - run: nuget restore Ht2.sln
+      - run: nuget restore installer\GearboxInstaller.sln
         
       - name: build-solution
         run: msbuild installer\GearboxInstaller.sln -t:Publish -p:Configuration=Release -p:PublishDir="publish" -p:TargetRuntime=win-x86 -p:SelfContained=true -p:WarningLevel=0 /p:DebugSymbols=false /p:DebugType=None
