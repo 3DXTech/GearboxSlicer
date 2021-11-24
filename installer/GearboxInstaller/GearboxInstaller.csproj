@@ -1,11 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<Nullable>enable</Nullable>
 		<UseWPF>true</UseWPF>
-		<AssemblyVersion>1.0.1</AssemblyVersion>
+		<AssemblyVersion>1.0.2</AssemblyVersion>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<DebugType>full</DebugType>
 		<PublishSingleFile>true</PublishSingleFile>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
