@@ -49,12 +49,12 @@ jobs:
         uses: actions/upload-artifact@v2.2.3
         with:
           # Artifact name
-           name: GearboxInstaller
+           name: GearboxInstaller.zip
           # A file, directory or wildcard pattern that describes what to upload
-           path: installer\GearboxInstaller\publish\GearboxInstaller
+           path: installer\GearboxInstaller\publish\
            
       - name: unzip
-        run: 7z x GearboxInstaller
+        run: 7z x GearboxInstaller.zip
       
       - name: release
         uses: softprops/action-gh-release@v0.1.5
