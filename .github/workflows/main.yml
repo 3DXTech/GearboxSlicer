@@ -52,6 +52,7 @@ jobs:
            name: GearboxInstaller
           # A file, directory or wildcard pattern that describes what to upload
            path: installer\GearboxInstaller\publish\
+           dest: GearboxInstaller.exe
       
       - name: Dump GitHub context
         env:
@@ -62,7 +63,7 @@ jobs:
         uses: softprops/action-gh-release@v0.1.5
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: ${{ github.workspace }}\GearboxInstaller
+          files: ${{ github.workspace }}\installer\GearboxInstaller\publish\GearboxInstaller.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
        
