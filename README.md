@@ -7,7 +7,7 @@ If Cura 4.10.0 is not installed, download the installer [here](https://github.co
 ## Adding Printer, Materials, and Settings
 > Make sure Cura is closed before copying any of these files!
 
-Copy the contents of the `GearSlice` Folder (plugins/resources) into `Program Files/Ultimaker Cura 4.10.0/` if it asks you to merge folders or overwrite files, say yes.
+Copy the contents of the `GearSlice` Folder (plugins/resources) into `Program Files/GearboxSlicer/` if it asks you to merge folders or overwrite files, say yes.
 > If you would like to only see Gearbox materials and printers, delete the folders `extruders`, `materials`, `definitions`, and `variants` inside resources **before** copying files from this repo.
 
 ## Preconfiguring Settings
