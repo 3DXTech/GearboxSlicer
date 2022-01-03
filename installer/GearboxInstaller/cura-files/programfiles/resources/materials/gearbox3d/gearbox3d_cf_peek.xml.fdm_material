@@ -18,15 +18,15 @@ Generic ABS profile. The data in this file may not be correct for your specific 
     </metadata>
     <properties>
         <density>1.39</density>
-        <diameter>1.75</diameter>
+        <diameter>1.78</diameter>
     </properties>
     <settings>
 <!--
     NEED TO UPDATE SETTINGS
 -->
-        <setting key="print temperature">425.0</setting>
-        <setting key="standby temperature">400.0</setting>
-        <setting key="build volume temperature">130.0</setting>
+        <setting key="print temperature">500.0</setting>
+        <setting key="standby temperature">425.0</setting>
+        <setting key="build volume temperature">230.0</setting>
         <machine>
             <machine_identifier manufacturer="Gearbox3D" product="Gearbox3D HT2"/>
         </machine>
