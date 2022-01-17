@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -315,15 +317,23 @@ namespace GearboxInstaller
                 StatusText = "";
                 _timer.Change(0, 250);
                 StatusText += $"Installing Cura...{Environment.NewLine}";
-                var filePath = Path.Combine(AppContext.BaseDirectory, "curainstaller.exe");
+                var filePath = Path.Combine(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName), "curainstaller.exe");
+                var altFilePath = Path.Combine(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName),
+                    "Ultimaker_Cura-4.10.0-amd64.exe");
                 if (File.Exists(filePath))
                 {
                     Process.Start(filePath, @$"/S /D={_installPath}");
+                    StatusText = $"Running installer from {filePath}{Environment.NewLine}";
                 }
+                else if (File.Exists(altFilePath))
+                {
+                    Process.Start(altFilePath, @$"/S /D={_installPath}");
+                    StatusText = $"Running installer from {altFilePath}{Environment.NewLine}";
+                }   
                 else
                 {
                     _webClient.DownloadFileAsync(_curaDownloadUrl, Path.Combine(AppContext.BaseDirectory, "curainstaller.exe"));
-                    StatusText = "Downloading installer";
+                    StatusText = $"Downloading installer{Environment.NewLine}";
                 }
             }
             else
