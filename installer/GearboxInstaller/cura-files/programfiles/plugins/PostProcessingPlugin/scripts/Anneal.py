@@ -3,7 +3,7 @@ from ..Script import Script
 
 import re
 
-class ToolChangeCount(Script):
+class Anneal(Script):
 
     def __init__(self):
         super().__init__()
