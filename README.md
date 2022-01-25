@@ -1,6 +1,9 @@
 # GearSlice
 ### Current Version: 4.10.0
 
+# Auto Install Instructions
+Download and run the latest version of the `GearboxInstaller.exe` [here](https://github.com/GEARBOX3D/GearboxSlicer/releases)
+
 # Install Instructions
 If Cura 4.10.0 is not installed, download the installer [here](https://github.com/Ultimaker/Cura/releases/download/4.10.0/Ultimaker_Cura-4.10.0-amd64.exe) (release notes [here](https://github.com/Ultimaker/Cura/releases/tag/4.10.0))
 
