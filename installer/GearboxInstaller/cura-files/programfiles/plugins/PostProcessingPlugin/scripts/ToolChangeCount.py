@@ -27,6 +27,7 @@ class ToolChangeCount(Script):
         line_set = {}
         toolChangeCount = 0
         baseTimeRemaining = -1
+        dwellTime = 0
         timeDefLine = 0
         for layer in data:
             line_set = {}
@@ -43,11 +44,13 @@ class ToolChangeCount(Script):
                 if (line.startswith(";TIME:") and baseTimeRemaining == -1):
                     timeDefLine = lines.index(line)
                     baseTimeRemaining = self.getTimeValue(line)
+                if (line.startswith("G4")):
+                    dwellTime += int(line.split("P")[1]) / 1000 / 60
             data[layer_index] = "\n".join(lines)
         lines = data[0].split("\n")
         lines.pop(timeDefLine)
-        lines.insert(timeDefLine, ";TIME:{}".format(baseTimeRemaining + (toolChangeCount * 30)))
+        lines.insert(timeDefLine, ";TIME:{}".format(baseTimeRemaining + (toolChangeCount * 30) + dwellTime))
         lines.insert(timeDefLine, ";Total number of tool changes: {}".format(toolChangeCount))
         data[0] = "\n".join(lines)
         
-        return data    
+        return data
