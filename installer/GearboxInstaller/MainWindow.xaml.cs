@@ -312,24 +312,31 @@ namespace GearboxInstaller
         private void RunInstaller()
         {
             InstallButtonEnabled = false;
-            if (!CheckForInstall())
+            if (CheckForInstall())
             {
                 StatusText = "";
                 _timer.Change(0, 250);
                 StatusText += $"Installing Cura...{Environment.NewLine}";
+                var installArgs = @$"/S /D={_installPath}";
                 var filePath = Path.Combine(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName), "curainstaller.exe");
                 var altFilePath = Path.Combine(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName),
                     "Ultimaker_Cura-4.10.0-amd64.exe");
+                var downloadFilePath = Path.Combine(AppContext.BaseDirectory, "curainstaller.exe");
                 if (File.Exists(filePath))
                 {
-                    Process.Start(filePath, @$"/S /D={_installPath}");
+                    Process.Start(filePath, installArgs);
                     StatusText = $"Running installer from {filePath}{Environment.NewLine}";
                 }
                 else if (File.Exists(altFilePath))
                 {
-                    Process.Start(altFilePath, @$"/S /D={_installPath}");
+                    Process.Start(altFilePath, installArgs);
                     StatusText = $"Running installer from {altFilePath}{Environment.NewLine}";
-                }   
+                }
+                else if (File.Exists(downloadFilePath))
+                {
+                    Process.Start(downloadFilePath, installArgs);
+                    StatusText = $"Running downloaded installer{Environment.NewLine}";
+                }
                 else
                 {
                     _webClient.DownloadFileAsync(_curaDownloadUrl, Path.Combine(AppContext.BaseDirectory, "curainstaller.exe"));

@@ -47,6 +47,9 @@
 		<None Update="cura-files\appdata\cura\4.10\user\gearbox3d_ht2_extruder_1+%25232_user.inst.cfg">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
+		<None Update="cura-files\programfiles\plugins\PostProcessingPlugin\scripts\Anneal.py">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
 		<None Update="cura-files\programfiles\plugins\PostProcessingPlugin\scripts\ToolChangeCount.py">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
