@@ -17,8 +17,8 @@
         <diameter>1.78</diameter>
     </properties>
     <settings>
-        <setting key="print temperature">255.0</setting>
-        <setting key="standby temperature">225.0</setting>
+        <setting key="print temperature">320.0</setting>
+        <setting key="standby temperature">270.0</setting>
 
         <machine>
             <machine_identifier manufacturer="Gearbox3D" product="Gearbox3D HT2"/>

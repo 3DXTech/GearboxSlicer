@@ -14,11 +14,11 @@
     </metadata>
     <properties>
         <density>1.00</density>
-        <diameter>1.75</diameter>
+        <diameter>1.78</diameter>
     </properties>
     <settings>
-        <setting key="print temperature">300.0</setting>
-        <setting key="standby temperature">225.0</setting>
+        <setting key="print temperature">240.0</setting>
+        <setting key="standby temperature">190.0</setting>
 
         <machine>
             <machine_identifier manufacturer="Gearbox3D" product="Gearbox3D HT2"/>
