@@ -48,6 +48,7 @@ class Anneal(Script):
                     lines.insert(lineIndex, "M141 S{}".format(self.getSettingValueByKey("temperature")))
             data[layer_index] = "\n".join(lines)
         lines = data[0].split("\n")
+        lines.insert(4, ";ANNEAL {}, {}".format(self.getSettingValueByKey("temperature"), (self.getSettingValueByKey("time") * 60 * 60 * 1000)))
         data[0] = "\n".join(lines)
         
         return data    
