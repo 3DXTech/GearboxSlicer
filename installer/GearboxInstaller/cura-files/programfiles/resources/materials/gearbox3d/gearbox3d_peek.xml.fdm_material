@@ -10,7 +10,7 @@ Generic ABS profile. The data in this file may not be correct for your specific 
             <label>GBX PEEK</label>
             <color>Generic</color>
         </name>
-        <GUID>ed05160e-952c-459f-86cd-d2f1fc01ebd8</GUID>
+        <GUID>5ac6b276-5cf3-45da-b6a9-7b837529856d</GUID>
         <version>26</version>
         <color_code>#a2835a</color_code>
         <description>PEEK has exceptional mechanical, thermal, and chemical resistance properties making it a go-to material in some of the most demanding applications where failure is not an option.</description>
