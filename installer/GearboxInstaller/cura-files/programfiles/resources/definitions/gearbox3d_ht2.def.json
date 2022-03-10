@@ -1,5 +1,5 @@
 {
-    "version": 2, 
+    "version": 2,
     "name": "Gearbox3D HT2",
     "inherits": "fdmprinter",
     "metadata": {
@@ -18,8 +18,7 @@
         "preferred_variant_name": "GBX20",
         "preferred_quality_type": "Normal",
         "preferred_material": "gearbox3d_abs",
-        "machine_extruder_trains":
-        {
+        "machine_extruder_trains": {
             "0": "gearbox3d_ht2_extruder_0",
             "1": "gearbox3d_ht2_extruder_1"
         },
@@ -180,8 +179,8 @@
         "machine_gcode_flavor": { "default_value": "RepRap (Marlin/Sprinter)" },
         "machine_heated_bed": { "default_value": false },
         "machine_heated_build_volume": { "default_value": true },
-        "cool_fan_enabled": { "default_value": false},
-        "cool_min_layer_time": {"default_value": 3},
+        "cool_fan_enabled": { "default_value": false },
+        "cool_min_layer_time": { "default_value": 3 },
         "machine_width": { "default_value": 457 },
         "machine_depth": { "default_value": 457 },
         "machine_height": { "default_value": 813 },
@@ -190,16 +189,16 @@
         "machine_max_feedrate_y": { "default_value": 300 },
         "machine_max_feedrate_z": { "default_value": 40 },
         "machine_max_acceleration_x": { "default_value": 9800 },
-		"machine_max_acceleration_y": { "default_value": 9800 },
-		"machine_max_acceleration_z": { "default_value": 9800 },
+        "machine_max_acceleration_y": { "default_value": 9800 },
+        "machine_max_acceleration_z": { "default_value": 9800 },
         "machine_acceleration": { "default_value": 5000 },
         "machine_extruder_count": { "default_value": 2 },
         "machine_head_with_fans_polygon": {
             "default_value": [
-                [ -40.5, 25.5 ],
-                [ 40.5, 25.5 ],
-                [ 40.5, -25.5 ],
-                [ -40.5, -25.5 ]
+                [-40.5, 25.5],
+                [40.5, 25.5],
+                [40.5, -25.5],
+                [-40.5, -25.5]
             ]
         },
         "build_volume_temperature": {
@@ -262,25 +261,25 @@
             "default_value": 0.340,
             "value": "0.6 * machine_nozzle_size"
         },
-        "raft_surface_thickness": {"maximum_value_warning": "1.0 * machine_nozzle_size" },
-        "raft_surface_speed": {"maximum_value_warning": "151" },
-        "raft_interface_thickness": {"maximum_value_warning": "1.0 * machine_nozzle_size" },
-        "support_infill_sparse_thickness": {"maximum_value_warning": "1.0 * machine_nozzle_size" },
+        "raft_surface_thickness": { "maximum_value_warning": "1.0 * machine_nozzle_size" },
+        "raft_surface_speed": { "maximum_value_warning": "151" },
+        "raft_interface_thickness": { "maximum_value_warning": "1.0 * machine_nozzle_size" },
+        "support_infill_sparse_thickness": { "maximum_value_warning": "1.0 * machine_nozzle_size" },
         "machine_start_gcode": {
-            "default_value": ";Begin start code\n;material_guid0 = {material_guid, 0} material_guid1 = {material_guid, 1}\nG55\nG92 E0\nG28 X250.0 Y5.0\nG0 Z5.0\nM208\nG0 X450.0\n;End start code"
+            "default_value": ";Begin start code\n;material_guid0 = {material_guid, 0} material_guid1 = {material_guid, 1}\n;material_weight = {filament_weight}\nG55\nG92 E0\nG28 X250.0 Y5.0\nG0 Z5.0\nM208\nG0 X450.0\n;End start code"
         },
         "machine_end_gcode": {
             "default_value": "M141 S{build_volume_temperature}\nG92 E0\nG0 Z810.0\nG28 X250.0 Y5.0 Z810.0\nM104 T0 S#12\nM104 T1 S#13\nG54\nM30"
         },
-        "prime_tower_wipe_enabled": {"default_value": false },
-        "retract_at_layer_change": {"default_value": true },
-        "retraction_amount": {"default_value": 2.9 },
-        "retraction_speed": {"default_value": 35 },
-        "retraction_hop_enabled": {"default_value": false },
-        "retraction_hop": {"default_value": 3.5 },
-        "retraction_hop_after_extruder_switch_height": {"default_value": 3.5 },
-        "machine_heat_zone_length":{
-            "default_value": 0 
+        "prime_tower_wipe_enabled": { "default_value": false },
+        "retract_at_layer_change": { "default_value": true },
+        "retraction_amount": { "default_value": 2.9 },
+        "retraction_speed": { "default_value": 35 },
+        "retraction_hop_enabled": { "default_value": false },
+        "retraction_hop": { "default_value": 3.5 },
+        "retraction_hop_after_extruder_switch_height": { "default_value": 3.5 },
+        "machine_heat_zone_length": {
+            "default_value": 0
         },
         "switch_extruder_retraction_amount": {
             "default_value": 0,
@@ -289,12 +288,12 @@
         "switch_extruder_retraction_speeds": {
             "default_value": 30
         },
-        "adhesion_type": {"default_value": "raft" },
-        "raft_margin": {"default_value": 5 },
+        "adhesion_type": { "default_value": "raft" },
+        "raft_margin": { "default_value": 5 },
         "adhesion_extruder_nr": {
-			"default_value": 0,
-			"value": "int(support_extruder_nr)"
-		},
+            "default_value": 0,
+            "value": "int(support_extruder_nr)"
+        },
         "layer_start_x": {
             "default_value": 457.0,
             "settable_per_extruder": false,
@@ -304,29 +303,29 @@
             "settable_per_extruder": false,
             "settable_per_meshgroup": false
         },
-        "material_extrusion_cool_down_speed": {"default_value": 0 },
-        "optimize_wall_printing_order": {"default_value": true },
-        "wall_line_count": {"default_value": 3 },
-        "bottom_layers": {"value": 3 },
-        "top_layers": {"value": 3},
-        "roofing_layer_count": {"default_value": 1 },
-        "z_seam_corner": {"default_value": "z_seam_corner_weighted" },
-        "infill_before_walls": {"default_value": false },
-        "infill_sparse_density": {"default_value": 20 },
-        "infill_pattern": {"value": "zigzag"},
-        "infill_overlap": {"default_value": -5 },
-        "retraction_combing": {"default_value": "off" },
-        "switch_extruder_extra_prime_amount": {"minimum_value_warning": "-5.0" },
-        "support_type": {"default_value": "everywhere" },
-        "support_angle": {"default_value": 75 },
-        "support_enable": {"default_value": true },
-        "support_interface_enable": {"default_value": true },
-        "support_interface_height": {"default_value": 1.2 },
-        "support_interface_material_flow": {"default_value": 93 },
-        "support_interface_pattern": {"default_value": "zigzag" },
-        "support_extruder_nr": {"value": 1 },
-        "support_z_distance": {"default_value": 0 },
-        "zig_zaggify_support": {"default_value": true },
+        "material_extrusion_cool_down_speed": { "default_value": 0 },
+        "optimize_wall_printing_order": { "default_value": true },
+        "wall_line_count": { "default_value": 3 },
+        "bottom_layers": { "value": 3 },
+        "top_layers": { "value": 3 },
+        "roofing_layer_count": { "default_value": 1 },
+        "z_seam_corner": { "default_value": "z_seam_corner_weighted" },
+        "infill_before_walls": { "default_value": false },
+        "infill_sparse_density": { "default_value": 20 },
+        "infill_pattern": { "value": "zigzag" },
+        "infill_overlap": { "default_value": -5 },
+        "retraction_combing": { "default_value": "off" },
+        "switch_extruder_extra_prime_amount": { "minimum_value_warning": "-5.0" },
+        "support_type": { "default_value": "everywhere" },
+        "support_angle": { "default_value": 75 },
+        "support_enable": { "default_value": true },
+        "support_interface_enable": { "default_value": true },
+        "support_interface_height": { "default_value": 1.2 },
+        "support_interface_material_flow": { "default_value": 93 },
+        "support_interface_pattern": { "default_value": "zigzag" },
+        "support_extruder_nr": { "value": 1 },
+        "support_z_distance": { "default_value": 0 },
+        "zig_zaggify_support": { "default_value": true },
         "speed_print": {
             "default_value": 300,
             "maximum_value_warning": "min(machine_max_feedrate_x, machine_max_feedrate_y)",
