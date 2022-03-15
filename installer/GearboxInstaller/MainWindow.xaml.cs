@@ -312,7 +312,7 @@ namespace GearboxInstaller
         private void RunInstaller()
         {
             InstallButtonEnabled = false;
-            if (CheckForInstall())
+            if (!CheckForInstall())
             {
                 StatusText = "";
                 _timer.Change(0, 250);
@@ -345,10 +345,12 @@ namespace GearboxInstaller
             }
             else
             {
-                StatusText = "Cura 4.10 install found, please uninstall before continuing";
+                StatusText = $"Cura 4.10 install found, overwriting resources files only{Environment.NewLine}";
                 InstallButtonText = "Close";
-                InstallButtonEnabled = true;
+                InstallButtonEnabled = false;
+                CopyNewFiles();
                 _installComplete = true;
+                InstallButtonEnabled = true;
             }
         }
         private void CreateShortcut(string location)
