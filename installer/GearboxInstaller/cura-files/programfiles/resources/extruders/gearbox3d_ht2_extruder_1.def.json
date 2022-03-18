@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "name": "Extruder 1",
+    "name": "Extruder 2",
     "inherits": "fdmextruder",
     "metadata": {
         "machine": "Gearbox3D HT2",
