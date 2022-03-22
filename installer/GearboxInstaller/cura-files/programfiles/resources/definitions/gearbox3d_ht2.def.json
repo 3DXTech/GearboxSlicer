@@ -41,6 +41,7 @@
             "default_value": "M141 S{build_volume_temperature}\nM104 T0 S#12\nM104 T1 S#13\nG92 E0\n;anneal\nG0 Z810.0\nG28 X250.0 Y5.0\nG54\nM30"
         },
         "material_diameter": {
+            "description": "This setting is not read from this file at any time, furthest upstream file is fdmextruder.def.json",
             "default_value": 1.78,
             "minimum_value_warning": "1.73",
             "maximum_value_warning": "1.83"
@@ -108,10 +109,11 @@
             "value": 40
         },
         "machine_nozzle_id": {
+            "description": "This setting is not read from this file at any time, furthest upstream file is fdmextruder.def.json",
             "default_value": "GBX Unknown"
         },
         "machine_nozzle_size": {
-            "default_value": 0.508
+            "default_value": 0.5081
         },
         "machine_max_feedrate_x": {
             "default_value": 300
@@ -144,7 +146,7 @@
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "machine_nozzle_size",
             "default_value": 0.356,
-            "value": "0.7 * machine_nozzle_size"
+            "value": "0.6 * machine_nozzle_size"
         },
         "line_width": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
@@ -908,6 +910,16 @@
         },
         "print_sequence": {
             "enabled": "false"
+        },
+        "roofing_line_width":
+        {
+            "minimum_value_warning": "0.5 * machine_nozzle_size",
+            "default_value": 0.508,
+            "value": "skin_line_width"
+        },
+        "roofing_pattern":
+        {
+            "default_value": "zigzag"
         }
     }
 }
