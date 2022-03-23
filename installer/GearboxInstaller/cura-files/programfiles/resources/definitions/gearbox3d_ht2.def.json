@@ -3,6 +3,7 @@
     "version": 2,
     "inherits": "fdmprinter",
     "metadata": {
+        "type": "machine",
         "author": "Gearbox3D",
         "manufacturer": "Gearbox3D",
         "file_formats": "text/x-gcode",
@@ -41,7 +42,6 @@
             "default_value": "M141 S{build_volume_temperature}\nM104 T0 S#12\nM104 T1 S#13\nG92 E0\n;anneal\nG0 Z810.0\nG28 X250.0 Y5.0\nG54\nM30"
         },
         "material_diameter": {
-            "description": "This setting is not read from this file at any time, furthest upstream file is fdmextruder.def.json",
             "default_value": 1.78,
             "minimum_value_warning": "1.73",
             "maximum_value_warning": "1.83"
@@ -109,7 +109,6 @@
             "value": 40
         },
         "machine_nozzle_id": {
-            "description": "This setting is not read from this file at any time, furthest upstream file is fdmextruder.def.json",
             "default_value": "GBX Unknown"
         },
         "machine_nozzle_size": {

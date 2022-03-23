@@ -1,16 +1,28 @@
 {
     "version": 2,
-    "name": "Extruder 1",
+    "name": "GBX Extruder 1",
     "inherits": "fdmextruder",
     "metadata": {
         "machine": "Gearbox3D HT2",
-        "position": "0"
+        "author": "Gearbox3D",
+        "manufacturer": "Gearbox3D",
+        "position": "0",
+        "visible": false
     },
-
     "overrides": {
-        "extruder_nr": { "default_value": 0 },
-        "machine_nozzle_size": { "default_value": 0.406 },
-        "material_diameter": { "default_value": 1.78 },
-        "machine_extruder_end_code": { "default_value": "G92 E0\nG1 E-2.9 F1500" }
+        "extruder_nr": {
+            "default_value": "0"
+        },
+        "machine_nozzle_id": {
+            "default_value": "GBX Unknown"
+        },
+        "machine_nozzle_size": {
+            "default_value": 0.508
+        },
+        "material_diameter": {
+            "default_value": 1.78,
+            "minimum_value_warning": "1.73",
+            "maximum_value_warning": "1.83"
+        }
     }
 }
