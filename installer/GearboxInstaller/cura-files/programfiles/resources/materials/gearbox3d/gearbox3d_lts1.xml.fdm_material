@@ -4,22 +4,21 @@
         <name>
             <brand>Support</brand>
             <material>Breakaway</material>
-            <color>Natural</color>
             <label>GBX LTS1</label>
+            <color>Grey</color>
         </name>
         <GUID>9cadbb32-55fd-4abc-8349-5b4b8cb04892</GUID>
         <version>24</version>
-        <color_code>#d3d3d3</color_code>
-        <description></description>
+        <color_code>#D3D3D3</color_code>
+        <description>LTS1 is the breakaway support material of choice for low temperature materials including ABS and ASA.</description>
     </metadata>
     <properties>
-        <density>1.00</density>
+        <density>1.04</density>
         <diameter>1.78</diameter>
     </properties>
     <settings>
         <setting key="print temperature">320.0</setting>
         <setting key="standby temperature">270.0</setting>
-
         <machine>
             <machine_identifier manufacturer="Gearbox3D" product="Gearbox3D HT2"/>
         </machine>

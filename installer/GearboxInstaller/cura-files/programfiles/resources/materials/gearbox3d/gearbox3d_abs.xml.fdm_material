@@ -5,23 +5,25 @@
             <brand>Model</brand>
             <material>ABS</material>
             <label>GBX ABS</label>
-            <color>Red</color>
+            <color>All</color>
         </name>
         <GUID>fcf3cdf9-e0a4-4024-a94f-2a54eef61383</GUID>
         <version>24</version>
         <color_code>#FF0000</color_code>
-        <description>Tough and durable. ABS is good for mechanical parts. It is impact resistant, dimensionally stable and handles temperatures up to 85ºC.</description>
-        <adhesion_info>Use low temp build sheet.</adhesion_info>
+        <description>ABS delivers excellent performance and ease of printing. Formulated specifically for 3D printing, this grade earns its excellent reputation with every print.</description>
+        <adhesion_info>Use low temperature build sheet.</adhesion_info>
     </metadata>
     <properties>
-        <density>1.05</density>
+        <density>1.03</density>
         <diameter>1.78</diameter>
     </properties>
     <settings>
-        <setting key="print temperature">285.0</setting>
-        <setting key="standby temperature">225.0</setting>
-        <setting key="build volume temperature">90.0</setting>
-
+        <setting key="build volume temperature">92.0</setting>
+        <setting key="print temperature">285</setting>
+        <setting key="standby temperature">25.0</setting>
+        <setting key="flow">95</setting>
+        <setting key="initial layer flow">110</setting>
+        <setting key="infill flow">93</setting>
         <machine>
             <machine_identifier manufacturer="Gearbox3D" product="Gearbox3D HT2"/>
         </machine>
