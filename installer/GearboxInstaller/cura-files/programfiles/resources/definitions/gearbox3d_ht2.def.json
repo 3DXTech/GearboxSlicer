@@ -12,7 +12,7 @@
         "has_variants": true,
         "has_machine_quality": true,
         "preferred_material": "gearbox3d_abs",
-        "preferred_quality_type": "Normal",
+        "preferred_quality_type": "draft",
         "machine_extruder_trains": {
             "0": "gearbox3d_ht2_extruder_0",
             "1": "gearbox3d_ht2_extruder_1"
