@@ -18,15 +18,9 @@
         <diameter>1.78</diameter>
     </properties>
     <settings>
-        <setting key="build volume temperature">92.0</setting>
-        <setting key="print temperature">201</setting>
-        <setting key="standby temperature">25.0</setting>
-        <setting key="flow">95</setting>
-        <setting key="initial layer flow">110</setting>
-        <setting key="infill flow">93</setting>
         <machine>
             <machine_identifier manufacturer="Gearbox3D" product="Gearbox3D HT2"/>
-            <hotend id="GBX10" />            
+            <hotend id="GBX10" />
             <hotend id="GBX12" />
             <hotend id="GBX14" />                        
             <hotend id="GBX16" />

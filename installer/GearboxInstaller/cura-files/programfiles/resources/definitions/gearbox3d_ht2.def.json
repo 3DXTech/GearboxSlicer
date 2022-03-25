@@ -139,85 +139,100 @@
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "machine_nozzle_size",
             "default_value": 0.305,
-            "value": "0.6 * machine_nozzle_size"
+            "value": "0.6 * machine_nozzle_size",
+            "settable_per_extruder": true
         },
         "layer_height_0": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "machine_nozzle_size",
-            "default_value": 0.356,
-            "value": "0.6 * machine_nozzle_size"
+            "default_value": 0.305,
+            "value": "0.6 * machine_nozzle_size",
+            "resolve": "",
+            "settable_per_extruder": true
         },
         "line_width": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "2 * machine_nozzle_size",
             "default_value": 0.508,
-            "value": "machine_nozzle_size"
+            "value": "machine_nozzle_size",
+            "settable_per_extruder": true
         },
         "wall_line_width": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "2 * machine_nozzle_size",
             "default_value": 0.508,
-            "value": "machine_nozzle_size"
+            "value": "machine_nozzle_size",
+            "settable_per_extruder": true
         },
         "wall_line_width_0": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "2 * machine_nozzle_size",
             "default_value": 0.508,
-            "value": "machine_nozzle_size"
+            "value": "machine_nozzle_size",
+            "settable_per_extruder": true
         },
         "wall_line_width_x": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "2 * machine_nozzle_size",
             "default_value": 0.508,
-            "value": "machine_nozzle_size"
+            "value": "machine_nozzle_size",
+            "settable_per_extruder": true
         },
         "skin_line_width": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "2 * machine_nozzle_size",
             "default_value": 0.508,
-            "value": "machine_nozzle_size"
+            "value": "machine_nozzle_size",
+            "settable_per_extruder": true
         },
         "infill_line_width": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "2 * machine_nozzle_size",
             "default_value": 0.508,
-            "value": "machine_nozzle_size"
+            "value": "machine_nozzle_size",
+            "settable_per_extruder": true
         },
         "skirt_brim_line_width": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "2 * machine_nozzle_size",
             "default_value": 0.508,
-            "value": "machine_nozzle_size"
+            "value": "machine_nozzle_size",
+            "settable_per_extruder": true
         },
         "support_line_width": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "2 * machine_nozzle_size",
             "default_value": 0.508,
-            "value": "machine_nozzle_size"
+            "value": "machine_nozzle_size",
+            "settable_per_extruder": true
         },
         "support_interface_line_width": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "2 * machine_nozzle_size",
             "default_value": 0.508,
-            "value": "machine_nozzle_size"
+            "value": "machine_nozzle_size",
+            "settable_per_extruder": true
         },
         "support_roof_line_width": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "2 * machine_nozzle_size",
             "default_value": 0.508,
-            "value": "machine_nozzle_size"
+            "value": "machine_nozzle_size",
+            "settable_per_extruder": true
         },
         "support_bottom_line_width": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "2 * machine_nozzle_size",
             "default_value": 0.508,
-            "value": "machine_nozzle_size"
+            "value": "machine_nozzle_size",
+            "settable_per_extruder": true
         },
         "prime_tower_line_width": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "2 * machine_nozzle_size",
             "default_value": 0.508,
-            "value": "machine_nozzle_size"
+            "value": "machine_nozzle_size",
+            "settable_per_extruder": true
         },
         "wall_extruder_nr": {
             "default_value": "0"
@@ -246,6 +261,9 @@
             "value": "machine_nozzle_size / 2"
         },
         "optimize_wall_printing_order": {
+            "default_value": true
+        },
+        "fill_outline_gaps": {
             "default_value": true
         },
         "z_seam_position": {
@@ -365,7 +383,7 @@
             "default_value": 123,
             "value": "material_print_temperature - 100",
             "minimum_value": "-0.1",
-            "minimum_value_warning": "50",
+            "minimum_value_warning": "20",
             "maximum_value_warning": "475",
             "maximum_value": "500"
         },
