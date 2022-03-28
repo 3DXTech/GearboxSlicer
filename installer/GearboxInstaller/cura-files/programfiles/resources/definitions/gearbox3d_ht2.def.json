@@ -139,109 +139,95 @@
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "machine_nozzle_size",
             "default_value": 0.305,
-            "value": "0.6 * machine_nozzle_size",
-            "settable_per_extruder": true
+            "value": "0.6 * machine_nozzle_size"
         },
         "layer_height_0": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "machine_nozzle_size",
             "default_value": 0.305,
             "value": "0.6 * machine_nozzle_size",
-            "resolve": "",
-            "settable_per_extruder": true
+            "resolve": ""
         },
         "line_width": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "2 * machine_nozzle_size",
             "default_value": 0.508,
-            "value": "machine_nozzle_size",
-            "settable_per_extruder": true
+            "value": "machine_nozzle_size"
         },
         "wall_line_width": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "2 * machine_nozzle_size",
             "default_value": 0.508,
-            "value": "machine_nozzle_size",
-            "settable_per_extruder": true
+            "value": "line_width"
         },
         "wall_line_width_0": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "2 * machine_nozzle_size",
             "default_value": 0.508,
-            "value": "machine_nozzle_size",
-            "settable_per_extruder": true
+            "value": "wall_line_width"
         },
         "wall_line_width_x": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "2 * machine_nozzle_size",
             "default_value": 0.508,
-            "value": "machine_nozzle_size",
-            "settable_per_extruder": true
+            "value": "wall_line_width"
         },
         "skin_line_width": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "2 * machine_nozzle_size",
             "default_value": 0.508,
-            "value": "machine_nozzle_size",
-            "settable_per_extruder": true
+            "value": "line_width"
         },
         "infill_line_width": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "2 * machine_nozzle_size",
             "default_value": 0.508,
-            "value": "machine_nozzle_size",
-            "settable_per_extruder": true
+            "value": "line_width"
         },
         "skirt_brim_line_width": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "2 * machine_nozzle_size",
             "default_value": 0.508,
-            "value": "machine_nozzle_size",
-            "settable_per_extruder": true
+            "value": "line_width"
         },
         "support_line_width": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "2 * machine_nozzle_size",
             "default_value": 0.508,
-            "value": "machine_nozzle_size",
-            "settable_per_extruder": true
+            "value": "line_width"
         },
         "support_interface_line_width": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "2 * machine_nozzle_size",
             "default_value": 0.508,
-            "value": "machine_nozzle_size",
-            "settable_per_extruder": true
+            "value": "line_width"
         },
         "support_roof_line_width": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "2 * machine_nozzle_size",
-            "default_value": 0.508,
-            "value": "machine_nozzle_size",
-            "settable_per_extruder": true
+            "default_value": 0.508
         },
         "support_bottom_line_width": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "2 * machine_nozzle_size",
-            "default_value": 0.508,
-            "value": "machine_nozzle_size",
-            "settable_per_extruder": true
+            "default_value": 0.508
         },
         "prime_tower_line_width": {
             "minimum_value_warning": "0.5 * machine_nozzle_size",
             "maximum_value_warning": "2 * machine_nozzle_size",
             "default_value": 0.508,
-            "value": "machine_nozzle_size",
-            "settable_per_extruder": true
+            "value": "line_width"
         },
         "wall_extruder_nr": {
             "default_value": "0"
         },
         "wall_0_extruder_nr": {
-            "default_value": "0"
+            "default_value": "0",
+            "value": "wall_extruder_nr"
         },
         "wall_x_extruder_nr": {
-            "default_value": "0"
+            "default_value": "0",
+            "value": "wall_extruder_nr"
         },
         "wall_thickness": {
             "minimum_value_warning": "line_width",
@@ -304,7 +290,8 @@
             "value": "top_bottom_thickness"
         },
         "top_layers": {
-            "default_value": 3
+            "default_value": 3,
+            "value": "0 if infill_sparse_density == 100 else math.ceil(round(top_thickness / layer_height))"
         },
         "bottom_thickness": {
             "default_value": 0.915,
@@ -312,7 +299,8 @@
             "value": "top_bottom_thickness"
         },
         "bottom_layers": {
-            "default_value": 3
+            "default_value": 3,
+            "value": "0 if infill_sparse_density == 100 else math.ceil(round(top_thickness / layer_height))"
         },
         "initial_bottom_layers": {
             "default_value": 3
@@ -333,6 +321,7 @@
         },
         "build_volume_temperature": {
             "default_value": 23,
+            "resolve": "max(extruderValues('build_volume_temperature'))",
             "minimum_value": "-0.1",
             "minimum_value_warning": "50",
             "maximum_value_warning": "230",
@@ -380,8 +369,8 @@
             "maximum_value_warning": "150"
         },
         "material_standby_temperature": {
-            "default_value": 123,
-            "value": "material_print_temperature - 100",
+            "default_value": 50,
+            "value": "50",
             "minimum_value": "-0.1",
             "minimum_value_warning": "20",
             "maximum_value_warning": "475",

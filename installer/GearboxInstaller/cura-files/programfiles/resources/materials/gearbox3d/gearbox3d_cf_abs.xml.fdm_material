@@ -18,12 +18,15 @@
         <diameter>1.78</diameter>
     </properties>
     <settings>
-        <setting key="print temperature">300.0</setting>
-        <setting key="standby temperature">250.0</setting>
-        <setting key="build volume temperature">95.0</setting>
-
         <machine>
             <machine_identifier manufacturer="Gearbox3D" product="Gearbox3D HT2"/>
+            <hotend id="GBX10" />
+            <hotend id="GBX12" />
+            <hotend id="GBX14" />                        
+            <hotend id="GBX16" />
+            <hotend id="GBX20" />
+            <hotend id="GBX30" />
+            <hotend id="GBX40" />
         </machine>
     </settings>
 </fdmmaterial>
