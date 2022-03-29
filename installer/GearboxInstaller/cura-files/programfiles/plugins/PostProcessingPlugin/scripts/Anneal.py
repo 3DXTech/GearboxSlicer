@@ -34,12 +34,14 @@ class Anneal(Script):
     def execute(self, data):
         line_set = {}
         timeDefLine = 0
+        timeDefLayer = 0
         for layer in data:
             line_set = {}
             lineIndex = 0
             layer_index = data.index(layer)
             lines = layer.split("\n")
             for line in lines:
+                # maintain a line collection so that we don't loop through the same lines over and over if insert shifts it down
                 if line in line_set:
                     continue
                 line_set[line] = True
@@ -51,12 +53,12 @@ class Anneal(Script):
                     lines.insert(lineIndex, "M141 S{}".format(self.getSettingValueByKey("temperature")))
                     break
             data[layer_index] = "\n".join(lines)
-        lines = data[0].split("\n")
+        lines = data[timeDefLayer].split("\n")
         if (timeDefLine > 0):
             lines.insert(timeDefLine, ";ANNEAL {}, {}".format(self.getSettingValueByKey("temperature"), (self.getSettingValueByKey("time") * 60 * 60 * 1000)))
         else:
             lines.insert(0, ";ANNEAL {}, {}".format(self.getSettingValueByKey("temperature"), (self.getSettingValueByKey("time") * 60 * 60 * 1000)))
-        data[0] = "\n".join(lines)
+        data[timeDefLayer] = "\n".join(lines)
         
         return data    
         
