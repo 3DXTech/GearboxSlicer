@@ -29,28 +29,27 @@ class ToolChangeCount(Script):
         baseTimeRemaining = -1
         dwellTime = 0
         timeDefLine = 0
+        timeDefLayer = 0
         for layer in data:
-            line_set = {}
             layer_index = data.index(layer)
             lines = layer.split("\n")
             for line in lines:
-                if line in line_set:
-                    continue
-                line_set[line] = True
                 if (line.startswith("T")):
                     toolChangeCount += 1
-                    lineIndex = lines.index(line)
-                    lines.insert(lineIndex, ";ToolChangeCount {}".format(toolChangeCount))
                 if (line.startswith(";TIME:") and baseTimeRemaining == -1):
                     timeDefLine = lines.index(line)
+                    timeDefLayer = layer_index
                     baseTimeRemaining = self.getTimeValue(line)
                 if (line.startswith("G4")):
-                    dwellTime += int(line.split("P")[1]) / 1000 / 60
+                    dwellTime += int(line.split("P")[1]) / 1000
             data[layer_index] = "\n".join(lines)
-        lines = data[0].split("\n")
-        lines.pop(timeDefLine)
-        lines.insert(timeDefLine, ";TIME:{}".format(baseTimeRemaining + (toolChangeCount * 30) + dwellTime))
-        lines.insert(timeDefLine, ";Total number of tool changes: {}".format(toolChangeCount))
-        data[0] = "\n".join(lines)
+        lines = data[timeDefLayer].split("\n")
+        if (timeDefLine > 0):
+            lines.pop(timeDefLine)
+            lines.insert(timeDefLine, ";Base:{}".format(baseTimeRemaining))
+            lines.insert(timeDefLine, ";Dwell:{}".format(dwellTime))
+            lines.insert(timeDefLine, ";TIME:{}".format(baseTimeRemaining + (toolChangeCount * 30) + dwellTime))
+            lines.insert(timeDefLine, ";Total number of tool changes: {}".format(toolChangeCount))
+        data[timeDefLayer] = "\n".join(lines)
         
         return data
