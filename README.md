@@ -25,9 +25,9 @@ If you would like the HT2 and Gearbox3d theme selected in Cura automatically, co
   - This contains a script for the `PostProcessingPlugin.py` that helps calculate a more accurate time estimate for prints on the HT2.
 - resources
   - definitions
-    - Definition file for the HT2
+    - Default FDM printer definition and FDM extruder defintion files as well as the HT2 printer definition file that inherits from FDM printer.
   - extruders
-    - Definition files for the 2 HT2 extruders.
+    - HT2 Definition files for the 2 HT2 extruders.
   - images
     - Splash screen and logo images for Cura skin
   - materials
