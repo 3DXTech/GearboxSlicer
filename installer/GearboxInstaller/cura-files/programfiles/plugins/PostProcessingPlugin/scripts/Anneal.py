@@ -16,15 +16,16 @@ class Anneal(Script):
             "settings": {
                 "temperature":
                 {
-                    "label": "Temperature",
+                    "label": "Temperature (C)",
                     "description": "The temperature to set the machine for the dwell duration",
                     "type": "int",
-                    "default_value": 200
+                    "maximum_value_warning": "230",
+                    "default_value": 90
                 },
                 "time":
                 {
-                    "label": "Time",
-                    "description": "How long to dwell at the given temperature, in hours",
+                    "label": "Time (Hours)",
+                    "description": "How long to dwell at the given temperature",
                     "type": "int",
                     "default_value": 2
                 }
