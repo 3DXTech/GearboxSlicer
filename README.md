@@ -25,21 +25,21 @@ If you would like the HT2 and Gearbox3d theme selected in Cura automatically, co
   - This contains a script for the `PostProcessingPlugin.py` that helps calculate a more accurate time estimate for prints on the HT2.
 - resources
   - definitions
-    - Default FDM printer definition and FDM extruder defintion files as well as the HT2 printer definition file that inherits from FDM printer.
+    - Default FDM printer definition and FDM extruder definition files as well as the HT2 printer definition file that inherits from FDM printer.
   - extruders
     - HT2 Definition files for the 2 HT2 extruders.
   - images
-    - Splash screen and logo images for Cura skin
+    - Splash screen and logo images for Cura skin.
   - materials
-    - Definitions for all the Gearbox materials
+    - Definitions for all the Gearbox materials.
   - quality
-    - Settings for how the materials print on the HT2, broken down by nozzle
+    - Settings for how the materials print on the HT2, broken down by quality type.
   - setting_visibility
     - These allow different levels of viewable settings in Cura. To see the settings that we recommend changing, use the Gearbox3d level. You may change settings using advanced, however be sure to follow the recommended limits and warnings inside Cura to ensure proper operation of the HT2.
   - themes
-    - An optional dark theme for Cura
+    - An optional dark theme for Cura.
   - variants
-    - Cura supports multiple variants for each extruder, which is differentiated by nozzle size with these definitions. These are required for the different material profiles to work with each different sized nozzle.
+    - Place new nozzle sizes in this area for them to appear on the Nozzle Size drop down. Quality profiles reference the variant name to correlate them.
 </details>
 
 ## Post Processing Configuration

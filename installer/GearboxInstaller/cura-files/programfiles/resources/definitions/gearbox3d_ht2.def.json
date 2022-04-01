@@ -141,17 +141,15 @@
             "default_value": 5000
         },
         "layer_height": {
-            "minimum_value_warning": "0.5 * machine_nozzle_size",
-            "maximum_value_warning": "machine_nozzle_size",
-            "default_value": 0.3048,
-            "value": "0.6 * machine_nozzle_size",
-            "settable_per_mesh": true
+            "minimum_value_warning": "0.5 * layer_height",
+            "maximum_value_warning": "layer_height",
+            "default_value": 0.3048
         },
         "layer_height_0": {
-            "minimum_value_warning": "0.5 * machine_nozzle_size",
-            "maximum_value_warning": "machine_nozzle_size",
+            "minimum_value_warning": "0.5 * layer_height",
+            "maximum_value_warning": "layer_height",
             "default_value": 0.3048,
-            "value": "0.6 * machine_nozzle_size",
+            "value": "layer_height",
             "resolve": "",
             "settable_per_mesh": true
         },
@@ -231,17 +229,19 @@
         },
         "wall_0_extruder_nr": {
             "default_value": "0",
-            "value": "wall_extruder_nr"
+            "value": "wall_extruder_nr",
+            "settable_per_extruder": true
         },
         "wall_x_extruder_nr": {
             "default_value": "0",
-            "value": "wall_extruder_nr"
+            "value": "wall_extruder_nr",
+            "settable_per_extruder": true
         },
         "wall_thickness": {
             "minimum_value_warning": "line_width",
             "maximum_value_warning": "10 * line_width",
             "default_value": 1.524,
-            "value": "wall_line_width_0 if magic_spiralize else 1.524"
+            "value": "wall_line_width_0 if magic_spiralize else (line_width * 3)"
         },
         "wall_line_count": {
             "minimum_value_warning": "1",
@@ -292,7 +292,8 @@
         },
         "top_bottom_thickness": {
             "default_value": 0.915,
-            "minimum_value_warning": "layer_height"
+            "minimum_value_warning": "layer_height",
+            "value": "layer_height * 3"
         },
         "top_thickness": {
             "default_value": 0.915,
@@ -310,7 +311,7 @@
         },
         "bottom_layers": {
             "default_value": 3,
-            "value": "0 if infill_sparse_density == 100 else math.ceil(round(top_thickness / layer_height))"
+            "value": "999999 if infill_sparse_density == 100 else math.ceil(round(top_thickness / layer_height))"
         },
         "initial_bottom_layers": {
             "default_value": 3
@@ -702,23 +703,28 @@
         },
         "support_infill_extruder_nr": {
             "default_value": "1",
-            "value": "support_extruder_nr"
+            "value": "support_extruder_nr",
+            "settable_per_extruder": true
         },
         "support_extruder_nr_layer_0": {
             "default_value": "1",
-            "value": "support_extruder_nr"
+            "value": "support_extruder_nr",
+            "settable_per_extruder": true
         },
         "support_interface_extruder_nr": {
             "default_value": "1",
-            "value": "support_extruder_nr"
+            "value": "support_extruder_nr",
+            "settable_per_extruder": true
         },
         "support_roof_extruder_nr": {
             "default_value": "1",
-            "value": "support_interface_extruder_nr"
+            "value": "support_interface_extruder_nr",
+            "settable_per_extruder": true
         },
         "support_bottom_extruder_nr": {
             "default_value": "1",
-            "value": "support_interface_extruder_nr"
+            "value": "support_interface_extruder_nr",
+            "settable_per_extruder": true
         },
         "support_angle": {
             "default_value": 60
@@ -753,7 +759,9 @@
         },
         "support_infill_sparse_thickness": {
             "default_value": 0.3048,
-            "maximum_value_warning": "1.0 * machine_nozzle_size"
+            "maximum_value_warning": "layer_height",
+            "minimum_value": "0.01",
+            "value": "layer_height * 0.6"
         },
         "support_interface_enable": {
             "default_value": true
@@ -761,7 +769,8 @@
         "support_interface_height": {
             "default_value": 1.219,
             "minimum_value_warning": "0.203 + layer_height",
-            "maximum_value_warning": "9.744"
+            "maximum_value_warning": "9.744",
+            "value": "layer_height * 2"
         },
         "support_roof_height": {
             "default_value": 1.219,
@@ -772,7 +781,8 @@
             "maximum_value_warning": "9.744"
         },
         "support_interface_skip_height": {
-            "default_value": 0.3048
+            "default_value": 0.3048,
+            "value": "layer_height"
         },
         "support_roof_line_distance": {
             "default_value": 0.406
@@ -798,59 +808,68 @@
             "settable_per_extruder": true
         },
         "raft_margin": {
-            "default_value": 20,
+            "default_value": 15,
             "maximum_value_warning": "30"
         },
         "raft_airgap": {
-            "default_value": 0.1
+            "default_value": 0
         },
         "layer_0_z_overlap": {
             "default_value": 0
         },
         "raft_surface_thickness": {
-            "default_value": 0.203,
-            "value": "0.203",
-            "maximum_value_warning": "1.0 * 0.406"
+            "default_value": 0.2436,
+            "value": "machine_nozzle_size * 0.6",
+            "minimum_value_warning": "machine_nozzle_size * 0.1",
+            "maximum_value_warning": "machine_nozzle_size"
         },
         "raft_surface_line_width": {
             "default_value": 0.406,
-            "value": "0.406",
-            "minimum_value_warning": "0.406 * 0.1",
-            "maximum_value_warning": "0.406 * 2"
+            "value": "line_width",
+            "minimum_value_warning": "line_width * 0.1",
+            "maximum_value_warning": "line_width * 2"
         },
         "raft_surface_line_spacing": {
-            "default_value": 0.406
+            "default_value": 0.406,
+            "minimum_value_warning": "raft_surface_line_width * 0.9",
+            "maximum_value_warning": "raft_surface_line_width * 2.1",
+            "value": "raft_surface_line_width"
         },
         "raft_interface_thickness": {
-            "default_value": 0.203,
-            "value": "0.203",
-            "maximum_value_warning": "1.0 * 0.406"
+            "default_value": 0.2436,
+            "value": "machine_nozzle_size * 0.6",
+            "minimum_value_warning": "machine_nozzle_size * 0.1",
+            "maximum_value_warning": "machine_nozzle_size"
         },
         "raft_interface_line_width": {
-            "default_value": 0.406,
-            "value": "0.406",
-            "minimum_value_warning": "0.406 * 0.5",
-            "maximum_value_warning": "0.406 * 3"
+            "default_value": 0.609,
+            "minimum_value_warning": "line_width * 0.5",
+            "maximum_value_warning": "line_width * 3",
+            "value": "line_width * 1.5"
         },
         "raft_interface_line_spacing": {
             "default_value": 0.609,
-            "value": "raft_interface_line_width + 0.203",
-            "minimum_value_warning": "raft_interface_line_width"
+            "minimum_value_warning": "raft_interface_line_width * 0.9",
+            "maximum_value_warning": "raft_interface_line_width * 2.1",
+            "value": "raft_interface_line_width * 2"
         },
         "raft_base_thickness": {
-            "default_value": 0.3045,
-            "value": "0.3045",
-            "maximum_value_warning": "1.0 * raft_base_line_width"
+            "default_value": 0.2842,
+            "value": "machine_nozzle_size * 0.7",
+            "minimum_value_warning": "machine_nozzle_size * 0.1",
+            "maximum_value_warning": "machine_nozzle_size"
         },
         "raft_base_line_width": {
             "default_value": 0.812,
-            "value": "0.812",
-            "minimum_value_warning": "0.406 * 0.5",
-            "maximum_value_warning": "0.406 * 3"
+            "minimum_value_warning": "line_width * 0.5",
+            "maximum_value_warning": "line_width * 3",
+            "value": "line_width * 2"
         },
         "raft_base_line_spacing": {
             "default_value": 0.812,
-            "minimum_value_warning": "raft_interface_line_width"
+            "minimum_value_warning": "raft_base_line_width * 0.9",
+            "maximum_value_warning": "raft_base_line_width * 2.1",
+            "value": "raft_base_line_width * 2"
         },
         "raft_speed": {
             "default_value": 150,
@@ -865,13 +884,13 @@
             "maximum_value": "1200"
         },
         "raft_interface_speed": {
-            "default_value": 112.5,
+            "default_value": 150,
             "value": "raft_speed",
             "maximum_value_warning": "500",
             "maximum_value": "1200"
         },
         "raft_base_speed": {
-            "default_value": 112.5,
+            "default_value": 150,
             "value": "raft_speed",
             "maximum_value_warning": "500",
             "maximum_value": "1200"

@@ -3,18 +3,18 @@
     <metadata>
         <name>
             <brand>Model</brand>
-            <material>PEEK</material>
-            <label>GBX PEEK</label>
-            <color>Black/Natural</color>
+            <material>PEI 1010</material>
+            <label>GBX ESD-PEI</label>
+            <color>Black</color>
         </name>
-        <GUID>5ac6b276-5cf3-45da-b6a9-7b837529856d</GUID>
-        <version>26</version>
-        <color_code>#A2835A</color_code>
-        <description>PEEK is one of the highest-performance polymers in the world. It has exceptional mechanical, thermal, and chemical resistance properties making it a go-to material in some of the most demanding applications.</description>
+        <GUID>fc6e31cc-104f-4df1-ad65-dfa765013141</GUID>
+        <version>24</version>
+        <color_code>#333333</color_code>
+        <description>ESD-PEI is made using PEI-1010 resin and multi-wall CNTs. ESD-PEI is an amorphous, ultra polymer that combines excellent mechanical, thermal, and chemical resistance properties.</description>
         <adhesion_info>Use high temperature build sheet.</adhesion_info>
     </metadata>
     <properties>
-        <density>1.30</density>
+        <density>1.37</density>
         <diameter>1.78</diameter>
     </properties>
     <settings>
