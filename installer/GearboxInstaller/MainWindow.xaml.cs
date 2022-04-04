@@ -405,13 +405,6 @@ namespace GearboxInstaller
             CreateShortcut(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\GearboxSlicer");
             PrimaryButtonText = "Finish";
         }
-        private void DeleteDirectory(string path)
-        {
-            if (Directory.Exists(path))
-            {
-                Directory.Delete(path, true);
-            }
-        }
         private void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)
         {
             // Get the subdirectories for the specified directory.
@@ -545,10 +538,39 @@ namespace GearboxInstaller
             StatusText = "Uninstalling GearboxSlicer, please wait...";
             AltButtonDisplayed = false;
             PrimaryButtonEnabled = false;
+            if (Directory.Exists(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\GearboxSlicer"))
+            {
+                DeleteDirectory(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\GearboxSlicer");
+            }
             _installerState = InstallerStates.Uninstall;
             var uninstallerPath = Path.Combine(_installPath, "Uninstall.exe");
             Process.Start(uninstallerPath, "/S");
             _timer.Change(0, 250);
+        }
+        /// <summary>
+        /// https://stackoverflow.com/questions/329355/cannot-delete-directory-with-directory-deletepath-true
+        /// Depth-first recursive delete, with handling for descendant 
+        /// directories open in Windows Explorer.
+        /// </summary>
+        public static void DeleteDirectory(string path)
+        {
+            foreach (string directory in Directory.GetDirectories(path))
+            {
+                DeleteDirectory(directory);
+            }
+
+            try
+            {
+                Directory.Delete(path, true);
+            }
+            catch (IOException) 
+            {
+                Directory.Delete(path, true);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                Directory.Delete(path, true);
+            }
         }
     }
 }
