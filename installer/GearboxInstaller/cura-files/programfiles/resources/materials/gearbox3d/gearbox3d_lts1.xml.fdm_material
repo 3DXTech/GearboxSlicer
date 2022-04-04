@@ -18,7 +18,7 @@
     </properties>
     <settings>
         <machine>
-            <machine_identifier manufacturer="Gearbox3D" product="Gearbox3D HT2"/>                     
+            <machine_identifier manufacturer="Gearbox3D" product="Gearbox3D HT2"/>
         </machine>
     </settings>
 </fdmmaterial>

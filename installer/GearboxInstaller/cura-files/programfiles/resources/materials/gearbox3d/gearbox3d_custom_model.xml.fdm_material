@@ -11,7 +11,7 @@
         <version>24</version>
         <color_code>#03FF00</color_code>
         <description>Use this material for a custom model material.</description>
-        <adhesion_info>Evaluate chamber temperature to select the corresponding build sheet (High or low temperature).</adhesion_info>
+        <adhesion_info>Evaluate chamber temperature to select the corresponding build sheet (high or low temperature).</adhesion_info>
     </metadata>
     <properties>
         <density>0.00</density>
