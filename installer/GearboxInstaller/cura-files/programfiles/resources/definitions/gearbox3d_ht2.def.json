@@ -114,7 +114,7 @@
             "value": 40
         },
         "machine_nozzle_id": {
-            "default_value": "GBX Unknown"
+            "default_value": "gbxunknown"
         },
         "machine_nozzle_size": {
             "default_value": 0.508
