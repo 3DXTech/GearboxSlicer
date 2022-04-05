@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using GearboxInstaller.Enums;
 using Iwsh = IWshRuntimeLibrary;
@@ -24,6 +25,10 @@ namespace GearboxInstaller
         private bool _agreementAccepted = false;
         private bool _installComplete;
         private System.Net.WebClient _webClient;
+        private bool _callbackLock = false;
+        private bool _installStarted;
+        private bool _uninstallStarted;
+        private string _curaInstallerName;
         private InstallerStates _installerState = InstallerStates.Unknown;
         private Uri _curaDownloadUrl =
             new(@"https://github.com/Ultimaker/Cura/releases/download/4.10.0/Ultimaker_Cura-4.10.0-amd64.exe");
@@ -163,83 +168,124 @@ namespace GearboxInstaller
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-        private void Callback(object? state)
+        private async void Callback(object? state)
         {
+            if (_callbackLock)
+            {
+                Debug.WriteLine("Hit callback lockout");
+                return;
+            }
+
+            _callbackLock = true;
+            _timer.Change(Timeout.Infinite, Timeout.Infinite);
             if (!CheckForInstall())
             {
                 Debug.WriteLine("No install found");
+                if (_installerState == InstallerStates.Uninstall)
+                {
+                    StatusText = "Uninstall complete";
+                    PrimaryButtonText = "Finish";
+                    AltButtonDisplayed = false;
+                    _installComplete = true;
+                    PrimaryButtonEnabled = true;
+                    _callbackLock = false;
+                    return;
+                }
+                _timer.Change(0, 250);
+                _callbackLock = false;
                 return;
             }
             _folderCount = Directory.GetDirectories(_installPath).Length;
             _fileCount = 0;
+            //get all running processes
+            var processes = Process.GetProcesses();
+            if (processes.Any(x => x.ProcessName == "Uninstall"))
+            {
+                Debug.WriteLine("Waiting for uninstall to finish");
+                _uninstallStarted = true;
+                _timer.Change(0, 250);
+                _callbackLock = false;
+                return;
+            }
             
             if (_installerState is InstallerStates.Repair or InstallerStates.Uninstall or InstallerStates.Unknown)
             {
-                if (_folderCount == 2)
+                if (processes.All(x => x.ProcessName != "Uninstall") && _uninstallStarted)
                 {
+                    await Task.Delay(3000);
+                    Debug.WriteLine("Starting Deletion...");
                     FullPurge();
                     if (_installerState is InstallerStates.Repair)
                     {
                         _timer.Change(Timeout.Infinite, Timeout.Infinite);
                         _installerState = InstallerStates.FreshInstall;
+                        _callbackLock = false;
                         DownloadCura();
                     }
                     else if (_installerState is InstallerStates.Uninstall)
                     {
-                        _timer.Change(Timeout.Infinite, Timeout.Infinite);
-                        FullPurge();
                         StatusText = "Uninstall complete";
                         PrimaryButtonText = "Finish";
                         AltButtonDisplayed = false;
                         _installComplete = true;
+                        _callbackLock = false;
                         PrimaryButtonEnabled = true;
                     }
                 }
 
+                _timer.Change(0, 250);
+                _callbackLock = false;
                 return;
             }
 
             InstallProgress = ((double)(_folderCount + _fileCount) / (FolderTarget + FileTarget));
-            if (_folderCount == FolderTarget)
+            //make sure it doesn't copy the files before the installer kicks off
+            if (processes.Any(x => x.ProcessName == _curaInstallerName))
             {
-                foreach (var dir in Directory.GetDirectories(_installPath))
+                _installStarted = true;
+            }
+            //move stuff around after the process is dead
+            if (processes.All(x => x.ProcessName != _curaInstallerName))
+            {
+                _timer.Change(Timeout.Infinite, Timeout.Infinite);
+                await Task.Delay(3000);
+                Debug.WriteLine("Starting install...");
+                try
                 {
-                    _fileCount += Directory.GetFiles(dir).Length;
+                    DeleteExistingFiles();
+                    Thread.Sleep(1000);
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e);
                 }
 
-                _fileCount += Directory.GetFiles(_installPath).Length;
-                InstallProgress = ((double)(_folderCount + _fileCount) / (FolderTarget + FileTarget));
-                if (_fileCount == FileTarget)
+                try
                 {
-                    _timer.Change(Timeout.Infinite, Timeout.Infinite);
-                    try
-                    {
-                        DeleteExistingFiles();
-                    }
-                    catch (Exception e)
-                    {
-                        Debug.WriteLine(e);
-                    }
-
-                    try
-                    {
-                        CopyNewFiles();
-                    }
-                    catch (Exception e)
-                    {
-                        Debug.WriteLine(e);
-                    }
+                    CopyNewFiles();
+                    Thread.Sleep(1000);
                 }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e);
+                }
+                _callbackLock = false;
+            }
+            else
+            {
+                _timer.Change(0, 250);
+                _callbackLock = false;
             }
         }
         private void PrimaryButtonClicked(object sender, RoutedEventArgs e)
         {
+            Debug.WriteLine($"install complete: {_installComplete}");
             //"finish" button pressed
             if (_installComplete)
             {
                 Application.Current.Shutdown();
+                return;
             }
-
             //"agree" button pressed
             if (!_agreementAccepted)
             {
@@ -345,23 +391,33 @@ namespace GearboxInstaller
                 @"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Ultimaker Cura",
                 "Uninstall Ultimaker Cura 4.10.0.lnk");
             //Delete the definitions, extruders, materials, variants folders (to get rid of other company's stuff)
+            Debug.WriteLine("Deleting definitions folder");
             DeleteDirectory(Path.Combine(_installPath, "resources", "definitions"));
+            Debug.WriteLine("Deleting extruders folder");
             DeleteDirectory(Path.Combine(_installPath, "resources", "extruders"));
+            Debug.WriteLine("Deleting materials folder");
             DeleteDirectory(Path.Combine(_installPath, "resources", "materials"));
+            Debug.WriteLine("Deleting variants folder");
             DeleteDirectory(Path.Combine(_installPath, "resources", "variants"));
+            Debug.WriteLine("Deleting quality");
             DeleteDirectory(Path.Combine(_installPath, "resources", "quality"));
+            Debug.WriteLine("Deleting Monitor Stage");
             DeleteDirectory(Path.Combine(_installPath, "plugins", "MonitorStage"));
+            
             if (File.Exists(shortcutPath))
             {
+                Debug.WriteLine("Deleting shortcut");
                 File.Delete(shortcutPath);
             }
             if (File.Exists(uninstallShortcutPath))
             {
+                Debug.WriteLine("Deleting uninstall shortcut");
                 File.Delete(uninstallShortcutPath);
             }
             if (Directory.GetFiles(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Ultimaker Cura")
                 .All(x => !x.Contains("Ultimaker Cura")))
             {
+                Debug.WriteLine("Deleting uninstall shortcut folder");
                 DeleteDirectory(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Ultimaker Cura");
             }
         }
@@ -379,6 +435,7 @@ namespace GearboxInstaller
                 foreach (var dir in Directory.GetDirectories(filesDir))
                 {
                     var folderName = Path.GetRelativePath(filesDir, dir);
+                    Debug.WriteLine($"Copying {folderName}");
                     DirectoryCopy(dir, Path.Combine(_installPath, folderName), true);
                 }
             }
@@ -407,6 +464,7 @@ namespace GearboxInstaller
         }
         private void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)
         {
+            Debug.WriteLine($"Copying {sourceDirName} to {destDirName}");
             // Get the subdirectories for the specified directory.
             DirectoryInfo dir = new DirectoryInfo(sourceDirName);
 
@@ -427,6 +485,7 @@ namespace GearboxInstaller
             foreach (FileInfo file in files)
             {
                 string tempPath = Path.Combine(destDirName, file.Name);
+                Debug.WriteLine($"Copying {file.FullName} to {tempPath}");
                 file.CopyTo(tempPath, true);
             }
 
@@ -452,20 +511,9 @@ namespace GearboxInstaller
             var altFilePath = Path.Combine(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName),
                 "Ultimaker_Cura-4.10.0-amd64.exe");
             var downloadFilePath = Path.Combine(AppContext.BaseDirectory, "curainstaller.exe");
-            if (File.Exists(filePath))
+            if (File.Exists(filePath) || File.Exists(altFilePath) || File.Exists(downloadFilePath))
             {
-                Process.Start(filePath, installArgs);
-                StatusText = $"Running installer from {filePath}{Environment.NewLine}";
-            }
-            else if (File.Exists(altFilePath))
-            {
-                Process.Start(altFilePath, installArgs);
-                StatusText = $"Running installer from {altFilePath}{Environment.NewLine}";
-            }
-            else if (File.Exists(downloadFilePath))
-            {
-                Process.Start(downloadFilePath, installArgs);
-                StatusText = $"Running downloaded installer{Environment.NewLine}";
+                RunInstaller();
             }
             else
             {
@@ -485,27 +533,33 @@ namespace GearboxInstaller
             var downloadFilePath = Path.Combine(AppContext.BaseDirectory, "curainstaller.exe");
             if (File.Exists(filePath))
             {
+                _curaInstallerName = Path.GetFileNameWithoutExtension(filePath);
                 Process.Start(filePath, installArgs);
                 StatusText = $"Running installer from {filePath}{Environment.NewLine}";
             }
             else if (File.Exists(altFilePath))
             {
+                _curaInstallerName = Path.GetFileNameWithoutExtension(filePath);
                 Process.Start(altFilePath, installArgs);
                 StatusText = $"Running installer from {altFilePath}{Environment.NewLine}";
             }
             else if (File.Exists(downloadFilePath))
             {
+                _curaInstallerName = Path.GetFileNameWithoutExtension(filePath);
                 Process.Start(downloadFilePath, installArgs);
                 StatusText = $"Running downloaded installer{Environment.NewLine}";
             }
         }
         private void UpdateFiles()
         {
+            Thread.Sleep(1000);
             DeleteExistingFiles();
             StatusText = $"Updating GearboxSlicer, overwriting resources files only{Environment.NewLine}";
             PrimaryButtonText = "Close";
             PrimaryButtonEnabled = false;
+            Thread.Sleep(1000);
             CopyNewFiles();
+            Thread.Sleep(1000);
             _installComplete = true;
             PrimaryButtonEnabled = true;
         }
@@ -513,14 +567,9 @@ namespace GearboxInstaller
         {
             if (Directory.Exists(_installPath))
             {
-                try
-                {
-                    Directory.Delete(_installPath, true);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
+                Thread.Sleep(1000);
+                DeleteDirectory(_installPath);
+                Thread.Sleep(1000);
             }
         }
         private void CreateShortcut(string location)
@@ -541,6 +590,12 @@ namespace GearboxInstaller
             if (Directory.Exists(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\GearboxSlicer"))
             {
                 DeleteDirectory(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\GearboxSlicer");
+                Thread.Sleep(1000);
+            }
+            //delete shortcut from desktop
+            if (File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "GearboxSlicer.lnk")))
+            {
+                File.Delete(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "GearboxSlicer.lnk"));
             }
             _installerState = InstallerStates.Uninstall;
             var uninstallerPath = Path.Combine(_installPath, "Uninstall.exe");
@@ -552,8 +607,14 @@ namespace GearboxInstaller
         /// Depth-first recursive delete, with handling for descendant 
         /// directories open in Windows Explorer.
         /// </summary>
-        public static void DeleteDirectory(string path)
+        public void DeleteDirectory(string path)
         {
+            if (!Directory.Exists(path))
+            {
+                return;
+                
+            }
+            Thread.Sleep(100);
             foreach (string directory in Directory.GetDirectories(path))
             {
                 DeleteDirectory(directory);
@@ -563,7 +624,7 @@ namespace GearboxInstaller
             {
                 Directory.Delete(path, true);
             }
-            catch (IOException) 
+            catch (IOException)
             {
                 Directory.Delete(path, true);
             }
