@@ -552,11 +552,11 @@ namespace GearboxInstaller
         }
         private async Task UpdateFiles()
         {
+            PrimaryButtonEnabled = false;
+            StatusText = $"Updating GearboxSlicer, overwriting resources files only{Environment.NewLine}";
             await Task.Delay(1000);
             await DeleteExistingFiles();
-            StatusText = $"Updating GearboxSlicer, overwriting resources files only{Environment.NewLine}";
             PrimaryButtonText = "Close";
-            PrimaryButtonEnabled = false;
             await Task.Delay(1000);
             CopyNewFiles();
             await Task.Delay(1000);
