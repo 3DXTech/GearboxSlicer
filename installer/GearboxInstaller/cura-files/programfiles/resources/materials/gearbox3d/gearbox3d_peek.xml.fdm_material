@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdmmaterial xmlns="http://www.ultimaker.com/material" xmlns:cura="http://www.ultimaker.com/cura" version="1.3">
+    <metadata>
+        <name>
+            <brand>Model</brand>
+            <material>PEEK</material>
+            <label>GBX PEEK</label>
+            <color>Black/Natural</color>
+        </name>
+        <GUID>5ac6b276-5cf3-45da-b6a9-7b837529856d</GUID>
+        <version>26</version>
+        <color_code>#A2835A</color_code>
+        <description>PEEK is one of the highest-performance polymers in the world. It has exceptional mechanical, thermal, and chemical resistance properties making it a go-to material in some of the most demanding applications.</description>
+        <adhesion_info>Use high temperature build sheet.</adhesion_info>
+    </metadata>
+    <properties>
+        <density>1.30</density>
+        <diameter>1.78</diameter>
+    </properties>
+    <settings>
+        <machine>
+            <machine_identifier manufacturer="Gearbox3D" product="Gearbox3D HT2"/>
+        </machine>
+    </settings>
+</fdmmaterial>
