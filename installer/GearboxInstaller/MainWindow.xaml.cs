@@ -191,7 +191,7 @@ namespace GearboxInstaller
                     _callbackLock = false;
                     return;
                 }
-                _timer.Change(0, 250);
+                _timer.Change(0, 700);
                 _callbackLock = false;
                 return;
             }
@@ -203,7 +203,7 @@ namespace GearboxInstaller
             {
                 Debug.WriteLine("Waiting for uninstall to finish");
                 _uninstallStarted = true;
-                _timer.Change(0, 250);
+                _timer.Change(0, 700);
                 _callbackLock = false;
                 return;
             }
@@ -233,7 +233,7 @@ namespace GearboxInstaller
                     }
                 }
 
-                _timer.Change(0, 250);
+                _timer.Change(0, 700);
                 _callbackLock = false;
                 return;
             }
@@ -248,7 +248,7 @@ namespace GearboxInstaller
             if (processes.All(x => x.ProcessName != _curaInstallerName))
             {
                 _timer.Change(Timeout.Infinite, Timeout.Infinite);
-                await Task.Delay(3000);
+                await Task.Delay(1000);
                 Debug.WriteLine("Starting install...");
                 try
                 {
@@ -273,7 +273,7 @@ namespace GearboxInstaller
             }
             else
             {
-                _timer.Change(0, 250);
+                _timer.Change(0, 700);
                 _callbackLock = false;
             }
         }
@@ -325,6 +325,7 @@ namespace GearboxInstaller
             {
                 var uninstallerPath = Path.Combine(_installPath, "Uninstall.exe");
                 AltButtonDisplayed = false;
+                PrimaryButtonEnabled = false;
                 switch (_installerState)
                 {
                     case InstallerStates.Update:
@@ -340,8 +341,9 @@ namespace GearboxInstaller
                         //if uninstaller exists, run that first
                         if (File.Exists(uninstallerPath))
                         {
+                            StatusText = "Cleaning up old files...";
                             Process.Start(uninstallerPath, "/S");
-                            _timer.Change(0, 250);
+                            _timer.Change(0, 700);
                         }
                         else
                         {
@@ -503,9 +505,8 @@ namespace GearboxInstaller
         {
             PrimaryButtonEnabled = false;
             StatusText = "";
-            _timer.Change(0, 250);
+            _timer.Change(0, 700);
             StatusText += $"Installing Cura...{Environment.NewLine}";
-            var installArgs = @$"/S /D={_installPath}";
             var filePath = Path.Combine(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName),
                 "curainstaller.exe");
             var altFilePath = Path.Combine(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName),
@@ -549,17 +550,20 @@ namespace GearboxInstaller
                 Process.Start(downloadFilePath, installArgs);
                 StatusText = $"Running downloaded installer{Environment.NewLine}";
             }
+
+            _timer.Change(Timeout.Infinite, Timeout.Infinite);
+            _timer.Change(0, 700);
         }
         private async Task UpdateFiles()
         {
             PrimaryButtonEnabled = false;
             StatusText = $"Updating GearboxSlicer, overwriting resources files only{Environment.NewLine}";
-            await Task.Delay(1000);
+            await Task.Delay(100);
             await DeleteExistingFiles();
             PrimaryButtonText = "Close";
-            await Task.Delay(1000);
+            await Task.Delay(100);
             CopyNewFiles();
-            await Task.Delay(1000);
+            await Task.Delay(100);
             _installComplete = true;
             PrimaryButtonEnabled = true;
         }
@@ -567,9 +571,8 @@ namespace GearboxInstaller
         {
             if (Directory.Exists(_installPath))
             {
-                await Task.Delay(1000);
+                await Task.Delay(100);
                 await DeleteDirectory(_installPath);
-                await Task.Delay(1000);
             }
         }
         private void CreateShortcut(string location)
@@ -587,6 +590,7 @@ namespace GearboxInstaller
             StatusText = "Uninstalling GearboxSlicer, please wait...";
             AltButtonDisplayed = false;
             PrimaryButtonEnabled = false;
+            PrimaryButtonText = "Uninstall";
             if (Directory.Exists(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\GearboxSlicer"))
             {
                 await DeleteDirectory(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\GearboxSlicer");
@@ -600,7 +604,7 @@ namespace GearboxInstaller
             _installerState = InstallerStates.Uninstall;
             var uninstallerPath = Path.Combine(_installPath, "Uninstall.exe");
             Process.Start(uninstallerPath, "/S");
-            _timer.Change(0, 250);
+            _timer.Change(0, 700);
         }
         /// <summary>
         /// https://stackoverflow.com/questions/329355/cannot-delete-directory-with-directory-deletepath-true
