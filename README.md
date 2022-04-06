@@ -7,6 +7,9 @@ Download and run the latest version of the `GearboxInstaller.exe` [here](https:/
 # Install Instructions
 If Cura 4.10.0 is not installed, download the installer [here](https://github.com/Ultimaker/Cura/releases/download/4.10.0/Ultimaker_Cura-4.10.0-amd64.exe) (release notes [here](https://github.com/Ultimaker/Cura/releases/tag/4.10.0))
 
+### Offline Install
+Download the Cura installer referenced above (make sure it is the correct version) and rename it to `curainstaller.exe` and place it in the same location as the Gearbox Slicer installer. When you run the installer it should automatically see that file and use that rather than download.
+
 ## Adding Printer, Materials, and Settings
 > Make sure Cura is closed before copying any of these files!
 
