@@ -698,33 +698,27 @@
         },
         "support_extruder_nr": {
             "default_value": "1",
-            "value": 1,
-            "settable_per_extruder": true
+            "value": 1
         },
         "support_infill_extruder_nr": {
             "default_value": "1",
-            "value": "support_extruder_nr",
-            "settable_per_extruder": true
+            "value": "support_extruder_nr"
         },
         "support_extruder_nr_layer_0": {
             "default_value": "1",
-            "value": "support_extruder_nr",
-            "settable_per_extruder": true
+            "value": "support_extruder_nr"
         },
         "support_interface_extruder_nr": {
             "default_value": "1",
-            "value": "support_extruder_nr",
-            "settable_per_extruder": true
+            "value": "support_extruder_nr"
         },
         "support_roof_extruder_nr": {
             "default_value": "1",
-            "value": "support_interface_extruder_nr",
-            "settable_per_extruder": true
+            "value": "support_interface_extruder_nr"
         },
         "support_bottom_extruder_nr": {
             "default_value": "1",
-            "value": "support_interface_extruder_nr",
-            "settable_per_extruder": true
+            "value": "support_interface_extruder_nr"
         },
         "support_angle": {
             "default_value": 60
