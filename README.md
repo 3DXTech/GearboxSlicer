@@ -59,7 +59,7 @@ The tool change must come before display progress, otherwise the order does not 
 3. Material definition files (`/materials/`) contain a GUID field, if you copy and paste one of them [create a new GUID](https://www.guidgenerator.com/) and change that field.
 
 ## Helpful Cura Things
-1. https://github.com/Ultimaker/Cura/wiki/Profiles-&-Settings
-2. https://github.com/Ultimaker/Cura/blob/master/docs/profiles/getting_a_setting_value.md
-3. https://github.com/Ultimaker/Cura/blob/master/docs/profiles/container_stacks.md
-4. https://github.com/Ultimaker/Cura/wiki/Definition-Files-Explained#create-definition-files-for-a-new-machine
+1. [Profiles And Settings](https://github.com/Ultimaker/Cura/wiki/Profiles-&-Settings)
+2. [Getting a Setting Value](https://github.com/Ultimaker/Cura/blob/master/docs/profiles/getting_a_setting_value.md)
+3. [Container Stacks](https://github.com/Ultimaker/Cura/blob/master/docs/profiles/container_stacks.md)
+4. [Create New Definition File](https://github.com/Ultimaker/Cura/wiki/Definition-Files-Explained#create-definition-files-for-a-new-machine)
