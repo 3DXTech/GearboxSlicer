@@ -381,8 +381,8 @@
             "maximum_value_warning": "150"
         },
         "material_standby_temperature": {
-            "default_value": 50,
-            "value": "50",
+            "default_value": 100,
+            "value": "material_print_temperature - 75",
             "minimum_value": "-0.1",
             "minimum_value_warning": "20",
             "maximum_value_warning": "475",
