@@ -8,18 +8,15 @@
         "manufacturer": "Gearbox3D",
         "file_formats": "text/x-gcode",
         "visible": true,
-
         "has_variants": true,
         "has_materials": true,
         "has_machine_materials": true,
         "has_variant_materials": true,
         "has_machine_quality": true,
-
         "variants_name": "Nozzle Size",
         "preferred_quality_type": "normal",
         "preferred_material": "gearbox3d_abs",
         "preferred_variant_name": "GBX20",
-
         "machine_extruder_trains": {
             "0": "gearbox3d_ht2_extruder_0",
             "1": "gearbox3d_ht2_extruder_1"
@@ -261,7 +258,6 @@
             "default_value": true
         },
         "z_seam_position": {
-            "enabled": "z_seam_type == 'backleft'",
             "default_value": "backleft"
         },
         "z_seam_x": {
@@ -269,7 +265,7 @@
             "enabled": "z_seam_type == 'backleft'"
         },
         "z_seam_y": {
-            "default_value": 5.0,
+            "default_value": 452.0,
             "enabled": "z_seam_type == 'backleft'"
         },
         "z_seam_corner": {
