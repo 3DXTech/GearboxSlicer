@@ -41,7 +41,7 @@
             "default_value": ";Begin start code\n;material_guid0 = {material_guid, 0} material_guid1 = {material_guid, 1}\n;material_weight = {filament_weight}\nG55\nG92 E0\nG28 X250.0 Y5.0\nG0 Z5.0\nM208\nG0 X450.0\n;End start code"
         },
         "machine_end_gcode": {
-            "default_value": "M141 S{build_volume_temperature}\nM104 T0 S#12\nM104 T1 S#13\nG92 E0\n;anneal\nG0 Z810.0\nG28 X250.0 Y5.0\nG54\nM30"
+            "default_value": "M141 S{build_volume_temperature}\nM104 T0 S#12\nM104 T1 S#13\nG92 E0\n;anneal\nG0 Z813.5\nG28 X250.0 Y5.0\nG54\nM30"
         },
         "material_diameter": {
             "default_value": 1.78,
