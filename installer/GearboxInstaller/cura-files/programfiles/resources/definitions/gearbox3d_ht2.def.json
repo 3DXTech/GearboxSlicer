@@ -8,18 +8,15 @@
         "manufacturer": "Gearbox3D",
         "file_formats": "text/x-gcode",
         "visible": true,
-
         "has_variants": true,
         "has_materials": true,
         "has_machine_materials": true,
         "has_variant_materials": true,
         "has_machine_quality": true,
-
         "variants_name": "Nozzle Size",
         "preferred_quality_type": "normal",
         "preferred_material": "gearbox3d_abs",
         "preferred_variant_name": "GBX20",
-
         "machine_extruder_trains": {
             "0": "gearbox3d_ht2_extruder_0",
             "1": "gearbox3d_ht2_extruder_1"
@@ -44,7 +41,7 @@
             "default_value": ";Begin start code\n;material_guid0 = {material_guid, 0} material_guid1 = {material_guid, 1}\n;material_weight = {filament_weight}\nG55\nG92 E0\nG28 X250.0 Y5.0\nG0 Z5.0\nM208\nG0 X450.0\n;End start code"
         },
         "machine_end_gcode": {
-            "default_value": "M141 S{build_volume_temperature}\nM104 T0 S#12\nM104 T1 S#13\nG92 E0\n;anneal\nG0 Z810.0\nG28 X250.0 Y5.0\nG54\nM30"
+            "default_value": "M141 S{build_volume_temperature}\nM104 T0 S#12\nM104 T1 S#13\nG92 E0\n;anneal\nG0 Z813.5\nG28 X250.0 Y5.0\nG54\nM30"
         },
         "material_diameter": {
             "default_value": 1.78,
@@ -261,16 +258,13 @@
             "default_value": true
         },
         "z_seam_position": {
-            "enabled": "z_seam_type == 'backleft'",
             "default_value": "backleft"
         },
         "z_seam_x": {
-            "default_value": 5.0,
-            "enabled": "z_seam_type == 'backleft'"
+            "default_value": 0.0
         },
         "z_seam_y": {
-            "default_value": 5.0,
-            "enabled": "z_seam_type == 'backleft'"
+            "default_value": 457.0
         },
         "z_seam_corner": {
             "default_value": "z_seam_corner_weighted"
