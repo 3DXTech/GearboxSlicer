@@ -45,7 +45,7 @@ jobs:
       - name: build-solution
         run: msbuild installer\GearboxInstaller.sln -t:Publish -p:Configuration=Release -p:PublishDir="publish" -p:TargetRuntime=win-x86 -p:SelfContained=true -p:WarningLevel=0 /p:DebugSymbols=false /p:DebugType=None
         
-       - name: zip-files
+      - name: zip-files
         uses: vimtor/action-zip@v1
         with:
           files: installer\GearboxInstaller\publish\
