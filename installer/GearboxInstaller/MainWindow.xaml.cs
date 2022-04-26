@@ -405,6 +405,17 @@ namespace GearboxInstaller
             await DeleteDirectory(Path.Combine(_installPath, "resources", "quality"));
             Debug.WriteLine("Deleting Monitor Stage");
             await DeleteDirectory(Path.Combine(_installPath, "plugins", "MonitorStage"));
+            Debug.WriteLine("Deleting definition_changes");
+            var appdataDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                "cura", "4.10");
+            MessageBox.Show(Path.Combine(appdataDir, "definition_changes"));
+            await DeleteDirectory(Path.Combine(appdataDir, "definition_changes"));
+            Debug.WriteLine("Deleting extruders");
+            await DeleteDirectory(Path.Combine(appdataDir, "extruders"));
+            Debug.WriteLine("Deleting machine_instances");
+            await DeleteDirectory(Path.Combine(appdataDir, "machine_instances"));
+            Debug.WriteLine("Deleting user");
+            await DeleteDirectory(Path.Combine(appdataDir, "user"));
             
             if (File.Exists(shortcutPath))
             {
