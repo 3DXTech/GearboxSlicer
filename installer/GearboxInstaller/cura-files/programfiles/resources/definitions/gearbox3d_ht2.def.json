@@ -138,13 +138,13 @@
             "default_value": 5000
         },
         "layer_height": {
-            "minimum_value_warning": "0.5 * layer_height",
-            "maximum_value_warning": "layer_height",
+            "minimum_value_warning": "0.14",
+            "maximum_value_warning": "0.7",
             "default_value": 0.3048
         },
         "layer_height_0": {
-            "minimum_value_warning": "0.5 * layer_height",
-            "maximum_value_warning": "layer_height",
+            "minimum_value_warning": "0.14",
+            "maximum_value_warning": "0.7",
             "default_value": 0.3048,
             "value": "layer_height",
             "resolve": "",
