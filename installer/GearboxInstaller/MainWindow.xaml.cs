@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
@@ -408,7 +408,6 @@ namespace GearboxInstaller
             Debug.WriteLine("Deleting definition_changes");
             var appdataDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                 "cura", "4.10");
-            MessageBox.Show(Path.Combine(appdataDir, "definition_changes"));
             await DeleteDirectory(Path.Combine(appdataDir, "definition_changes"));
             Debug.WriteLine("Deleting extruders");
             await DeleteDirectory(Path.Combine(appdataDir, "extruders"));
