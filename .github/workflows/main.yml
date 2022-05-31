@@ -6,10 +6,17 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
+    paths-ignore:
+     - '*.md'
+    branches:
+     - develop
+     - main
     tags:
       - 'v*.*.*'
   pull_request:
-    branches: [ main ]
+    branches:
+     - main
+     - develop
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -23,7 +30,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: windows-latest
+    runs-on: windows-2022
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -59,6 +66,28 @@ jobs:
           name: gearboxinstaller
           # A file, directory or wildcard pattern that describes what to upload
           path: installer\GearboxInstaller\publish\
+
+      - uses: dev-drprasad/delete-tag-and-release@v0.2.0
+        name: delete-beta-tag
+        if: startsWith(github.ref, 'refs/heads/develop')
+        with:
+          delete_release: true # default: false
+          tag_name: 'latest-beta' # tag name to delete
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: release-beta
+        uses: softprops/action-gh-release@v0.1.14
+        if: startsWith(github.ref, 'refs/heads/develop')
+        with:
+          name: 🩸Bleeding Edge🩸
+          files: ${{ github.workspace }}\installer\GearboxInstaller\publish\GearboxInstaller.exe
+          body_path: patch-notes.md
+          prerelease: true
+          tag_name: 'latest-beta'
+          target_commitish: ${{ github.sha }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: release
         uses: softprops/action-gh-release@v0.1.5
