@@ -5,6 +5,7 @@ Profiles
 -GBX10 ABS
 
 ### Added
+- Download percentage display while download the Cura installer
 Materials
 - ASA
 - FR PC/ABS
