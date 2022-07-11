@@ -75,7 +75,7 @@ namespace GearboxInstaller
             get { return _downloadProgress; }
             set
             {
-                _downloadProgress = value * 0.75;
+                _downloadProgress = value;
                 UpdateProgress();
             }
         }
@@ -149,6 +149,7 @@ namespace GearboxInstaller
             _webClient.DownloadProgressChanged += (s, a) =>
             {
                 DownloadProgress = a.ProgressPercentage;
+                StatusText = $"Downloading installer... {Math.Round(DownloadProgress, 0)}%";
                 if (a.ProgressPercentage == 100)
                 {
                     RunInstaller();
@@ -530,7 +531,7 @@ namespace GearboxInstaller
             {
                 _webClient.DownloadFileAsync(_curaDownloadUrl,
                     Path.Combine(AppContext.BaseDirectory, "curainstaller.exe"));
-                StatusText = $"Downloading installer{Environment.NewLine}";
+                StatusText = $"Downloading installer... {DownloadProgress}% {Environment.NewLine}";
             }
             
         }
