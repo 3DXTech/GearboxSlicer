@@ -1,8 +1,9 @@
 ### Fixed
+- Tool change count script should no longer cause the percentage to stop super early #26
 
 ### Changed
 Profiles
--GBX10 ABS
+- GBX10 ABS
 
 ### Added
 - Download percentage display while download the Cura installer
