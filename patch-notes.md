@@ -1,5 +1,6 @@
 ### Fixed
 - Tool change count script should no longer cause the percentage to stop super early #26
+- Got a new GUID for custom support so it doesn't overlap with GF-PEI
 
 ### Changed
 Profiles
