@@ -3,18 +3,18 @@
     <metadata>
         <name>
             <brand>Model</brand>
-            <material>ASA</material>
-            <label>GBX ASA</label>
+            <material>Nylon</material>
+            <label>GBX Nylon 6</label>
             <color>All</color>
         </name>
-        <GUID>9a1ee17b-632d-4137-b0de-227a548ab555</GUID>
+        <GUID>7bd3090a-0b8f-4a0b-8524-538a736a559e</GUID>
         <version>24</version>
-        <color_code>#000080</color_code>
-        <description>ASA is an excellent choice for printing production or prototype parts. This material is more durable than ABS, has lower gloss, and has the added benefit of being UV-stable for exterior applications.</description>
+        <color_code>#A9D08E</color_code>
+        <description>AmideX™ Nylon 6-66 copolymer has been formulated for superior printability and high-performance. Nylon is the industry standard go-to engineering-grade of thermoplastic across the globe thanks to its excellent mechanical, thermal, and chemical resistance properties.</description>
         <adhesion_info>Use low temperature build sheet.</adhesion_info>
     </metadata>
     <properties>
-        <density>1.07</density>
+        <density>1.12</density>
         <diameter>1.78</diameter>
     </properties>
     <settings>

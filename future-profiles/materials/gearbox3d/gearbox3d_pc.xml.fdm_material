@@ -3,18 +3,18 @@
     <metadata>
         <name>
             <brand>Model</brand>
-            <material>ASA</material>
-            <label>GBX ASA</label>
+            <material>PC</material>
+            <label>GBX PC</label>
             <color>All</color>
         </name>
-        <GUID>9a1ee17b-632d-4137-b0de-227a548ab555</GUID>
+        <GUID>cdf4ea62-e9ae-45fe-81ed-14db78a99c85</GUID>
         <version>24</version>
-        <color_code>#000080</color_code>
-        <description>ASA is an excellent choice for printing production or prototype parts. This material is more durable than ABS, has lower gloss, and has the added benefit of being UV-stable for exterior applications.</description>
+        <color_code>#FFE200</color_code>
+        <description>PC has excellent mechanical and thermal properties making it ideal for demanding production and prototype printing.</description>
         <adhesion_info>Use low temperature build sheet.</adhesion_info>
     </metadata>
     <properties>
-        <density>1.07</density>
+        <density>1.2</density>
         <diameter>1.78</diameter>
     </properties>
     <settings>
