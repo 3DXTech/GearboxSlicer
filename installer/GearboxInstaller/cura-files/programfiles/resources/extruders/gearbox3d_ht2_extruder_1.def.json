@@ -23,6 +23,9 @@
             "default_value": 1.78,
             "minimum_value_warning": "1.73",
             "maximum_value_warning": "1.83"
+        },
+        "machine_extruder_end_code": {
+            "default_value": "G91               ;Relative coordinates\nG1 F2400 Z3.5     ;Lower bed 3.5mm\nG90               ;Absolute coordinates\nG0 X457 Y5 F72000 ;Move"
         }
     }
 }
