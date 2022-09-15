@@ -495,7 +495,8 @@
             "default_value": true
         },
         "acceleration_print": {
-            "default_value": 5000
+            "default_value": 5000,
+            "limit_to_extruder": "model_extruder_nr"
         },
         "acceleration_infill": {
             "default_value": 5000
@@ -516,7 +517,8 @@
             "default_value": 5000
         },
         "acceleration_support": {
-            "default_value": 5000
+            "default_value": 5000,
+            "value": "acceleration_print"
         },
         "acceleration_support_infill": {
             "default_value": 5000
@@ -534,7 +536,9 @@
             "default_value": 5000
         },
         "acceleration_travel": {
-            "default_value": 5000
+            "default_value": 5000,
+            "value": "acceleration_print",
+            "limit_to_extruder": "model_extruder_nr"
         },
         "acceleration_layer_0": {
             "default_value": 5000
@@ -554,7 +558,8 @@
         "jerk_print": {
             "default_value": 30,
             "unit": "ms",
-            "maximum_value_warning": "75"
+            "maximum_value_warning": "75",
+            "limit_to_extruder": "model_extruder_nr"
         },
         "jerk_infill": {
             "default_value": 30,
@@ -588,6 +593,7 @@
         },
         "jerk_support": {
             "default_value": 30,
+            "value": "jerk_print",
             "unit": "ms",
             "maximum_value_warning": "75"
         },
@@ -618,8 +624,10 @@
         },
         "jerk_travel": {
             "default_value": 30,
+            "value": "jerk_print",
             "unit": "ms",
-            "maximum_value_warning": "75"
+            "maximum_value_warning": "75",
+            "limit_to_extruder": "model_extruder_nr"
         },
         "jerk_layer_0": {
             "default_value": 30,
