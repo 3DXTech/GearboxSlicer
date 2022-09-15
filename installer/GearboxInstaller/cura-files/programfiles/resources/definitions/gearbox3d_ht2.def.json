@@ -681,7 +681,7 @@
             "default_value": 3.5
         },
         "retraction_hop_after_extruder_switch_height": {
-            "default_value": 3.5
+            "default_value": 0
         },
         "cool_fan_enabled": {
             "default_value": false
