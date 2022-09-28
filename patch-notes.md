@@ -1,11 +1,15 @@
 ### Fixed
 - Tool change count script should no longer cause the percentage to stop super early #26
 - Got a new GUID for custom support so it doesn't overlap with GF-PEI
+- Default Raft Middle Thickness was above the maximum value warning
 
 ### Changed
+- How Acceleration and Jerk is applied to profiles in order to remove short pauses in the G-Code
+- LTS1 to 300C Print Temp
 
 ### Added
 - Download percentage display while download the Cura installer
+- End Extruder G-Code to move the nozzle off of the part before initiating the Tool Change
 
 ### New Materials
 - ASA
@@ -14,7 +18,6 @@
 - PEKK-A
 - PC/ABS
 - MTS1
-- CF PA12
 
 ### New Profiles
 - GBX20
@@ -23,16 +26,17 @@
     - PEKK-A
     - PC/ABS
     - ESD ABS
-    - CF PA12
+    - PC
 - GBX16
     - ASA
     - PC/ABS
     - FR PC/ABS
     - ESD ABS
+    - PC
     - MTS1
 - GBX12
-    - ASA
-    - ABS
+    - Custom Model
+    - Custom Support
 - GBX10
-    - ASA
-    - ABS
+    - Custom Model
+    - Custom Support

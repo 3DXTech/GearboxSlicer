@@ -828,7 +828,7 @@
             "default_value": 0.4575,
             "value": 0.4575,
             "minimum_value_warning": "machine_nozzle_size * 0.1",
-            "maximum_value_warning": "machine_nozzle_size"
+            "maximum_value_warning": 0.4576
         },
         "raft_interface_line_width": {
             "default_value": 0.812,
