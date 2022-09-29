@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdmmaterial xmlns="http://www.ultimaker.com/material" xmlns:cura="http://www.ultimaker.com/cura" version="1.3">
+    <metadata>
+        <name>
+            <brand>Model</brand>
+            <material>PC/ABS</material>
+            <label>GBX PC/ABS</label>
+            <color>All</color>
+        </name>
+        <GUID>1687a9d3-e725-4f9c-8fe1-52f126dc5ee6</GUID>
+        <version>24</version>
+        <color_code>#F19300</color_code>
+        <description>PC-ABS offers many of the advantages of PC including strength and durability, but is easier to print and offers a lower-gloss surface finish that hides layer lines and gives a professional look and feel every print.</description>
+        <adhesion_info>Use low temperature build sheet.</adhesion_info>
+    </metadata>
+    <properties>
+        <density>1.14</density>
+        <diameter>1.78</diameter>
+    </properties>
+    <settings>
+        <machine>
+            <machine_identifier manufacturer="Gearbox3D" product="Gearbox3D HT2"/>
+        </machine>
+    </settings>
+</fdmmaterial>

@@ -10,6 +10,14 @@ If Cura 4.10.0 is not installed, download the installer [here](https://github.co
 ### Offline Install
 Download the Cura installer referenced above (make sure it is the correct version) and rename it to `curainstaller.exe` and place it in the same location as the Gearbox Slicer installer. When you run the installer it should automatically see that file and use that rather than download.
 
+### Known Issues
+- Disabling one extruder can sometimes still slice the GCode with the disabled extruder while displaying in the preview that it is done how you told it.
+- The `acceleration_print` variable is pulled from the primary extruder but is output into GCode with the values from the support extruder. Jerk does the same thing.
+- Trying to slice a part with Support on the left and Model on the right causes all sorts of profile problems.
+- Unchecking the 'Adhesion' checkbox on the basic print config tab will actually only change it to a skirt, and not actually disable it.
+- Unchecking the enabled bit on an extruder seems to do nothing. You must disable support/adhesion, whatever it's doing, at which point disabling the extruder does nothing anyway.
+> This bug may be due to our configuration and could potentially be fixed. I am pretty sure all the others are built into Cura 4.10. 
+
 ## Adding Printer, Materials, and Settings
 > Make sure Cura is closed before copying any of these files!
 

@@ -8,18 +8,15 @@
         "manufacturer": "Gearbox3D",
         "file_formats": "text/x-gcode",
         "visible": true,
-
         "has_variants": true,
         "has_materials": true,
         "has_machine_materials": true,
         "has_variant_materials": true,
         "has_machine_quality": true,
-
         "variants_name": "Nozzle Size",
         "preferred_quality_type": "normal",
         "preferred_material": "gearbox3d_abs",
         "preferred_variant_name": "GBX20",
-
         "machine_extruder_trains": {
             "0": "gearbox3d_ht2_extruder_0",
             "1": "gearbox3d_ht2_extruder_1"
@@ -41,10 +38,10 @@
             "default_value": true
         },
         "machine_start_gcode": {
-            "default_value": ";Begin start code\n;material_guid0 = {material_guid, 0} material_guid1 = {material_guid, 1}\n;material_weight = {filament_weight}\nG55\nG92 E0\nG28 X250.0 Y5.0\nG0 Z5.0\nM208\nG0 X450.0\n;End start code"
+            "default_value": ";Begin start code\n;material_guid0 = {material_guid, 0} material_guid1 = {material_guid, 1}\n;\"materialDiameter\":\"{material_diameter}\",\"machineNozzleId0\":\"{machine_nozzle_id, 0}\",\"machineNozzleId1\":\"{machine_nozzle_id, 1}\",\"machineNozzleSize0\":\"{machine_nozzle_size, 0}\",\"machineNozzleSize1\":\"{machine_nozzle_size, 1}\",\"machineMaxFeedRateX\":\"{machine_max_feedrate_x}\",\"machineMaxFeedRateY\":\"{machine_max_feedrate_y}\",\"machineMaxFeedRateZ\":\"{machine_max_feedrate_z}\",\"machineMaxFeedRateE\":\"{machine_max_feedrate_e}\",\"machineMaxAccelerationX\":\"{machine_max_acceleration_x}\",\"machineMaxAccelerationY\":\"{machine_max_acceleration_y}\",\"machineMaxAccelerationZ\":\"{machine_max_acceleration_z}\",\"machineMaxAccelerationE\":\"{machine_max_acceleration_e}\",\"machineAcceleration\":\"{machine_acceleration}\",\"layerHeight\":\"{layer_height}\",\"layerHeight0\":\"{layer_height_0}\",\"lineWidth\":\"{line_width}\",\"wallLineWidth\":\"{wall_line_width}\",\"zSeamType\":\"{z_seam_type}\",\"zSeamPosition\":\"{z_seam_position}\",\"zSeamX\":\"{z_seam_x}\",\"zSeamY\":\"{z_seam_y}\",\"materialPrintTemperature0\":\"{material_print_temperature, 0}\",\"materialPrintTemperature1\":\"{material_print_temperature, 1}\",\"infillPattern\":\"{infill_pattern}\",\"infillSparseDensity\":\"{infill_sparse_density}\",\"speedPrint0\":\"{speed_print, 0}\",\"speedPrint1\":\"{speed_print, 1}\",\"speedSupport\":\"{speed_support}\",\"speedLayer0\":\"{speed_layer_0}\",\"speedPrintLayer0\":\"{speed_print_layer_0}\",\"acceleration0\":\"{acceleration_print, 0}\",\"acceleration1\":\"{acceleration_print, 1}\",\"supportEnable\":\"{support_enable}\",\"adhesionType\":\"{adhesion_type}\",\"raftAirgap\":\"{raft_airgap}\",\"raftSpeed\":\"{raft_speed}\",\"jerk0\":\"{jerk_print, 0}\",\"jerk1\":\"{jerk_print, 1}\",\"materialFlow\":\"{material_flow}\",\"buildVolumeTemperature\":\"{build_volume_temperature}\",\"materialStandbyTemperature0\":\"{material_standby_temperature, 0}\",\"materialStandbyTemperature1\":\"{material_standby_temperature, 1}\",\"retractionEnable0\":\"{retraction_enable, 0}\",\"retractionEnable1\":\"{retraction_enable, 1}\",\"retractionAmount0\":\"{retraction_amount, 0}\",\"retractionAmount1\":\"{retraction_amount, 1}\",\"retractionSpeed0\":\"{retraction_speed, 0}\",\"retractionSpeed1\":\"{retraction_speed, 1}\",\"retractionRetractSpeed0\":\"{retraction_retract_speed, 0}\",\"retractionRetractSpeed1\":\"{retraction_retract_speed, 1}\"\n;material_weight = {filament_weight}\nG92 E0\nG28 X250.0 Y5.0\nG0 Z5.0\nM208\nG0 X450.0\n;End start code"
         },
         "machine_end_gcode": {
-            "default_value": "M141 S{build_volume_temperature}\nM104 T0 S#12\nM104 T1 S#13\nG92 E0\n;anneal\nG0 Z810.0\nG28 X250.0 Y5.0\nG54\nM30"
+            "default_value": "M141 S{build_volume_temperature}\nM104 T0 S#12\nM104 T1 S#13\nG92 E0\nG0 Z813.5\nG28 X250.0 Y5.0\n;anneal\nM30"
         },
         "material_diameter": {
             "default_value": 1.78,
@@ -141,13 +138,13 @@
             "default_value": 5000
         },
         "layer_height": {
-            "minimum_value_warning": "0.5 * layer_height",
-            "maximum_value_warning": "layer_height",
+            "minimum_value_warning": "0.14",
+            "maximum_value_warning": "0.7",
             "default_value": 0.3048
         },
         "layer_height_0": {
-            "minimum_value_warning": "0.5 * layer_height",
-            "maximum_value_warning": "layer_height",
+            "minimum_value_warning": "0.14",
+            "maximum_value_warning": "0.7",
             "default_value": 0.3048,
             "value": "layer_height",
             "resolve": "",
@@ -224,18 +221,15 @@
             "value": "line_width"
         },
         "wall_extruder_nr": {
-            "default_value": "0",
-            "settable_per_extruder": true
+            "default_value": "0"
         },
         "wall_0_extruder_nr": {
             "default_value": "0",
-            "value": "wall_extruder_nr",
-            "settable_per_extruder": true
+            "value": "wall_extruder_nr"
         },
         "wall_x_extruder_nr": {
             "default_value": "0",
-            "value": "wall_extruder_nr",
-            "settable_per_extruder": true
+            "value": "wall_extruder_nr"
         },
         "wall_thickness": {
             "minimum_value_warning": "line_width",
@@ -261,16 +255,13 @@
             "default_value": true
         },
         "z_seam_position": {
-            "enabled": "z_seam_type == 'backleft'",
             "default_value": "backleft"
         },
         "z_seam_x": {
-            "default_value": 5.0,
-            "enabled": "z_seam_type == 'backleft'"
+            "default_value": 0.0
         },
         "z_seam_y": {
-            "default_value": 5.0,
-            "enabled": "z_seam_type == 'backleft'"
+            "default_value": 457.0
         },
         "z_seam_corner": {
             "default_value": "z_seam_corner_weighted"
@@ -280,15 +271,13 @@
         },
         "roofing_extruder_nr": {
             "default_value": "0",
-            "value": "top_bottom_extruder_nr",
-            "settable_per_extruder": true
+            "value": "top_bottom_extruder_nr"
         },
         "roofing_layer_count": {
             "default_value": 1
         },
         "top_bottom_extruder_nr": {
-            "default_value": "0",
-            "settable_per_extruder": true
+            "default_value": "0"
         },
         "top_bottom_thickness": {
             "default_value": 0.915,
@@ -317,8 +306,7 @@
             "default_value": 3
         },
         "infill_extruder_nr": {
-            "default_value": "0",
-            "settable_per_extruder": true
+            "default_value": "0"
         },
         "infill_sparse_thickness": {
             "default_value": 0.3048,
@@ -507,7 +495,8 @@
             "default_value": true
         },
         "acceleration_print": {
-            "default_value": 5000
+            "default_value": 5000,
+            "limit_to_extruder": "model_extruder_nr"
         },
         "acceleration_infill": {
             "default_value": 5000
@@ -528,7 +517,8 @@
             "default_value": 5000
         },
         "acceleration_support": {
-            "default_value": 5000
+            "default_value": 5000,
+            "value": "acceleration_print"
         },
         "acceleration_support_infill": {
             "default_value": 5000
@@ -546,7 +536,9 @@
             "default_value": 5000
         },
         "acceleration_travel": {
-            "default_value": 5000
+            "default_value": 5000,
+            "value": "acceleration_print",
+            "limit_to_extruder": "model_extruder_nr"
         },
         "acceleration_layer_0": {
             "default_value": 5000
@@ -566,7 +558,8 @@
         "jerk_print": {
             "default_value": 30,
             "unit": "ms",
-            "maximum_value_warning": "75"
+            "maximum_value_warning": "75",
+            "limit_to_extruder": "model_extruder_nr"
         },
         "jerk_infill": {
             "default_value": 30,
@@ -600,6 +593,7 @@
         },
         "jerk_support": {
             "default_value": 30,
+            "value": "jerk_print",
             "unit": "ms",
             "maximum_value_warning": "75"
         },
@@ -630,8 +624,10 @@
         },
         "jerk_travel": {
             "default_value": 30,
+            "value": "jerk_print",
             "unit": "ms",
-            "maximum_value_warning": "75"
+            "maximum_value_warning": "75",
+            "limit_to_extruder": "model_extruder_nr"
         },
         "jerk_layer_0": {
             "default_value": 30,
@@ -685,7 +681,7 @@
             "default_value": 3.5
         },
         "retraction_hop_after_extruder_switch_height": {
-            "default_value": 3.5
+            "default_value": 0
         },
         "cool_fan_enabled": {
             "default_value": false
@@ -798,8 +794,7 @@
         },
         "adhesion_extruder_nr": {
             "default_value": 1,
-            "value": "int(support_extruder_nr)",
-            "settable_per_extruder": true
+            "value": "int(support_extruder_nr)"
         },
         "raft_margin": {
             "default_value": 15,
@@ -833,7 +828,7 @@
             "default_value": 0.4575,
             "value": 0.4575,
             "minimum_value_warning": "machine_nozzle_size * 0.1",
-            "maximum_value_warning": "machine_nozzle_size"
+            "maximum_value_warning": 0.4576
         },
         "raft_interface_line_width": {
             "default_value": 0.812,

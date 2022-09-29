@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
@@ -75,7 +75,7 @@ namespace GearboxInstaller
             get { return _downloadProgress; }
             set
             {
-                _downloadProgress = value * 0.75;
+                _downloadProgress = value;
                 UpdateProgress();
             }
         }
@@ -149,6 +149,7 @@ namespace GearboxInstaller
             _webClient.DownloadProgressChanged += (s, a) =>
             {
                 DownloadProgress = a.ProgressPercentage;
+                StatusText = $"Downloading installer... {Math.Round(DownloadProgress, 0)}%";
                 if (a.ProgressPercentage == 100)
                 {
                     RunInstaller();
@@ -405,6 +406,16 @@ namespace GearboxInstaller
             await DeleteDirectory(Path.Combine(_installPath, "resources", "quality"));
             Debug.WriteLine("Deleting Monitor Stage");
             await DeleteDirectory(Path.Combine(_installPath, "plugins", "MonitorStage"));
+            Debug.WriteLine("Deleting definition_changes");
+            var appdataDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                "cura", "4.10");
+            await DeleteDirectory(Path.Combine(appdataDir, "definition_changes"));
+            Debug.WriteLine("Deleting extruders");
+            await DeleteDirectory(Path.Combine(appdataDir, "extruders"));
+            Debug.WriteLine("Deleting machine_instances");
+            await DeleteDirectory(Path.Combine(appdataDir, "machine_instances"));
+            Debug.WriteLine("Deleting user");
+            await DeleteDirectory(Path.Combine(appdataDir, "user"));
             
             if (File.Exists(shortcutPath))
             {
@@ -520,7 +531,7 @@ namespace GearboxInstaller
             {
                 _webClient.DownloadFileAsync(_curaDownloadUrl,
                     Path.Combine(AppContext.BaseDirectory, "curainstaller.exe"));
-                StatusText = $"Downloading installer{Environment.NewLine}";
+                StatusText = $"Downloading installer... {DownloadProgress}% {Environment.NewLine}";
             }
             
         }

@@ -48,7 +48,9 @@ class ToolChangeCount(Script):
             lines.pop(timeDefLine)
             lines.insert(timeDefLine, ";Base:{}".format(baseTimeRemaining))
             lines.insert(timeDefLine, ";Dwell:{}".format(dwellTime))
-            lines.insert(timeDefLine, ";TIME:{}".format(baseTimeRemaining + (toolChangeCount * 30) + dwellTime))
+            addedToolTime = int(toolChangeCount * 30)
+            allTheTime = int(baseTimeRemaining + addedToolTime + dwellTime)
+            lines.insert(timeDefLine, ";TIME:{}".format(allTheTime))
             lines.insert(timeDefLine, ";Total number of tool changes: {}".format(toolChangeCount))
         data[timeDefLayer] = "\n".join(lines)
         
