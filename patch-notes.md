@@ -2,6 +2,7 @@
 - Tool change count script should no longer cause the percentage to stop super early #26
 - Got a new GUID for custom support so it doesn't overlap with GF-PEI
 - Default Raft Middle Thickness was above the maximum value warning
+- Edited AppData Config files to reflect the changes for the default settings
 
 ### Changed
 - How Acceleration and Jerk is applied to profiles in order to remove short pauses in the G-Code
