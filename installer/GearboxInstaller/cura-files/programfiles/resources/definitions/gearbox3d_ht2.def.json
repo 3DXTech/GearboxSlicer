@@ -958,6 +958,9 @@
         },
         "roofing_pattern": {
             "default_value": "zigzag"
+        },
+        "travel_retract_before_outer_wall": {
+            "settable_per_extruder": true
         }
     }
 }
