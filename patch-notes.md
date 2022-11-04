@@ -10,6 +10,10 @@
 ### New Materials
 - 
 
-### New Profiles
+### Improved Profiles
 - GBX20
     - 9085 (Profile Improved)
+    - CF PEEK (Profile Improved)
+
+- GBX16
+    - ASA (Profile Improved)
