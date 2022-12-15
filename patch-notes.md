@@ -1,10 +1,18 @@
-### Fixed
-- Retract Before Outer Wall now populating correctly
-
 ### Improved Profiles
-- GBX20
-    - 9085 (Profile Improved)
-    - CF PEEK (Profile Improved)
-
 - GBX16
-    - ASA (Profile Improved)
+    - 9085 (Profile Improved)
+
+### Added Profiles
+- GBX20
+    - GF ABS
+    - PA6
+- GBX16
+    - GF ABS
+    - MN19
+
+### Added Materials
+- PA6
+- CF PA12
+- CF 9085
+- GF ABS
+- MN19
