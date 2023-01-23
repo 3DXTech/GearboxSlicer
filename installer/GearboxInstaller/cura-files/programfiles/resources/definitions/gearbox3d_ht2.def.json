@@ -41,7 +41,7 @@
             "default_value": ";Begin start code\n;material_guid0 = {material_guid, 0} material_guid1 = {material_guid, 1}\n;\"materialDiameter\":\"{material_diameter}\",\"machineNozzleId0\":\"{machine_nozzle_id, 0}\",\"machineNozzleId1\":\"{machine_nozzle_id, 1}\",\"machineNozzleSize0\":\"{machine_nozzle_size, 0}\",\"machineNozzleSize1\":\"{machine_nozzle_size, 1}\",\"machineMaxFeedRateX\":\"{machine_max_feedrate_x}\",\"machineMaxFeedRateY\":\"{machine_max_feedrate_y}\",\"machineMaxFeedRateZ\":\"{machine_max_feedrate_z}\",\"machineMaxFeedRateE\":\"{machine_max_feedrate_e}\",\"machineMaxAccelerationX\":\"{machine_max_acceleration_x}\",\"machineMaxAccelerationY\":\"{machine_max_acceleration_y}\",\"machineMaxAccelerationZ\":\"{machine_max_acceleration_z}\",\"machineMaxAccelerationE\":\"{machine_max_acceleration_e}\",\"machineAcceleration\":\"{machine_acceleration}\",\"layerHeight\":\"{layer_height}\",\"layerHeight0\":\"{layer_height_0}\",\"lineWidth\":\"{line_width}\",\"wallLineWidth\":\"{wall_line_width}\",\"zSeamType\":\"{z_seam_type}\",\"zSeamPosition\":\"{z_seam_position}\",\"zSeamX\":\"{z_seam_x}\",\"zSeamY\":\"{z_seam_y}\",\"materialPrintTemperature0\":\"{material_print_temperature, 0}\",\"materialPrintTemperature1\":\"{material_print_temperature, 1}\",\"infillPattern\":\"{infill_pattern}\",\"infillSparseDensity\":\"{infill_sparse_density}\",\"speedPrint0\":\"{speed_print, 0}\",\"speedPrint1\":\"{speed_print, 1}\",\"speedSupport\":\"{speed_support}\",\"speedLayer0\":\"{speed_layer_0}\",\"speedPrintLayer0\":\"{speed_print_layer_0}\",\"acceleration0\":\"{acceleration_print, 0}\",\"acceleration1\":\"{acceleration_print, 1}\",\"supportEnable\":\"{support_enable}\",\"adhesionType\":\"{adhesion_type}\",\"raftAirgap\":\"{raft_airgap}\",\"raftSpeed\":\"{raft_speed}\",\"jerk0\":\"{jerk_print, 0}\",\"jerk1\":\"{jerk_print, 1}\",\"materialFlow\":\"{material_flow}\",\"buildVolumeTemperature\":\"{build_volume_temperature}\",\"materialStandbyTemperature0\":\"{material_standby_temperature, 0}\",\"materialStandbyTemperature1\":\"{material_standby_temperature, 1}\",\"retractionEnable0\":\"{retraction_enable, 0}\",\"retractionEnable1\":\"{retraction_enable, 1}\",\"retractionAmount0\":\"{retraction_amount, 0}\",\"retractionAmount1\":\"{retraction_amount, 1}\",\"retractionSpeed0\":\"{retraction_speed, 0}\",\"retractionSpeed1\":\"{retraction_speed, 1}\",\"retractionRetractSpeed0\":\"{retraction_retract_speed, 0}\",\"retractionRetractSpeed1\":\"{retraction_retract_speed, 1}\"\n;material_weight = {filament_weight}\nG92 E0\nG28 X250.0 Y5.0\nG0 Z5.0\nM208\nG0 X450.0\n;End start code"
         },
         "machine_end_gcode": {
-            "default_value": "M141 S{build_volume_temperature}\nM104 T0 S#12\nM104 T1 S#13\nG92 E0\nG0 Z813.5\nG28 X250.0 Y5.0\n;anneal\nM30"
+            "default_value": "M141 S{build_volume_temperature}\nM104 T0 S#12\nM104 T1 S#13\nG92 E0\nG0 Z810.5\nG28 X250.0 Y5.0\n;anneal\nM30"
         },
         "material_diameter": {
             "default_value": 1.78,
@@ -63,8 +63,8 @@
             }
         },
         "machine_height": {
-            "default_value": 813,
-            "maximum_value": "813"
+            "default_value": 810,
+            "maximum_value": "810"
         },
         "machine_heated_build_volume": {
             "default_value": true
@@ -320,12 +320,13 @@
             "default_value": false
         },
         "build_volume_temperature": {
+            "description": "The temperature of the environment to print in. If this is 0°, the build volume temperature will not be adjusted. Ensure printer is in a cool enviornment when printing with a chamber above 230.0°C. ",
             "default_value": 23,
             "resolve": "max(extruderValues('build_volume_temperature'))",
             "minimum_value": "-0.1",
             "minimum_value_warning": "50",
             "maximum_value_warning": "230",
-            "maximum_value": "230.1"
+            "maximum_value": "250"
         },
         "material_print_temperature": {
             "default_value": 123,
