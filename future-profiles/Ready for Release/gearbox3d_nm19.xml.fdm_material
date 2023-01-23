@@ -3,18 +3,19 @@
     <metadata>
         <name>
             <brand>Support</brand>
-            <material>Soluble</material>
-            <label>GBX X1</label>
-            <color>Natural</color>
+            <material>Breakaway</material>
+            <label>GBX NM19</label>
+            <color>Black</color>
         </name>
-        <GUID>4264e255-c4f1-4534-9f23-dc3e6cf33072</GUID>
+        <GUID>882e9fc1-0c85-43e2-aedf-9f26d04f04b5</GUID>
         <version>24</version>
-        <color_code>#E9D8B7</color_code>
-        <description>Water Soluble Support Material</description>
+        <color_code>#090200</color_code>
+        <description>Use this material for a nylon support material.</description>
+        <adhesion_info>Use low temp build sheets.</adhesion_info>
     </metadata>
     <properties>
-        <density>1.10</density>
-        <diameter>1.75</diameter>
+        <density>0.00</density>
+        <diameter>1.78</diameter>
     </properties>
     <settings>
         <machine>

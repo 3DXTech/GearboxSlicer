@@ -1,10 +1,19 @@
-### Fixed
-- Retract Before Outer Wall now populating correctly
-
-### Improved Profiles
+### Added Profiles
 - GBX20
-    - 9085 (Profile Improved)
-    - CF PEEK (Profile Improved)
+    - GF PA6
+    - GF 1010
+    - CF PA12
 
-- GBX16
-    - ASA (Profile Improved)
+### Added Materials
+- GF PA6
+- CF PA12
+- GF 1010
+
+### Slicer Updates
+- Changed machine limits to 457x457x810
+- Changed end G Code to drop bed to 810.5 after print finishes
+- Changed max chamber temp to 250°C
+- Added warning message to build volume temperature
+
+
+

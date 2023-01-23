@@ -9,16 +9,16 @@
         </name>
         <GUID>ef0f15e5-951d-448c-9dc5-4d91726c6c60</GUID>
         <version>24</version>
-        <color_code>#FF0000</color_code>
+        <color_code>#DECB33</color_code>
         <description></description>
     </metadata>
     <properties>
-        <density>1.00</density>
-        <diameter>1.75</diameter>
+        <density>1.51</density>
+        <diameter>1.78</diameter>
     </properties>
     <settings>
-        <setting key="print temperature">350.0</setting>
-        <setting key="standby temperature">250.0</setting>
+        <setting key="print temperature">425.0</setting>
+        <setting key="standby temperature">415.0</setting>
 
         <machine>
             <machine_identifier manufacturer="Gearbox3D" product="Gearbox3D HT2"/>

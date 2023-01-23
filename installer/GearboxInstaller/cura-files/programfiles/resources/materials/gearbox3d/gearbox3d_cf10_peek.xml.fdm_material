@@ -3,18 +3,18 @@
     <metadata>
         <name>
             <brand>Model</brand>
-            <material>PEI 9085</material>
-            <label>GBX CF-PEI</label>
+            <material>PEEK</material>
+            <label>GBX CF10-PEEK</label>
             <color>Black</color>
         </name>
-        <GUID>03d0602c-3a8d-41a7-91c7-cbe31da6e665</GUID>
+        <GUID>ed05160e-952c-459f-86cd-d2f1fc01ebd8</GUID>
         <version>24</version>
-        <color_code>#797255</color_code>
-        <description>CF PEI 9085 Aerospace is made using Sabic Ultem™ 9085 resin and 10% certified Toray T800 chopped carbon fiber. This custom formulation is an excellent printing aerospace-grade material specifically formulated for our aerospace clients.</description>
+        <color_code>#444444</color_code>
+        <description>CF10-PEEK with 10% chopped carbon fiber is one of the highest performance polymers in the plastics world. This material has outstanding mechanical, thermal, and chemical resistance properties; making it ideal for some of the most demanding applications in any industry.</description>
         <adhesion_info>Use high temperature build sheet.</adhesion_info>
     </metadata>
     <properties>
-        <density>1.39</density>
+        <density>1.36</density>
         <diameter>1.78</diameter>
     </properties>
     <settings>
