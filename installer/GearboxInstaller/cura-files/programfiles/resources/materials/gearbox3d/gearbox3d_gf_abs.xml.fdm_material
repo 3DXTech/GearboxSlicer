@@ -9,7 +9,7 @@
         </name>
         <GUID>482fb4d1-f21f-4365-9640-ac1068c01f47</GUID>
         <version>24</version>
-        <color_code>#000000</color_code>
+        <color_code>#A54646</color_code>
         <description>ABS+GF is glass fiber reinforced ABS. It is tough as nails, very stiff, and strong allowing users to create structural parts without the lifting or warping that can happen with unfilled ABS. We use premium ABS and a special glass fiber chosen to be compatible with ABS and the FDM/FFF 3D printing process.</description>
         <adhesion_info>Use low temp build sheet.</adhesion_info>
     </metadata>

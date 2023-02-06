@@ -3,18 +3,18 @@
     <metadata>
         <name>
             <brand>Model</brand>
-            <material>Nylon</material>
-            <label>GBX Nylon 12</label>
+            <material>ABS</material>
+            <label>GBX FR-ABS</label>
             <color>All</color>
         </name>
-        <GUID>e4acfc5e-8c25-4678-90d9-f14acb271600</GUID>
+        <GUID>379985eb-3dcc-40eb-9a07-f15246202158</GUID>
         <version>24</version>
-        <color_code>#518032</color_code>
-        <description>PA12.</description>
+        <color_code>#961F1F</color_code>
+        <description>Firewire® FR-ABS is made using a premium UL94 V-0 rated ABS. Flame Retardant ABS is ideal for applications that require UL94 V-0 self-extinguishing characteristics.</description>
         <adhesion_info>Use low temperature build sheet.</adhesion_info>
     </metadata>
     <properties>
-        <density>0.00</density>
+        <density>1.18</density>
         <diameter>1.78</diameter>
     </properties>
     <settings>
