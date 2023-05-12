@@ -28,6 +28,24 @@ class Anneal(Script):
                     "description": "How long to dwell at the given temperature",
                     "type": "int",
                     "default_value": 2
+                },
+                "steps":
+                {
+                    "label": "Steps",
+                    "description": "Amount of times to anneal model",
+                    "type": "int",
+                    "default_value": 1,
+                    "minimum_value": 1,
+                    "maximum_value": 10
+                },
+                "step_temp_delta":
+                {
+                    "label": "Step Temperature Delta",
+                    "description": "Amount to decrease temp each step to minimum of 50 C",
+                    "type": "int",
+                    "default_value": 30,
+                    "minimum_value": 1,
+                    "maximum_value": 200
                 }
             }
             }"""
@@ -50,8 +68,14 @@ class Anneal(Script):
                     timeDefLine = lines.index(line)
                 if (line.startswith(";anneal") and layer_index > 1):
                     lineIndex = lines.index(line)
-                    lines.insert(lineIndex, "G4 P{}".format(self.getSettingValueByKey("time") * 60 * 60 * 1000))
-                    lines.insert(lineIndex, "M141 S{}".format(self.getSettingValueByKey("temperature")))
+                    i = 0
+                    while i < self.getSettingValueByKey("steps"):
+                        lines.insert(lineIndex, "G4 P{}".format(self.getSettingValueByKey("time") * 60 * 60 * 1000))
+                        lines.insert(lineIndex, "M141 S{}".format(self.getSettingValueByKey("temperature") if i == 0 else self.getSettingValueByKey("temperature") - (self.getSettingValueByKey("step_temp_delta") * (i + 1))))
+                        lineIndex += 2
+                        i += 1
+                        if self.getSettingValueByKey("temperature") - (self.getSettingValueByKey("step_temp_delta") * (i + 1)) <= 50:
+                            break
                     break
             data[layer_index] = "\n".join(lines)
         lines = data[timeDefLayer].split("\n")
