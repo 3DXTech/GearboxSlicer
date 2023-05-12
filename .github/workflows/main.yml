@@ -67,7 +67,7 @@ jobs:
           # A file, directory or wildcard pattern that describes what to upload
           path: installer\GearboxInstaller\publish\
 
-      - uses: dev-drprasad/delete-tag-and-release@v0.2.0
+      - uses: dev-drprasad/delete-tag-and-release@v0.2.1
         name: delete-beta-tag
         if: startsWith(github.ref, 'refs/heads/develop')
         with:
