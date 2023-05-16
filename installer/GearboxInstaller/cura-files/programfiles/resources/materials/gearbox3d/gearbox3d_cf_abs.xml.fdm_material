@@ -9,7 +9,7 @@
         </name>
         <GUID>1daf84c0-1e89-43bf-a0d8-65c8318b8583</GUID>
         <version>24</version>
-        <color_code>#4E3737</color_code>
+        <color_code>#A90000</color_code>
         <description>CF-ABS is made using our high-flow ABS and premium high-modulus carbon fiber. This material offers ease of printing, strength and stiffness, excellent dimensional stability, and an amazing surface finish.</description>
         <adhesion_info>Use low temperature build sheet.</adhesion_info>
     </metadata>
@@ -20,6 +20,8 @@
     <settings>
         <machine>
             <machine_identifier manufacturer="Gearbox3D" product="Gearbox3D HT2"/>
+            <machine_identifier manufacturer="Gearbox3D" product="Gearbox3D HT3"/>
+            <machine_identifier manufacturer="Gearbox3D" product="Gearbox3D CF2"/>
         </machine>
     </settings>
 </fdmmaterial>

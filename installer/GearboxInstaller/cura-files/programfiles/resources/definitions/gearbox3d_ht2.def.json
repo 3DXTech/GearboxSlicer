@@ -688,7 +688,7 @@
             "default_value": false
         },
         "cool_min_layer_time": {
-            "default_value": 3
+            "default_value": 7
         },
         "support_enable": {
             "default_value": true

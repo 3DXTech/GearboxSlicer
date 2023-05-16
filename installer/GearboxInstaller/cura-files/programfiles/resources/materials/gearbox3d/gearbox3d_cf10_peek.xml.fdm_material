@@ -9,7 +9,7 @@
         </name>
         <GUID>ed05160e-952c-459f-86cd-d2f1fc01ebd8</GUID>
         <version>24</version>
-        <color_code>#444444</color_code>
+        <color_code>#876C47</color_code>
         <description>CF10-PEEK with 10% chopped carbon fiber is one of the highest performance polymers in the plastics world. This material has outstanding mechanical, thermal, and chemical resistance properties; making it ideal for some of the most demanding applications in any industry.</description>
         <adhesion_info>Use high temperature build sheet.</adhesion_info>
     </metadata>
@@ -20,6 +20,7 @@
     <settings>
         <machine>
             <machine_identifier manufacturer="Gearbox3D" product="Gearbox3D HT2"/>
+            <machine_identifier manufacturer="Gearbox3D" product="Gearbox3D HT3"/>
         </machine>
     </settings>
 </fdmmaterial>
