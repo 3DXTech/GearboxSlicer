@@ -97,7 +97,7 @@ jobs:
           title: 🩸Bleeding Edge🩸
           body: patch-notes.md
           body-source: file
-          strategy: release
+          strategy: replace
           prerelease: true
           draft: false
           files: ${{ github.workspace }}\installer\GearboxInstaller\publish\GearboxInstaller.exe
