@@ -89,6 +89,22 @@ jobs:
           target_commitish: ${{ github.sha }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: release-beta-new
+        uses: notpeelz/action-gh-create-release@v5.0.1
+        if: startsWith(github.ref, 'refs/heads/develop')
+        with:
+          title: 🩸Bleeding Edge🩸
+          body: patch-notes.md
+          body-source: file
+          strategy: release
+          prerelease: true
+          draft: false
+          files: ${{ github.workspace }}\installer\GearboxInstaller\publish\GearboxInstaller.exe
+          tag: 'latest-beta'
+          target: ${{ github.sha }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: release
         uses: softprops/action-gh-release@v0.1.15
