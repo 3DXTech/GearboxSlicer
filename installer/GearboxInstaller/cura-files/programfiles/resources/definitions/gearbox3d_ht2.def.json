@@ -370,6 +370,7 @@
             "maximum_value_warning": "150"
         },
         "material_standby_temperature": {
+            "label": "Idle Temperature",
             "default_value": 100,
             "value": "material_print_temperature - 75",
             "minimum_value": "-0.1",

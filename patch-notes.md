@@ -9,5 +9,6 @@
 ### Updated Profiles
  - GBX16 ABS
  - GBX20 LTS1 CF2 profile
+ - **Changed all profiles standby temps to the new Idle temps**
 ### Fixes
  - Cleaned up issue with duplicate GBX40 LTS1 profiles
