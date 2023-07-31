@@ -75,7 +75,7 @@ jobs:
           tag_name: 'latest-beta' # tag name to delete
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+          
       - name: release-beta
         uses: notpeelz/action-gh-create-release@v5.0.1
         if: startsWith(github.ref, 'refs/heads/develop')
