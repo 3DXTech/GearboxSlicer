@@ -11,3 +11,4 @@
  - GBX20 LTS1 CF2 profile
 ### Fixes
  - Cleaned up issue with duplicate GBX40 LTS1 profiles
+ - #52 fix by limiting commanded velocity
