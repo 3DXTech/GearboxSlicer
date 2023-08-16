@@ -1,2 +1,2 @@
 ### Fixes
- - #52 fix by limiting commanded velocity
+ - #52 fix by limiting commanded Travel Speed
