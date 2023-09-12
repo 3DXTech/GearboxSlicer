@@ -518,9 +518,9 @@ namespace GearboxInstaller
             StatusText = "";
             _timer.Change(0, 700);
             StatusText += $"Installing Cura...{Environment.NewLine}";
-            var filePath = Path.Combine(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName),
+            var filePath = Path.Combine(Path.GetDirectoryName(Process.GetCurrentProcess()?.MainModule?.FileName ?? string.Empty) ?? string.Empty,
                 "curainstaller.exe");
-            var altFilePath = Path.Combine(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName),
+            var altFilePath = Path.Combine(Path.GetDirectoryName(Process.GetCurrentProcess()?.MainModule?.FileName ?? string.Empty) ?? string.Empty,
                 "Ultimaker_Cura-4.10.0-amd64.exe");
             var downloadFilePath = Path.Combine(AppContext.BaseDirectory, "curainstaller.exe");
             if (File.Exists(filePath) || File.Exists(altFilePath) || File.Exists(downloadFilePath))
