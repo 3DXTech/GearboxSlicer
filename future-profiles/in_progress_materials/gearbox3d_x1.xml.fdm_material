@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdmmaterial xmlns="http://www.ultimaker.com/material" xmlns:cura="http://www.ultimaker.com/cura" version="1.3">
+    <metadata>
+        <name>
+            <brand>Support</brand>
+            <material>Breakaway</material>
+            <label>GBX X1</label>
+            <color>Brown</color>
+        </name>
+        <GUID>4c28bd67-13d1-4d44-917a-8e446c13605b</GUID>
+        <version>24</version>
+        <color_code>#B2986A</color_code>
+        <description>Our AquaTek™ X1 Advanced USM Universal Support Material is an all-new, highly advanced universal water soluble support formulated specifically for printing complicated parts. AquaTek™ X1 Advanced USM is readily dissolved in warm water and has excellent adhesion to the broadest range of materials, including our popular advanced composites like CarbonX™ Carbon Fiber Nylons and FibreX™ Glass Fiber Nylons.</description>
+    </metadata>
+    <properties>
+        <density>1.04</density>
+        <diameter>1.78</diameter>
+    </properties>
+    <settings>
+        <machine>
+            <machine_identifier manufacturer="Gearbox3D" product="Gearbox3D HT2"/>
+        </machine>
+    </settings>
+</fdmmaterial>

@@ -455,10 +455,10 @@
             "maximum_value": "1200"
         },
         "speed_travel": {
-            "default_value": 1200,
-            "value": "speed_print if magic_spiralize else 1200",
-            "maximum_value_warning": "1200",
-            "maximum_value": "1200"
+            "default_value": 1150,
+            "value": "speed_print if magic_spiralize else 1150",
+            "maximum_value_warning": "1175",
+            "maximum_value": "1190"
         },
         "speed_layer_0": {
             "default_value": 150,
@@ -688,7 +688,7 @@
             "default_value": false
         },
         "cool_min_layer_time": {
-            "default_value": 3
+            "default_value": 7
         },
         "support_enable": {
             "default_value": true

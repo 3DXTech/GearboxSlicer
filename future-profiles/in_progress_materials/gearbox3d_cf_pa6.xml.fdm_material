@@ -9,7 +9,7 @@
         </name>
         <GUID>c516454e-d30c-45eb-9729-0e10e61b88cb</GUID>
         <version>24</version>
-        <color_code>#5E5555</color_code>
+        <color_code>#83A26D</color_code>
         <description>Gen 3 CarbonX™ PA6+CF filament is formulated using a PA6 copolymer reinforced with high-modulus carbon fiber. This filament is ideal for anyone that desires a structural component with high modulus, improved chemical and thermal resistance, excellent surface quality, and ease of printing. Gen3 has higher HDT than our previous grades (147°C at .45MPa) allowing for expanded use in higher-temp applications. Unparalleled rigidity gives designers the properties they need to make their 3D printed parts with less material and save weight without sacrificing stiffness.</description>
         <adhesion_info>Use low temperature build sheet.</adhesion_info>
     </metadata>
