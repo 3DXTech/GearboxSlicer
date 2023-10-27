@@ -15,12 +15,9 @@ def is_extrusion_line(line: str) -> bool:
         return "G1" in line and "X" in line and "Y" in line and "E" in line
 
 def is_compatible_material(line: str) -> bool:
-        if ("fcf3cdf9-e0a4-4024-a94f-2a54eef61383" in line or "b5787a9f-3bc2-4110-b863-912bb74bea06" in line):
+        if ("b5787a9f-3bc2-4110-b863-912bb74bea06" in line):
             return True
         return False
-
-def rounddown(x):
-    return int(math.floor(x / 100.0)) * 100
 
 class VolumetricWipe(Script):
 
@@ -33,7 +30,16 @@ class VolumetricWipe(Script):
             "key": "VolumetricWipePlugin",
             "metadata": {},
             "version": 2,
-            "settings": {}
+            "settings": {
+                "extrusion":
+                {
+                    "label": "Extrusion Amount",
+                    "description": "The amount of extrusion needed to wipe. Ex: 100 will wipe every 100mm of extrusion",
+                    "type": "int",
+                    "maximum_value_warning": "5000",
+                    "default_value": 400
+                }
+            }
             }"""
 
     def execute(self, data):
@@ -61,7 +67,7 @@ class VolumetricWipe(Script):
                     searchE = re.search(r"E([-+]?\d*\.?\d*)", line)
                     if searchE:
                         e_value=float(searchE.group(1))
-                        rounded_e = rounddown(e_value)
+                        rounded_e = int(math.floor(e_value / self.getSettingValueByKey("extrusion"))) * self.getSettingValueByKey("extrusion")
                         if (rounded_e != last_rounded_e_value and rounded_e > last_rounded_e_value and rounded_e >= 0 and last_rounded_e_value >= 0):
                             lineIndex = lines.index(line)
                             lines.insert(lineIndex, "G12")
