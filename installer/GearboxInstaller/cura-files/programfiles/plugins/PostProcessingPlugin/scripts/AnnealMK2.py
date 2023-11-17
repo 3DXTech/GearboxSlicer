@@ -2,15 +2,15 @@ from ..Script import Script
 
 import re
 
-class Anneal(Script):
+class AnnealMK2(Script):
 
     def __init__(self):
         super().__init__()
 
     def getSettingDataString(self):
         return """{
-            "name": "Anneal",
-            "key": "AnnealPlugin",
+            "name": "AnnealMK2",
+            "key": "AnnealMK2Plugin",
             "metadata": {},
             "version": 2,
             "settings": {
@@ -245,12 +245,18 @@ class Anneal(Script):
                     timeDefLine = lines.index(line)
                 if (line.startswith(";anneal") and layer_index > 1):
                     lineIndex = lines.index(line)
+                    totalTime = 0
                     i = 1
                     while i < 10:
-                        if (self.getSettingValueByKey("step{}_enabled".format(i)) == True): 
-                            lines.insert(lineIndex, "G4 P{}".format(self.getSettingValueByKey("step{}_time".format(i)) * 60 * 1000))
-                            lines.insert(lineIndex, "M141 S{}".format(self.getSettingValueByKey("step{}_temperature".format(i))))
-                            lineIndex += 2
+                        if (self.getSettingValueByKey("step{}_enabled".format(i)) == True):
+                            totalTime += self.getSettingValueByKey("step{}_time".format(i))
+                        i += 1
+                    
+                    i = 1
+                    while i < 10:
+                        if (self.getSettingValueByKey("step{}_enabled".format(i)) == True):
+                            lines.insert(lineIndex, "M230 S{} P{} R{}".format(self.getSettingValueByKey("step{}_temperature".format(i)), self.getSettingValueByKey("step{}_time".format(i)) * 60, totalTime * 60))
+                            lineIndex += 1
                         i += 1
                     break
             data[layer_index] = "\n".join(lines)
