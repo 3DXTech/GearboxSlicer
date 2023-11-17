@@ -15,7 +15,7 @@ class LayerWipe(Script):
 
     def getSettingDataString(self):
         return """{
-            "name": "Layer Wipe",
+            "name": "Layer Wipe (Beta)",
             "key": "LayerWipePlugin",
             "metadata": {},
             "version": 2,

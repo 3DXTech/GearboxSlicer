@@ -26,7 +26,7 @@ class VolumetricWipe(Script):
 
     def getSettingDataString(self):
         return """{
-            "name": "Volumetric Wipe",
+            "name": "Volumetric Wipe (Beta)",
             "key": "VolumetricWipePlugin",
             "metadata": {},
             "version": 2,
