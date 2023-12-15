@@ -44,6 +44,6 @@ class LayerWipe(Script):
                     currentTool = 1
                 if (compatible_material == True and line.startswith(";LAYER:")):
                     lineIndex = lines.index(line)
-                    lines.insert(lineIndex, "G12")
+                    lines.insert(lineIndex, "G12 P0")
             data[layer_index] = "\n".join(lines)
         return data

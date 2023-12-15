@@ -79,7 +79,7 @@ class VolumetricWipe(Script):
                             rounded_e = int(math.floor((t0_total_e_value + e_value) / self.getSettingValueByKey("extrusion"))) * self.getSettingValueByKey("extrusion")
                             if (rounded_e != t0_last_rounded_e_value and rounded_e > t0_last_rounded_e_value and rounded_e >= 0 and t0_last_rounded_e_value >= 0):
                                 lineIndex = lines.index(line)
-                                lines.insert(lineIndex, "G12 ;{}".format(t0_total_e_value + e_value))
+                                lines.insert(lineIndex, "G12 P0 ;{}".format(t0_total_e_value + e_value))
                             t0_last_e_value = e_value
                             t0_last_rounded_e_value = rounded_e
                         if (currentTool == 1):
@@ -88,7 +88,7 @@ class VolumetricWipe(Script):
                             rounded_e = int(math.floor((t1_total_e_value + e_value) / self.getSettingValueByKey("extrusion"))) * self.getSettingValueByKey("extrusion")
                             if (rounded_e != t1_last_rounded_e_value and rounded_e > t1_last_rounded_e_value and rounded_e >= 0 and t1_last_rounded_e_value >= 0):
                                 lineIndex = lines.index(line)
-                                lines.insert(lineIndex, "G12 ;{}".format(t0_total_e_value + e_value))
+                                lines.insert(lineIndex, "G12 P0 ;{}".format(t0_total_e_value + e_value))
                             t1_last_e_value = e_value
                             t1_last_rounded_e_value = rounded_e
             data[layer_index] = "\n".join(lines)
