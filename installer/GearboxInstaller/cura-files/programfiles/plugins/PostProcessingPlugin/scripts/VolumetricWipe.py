@@ -15,7 +15,7 @@ def is_extrusion_line(line: str) -> bool:
         return "G1" in line and "X" in line and "Y" in line and "E" in line
 
 def is_compatible_material(line: str) -> bool:
-        if ("b5787a9f-3bc2-4110-b863-912bb74bea06" in line):
+        if ("b5787a9f-3bc2-4110-b863-912bb74bea06" in line or "ef0f15e5-951d-448c-9dc5-4d91726c6c60" in line):
             return True
         return False
 
