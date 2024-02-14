@@ -1,2 +1,3 @@
-### Updated Profiles
- - GBX16 PC UPDATE
+### Added Plugins
+- Add Line Numbers
+- Volumetric Wipe
